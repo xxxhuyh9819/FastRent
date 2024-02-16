@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct ListItemView: View {
+    
+    
     var body: some View {
         VStack {
-            Rectangle()
+            // a carousel of images
+            CarouselView()
                 .frame(height: 300)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
             
