@@ -13,6 +13,9 @@
 		50C5C4EB2B7F3BC40028489B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50C5C4EA2B7F3BC40028489B /* Preview Assets.xcassets */; };
 		50C5C4F22B7F3BEC0028489B /* Swift.gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 50C5C4F12B7F3BEC0028489B /* Swift.gitignore */; };
 		50C5C4F42B7F3C6F0028489B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 50C5C4F32B7F3C6F0028489B /* README.md */; };
+		50C5C4F82B7F3CB50028489B /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C4F72B7F3CB50028489B /* ExploreView.swift */; };
+		50C5C4FA2B7F3CE50028489B /* WishlistsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C4F92B7F3CE50028489B /* WishlistsView.swift */; };
+		50C5C4FC2B7F3CF90028489B /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C4FB2B7F3CF90028489B /* MainTabView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +26,9 @@
 		50C5C4EA2B7F3BC40028489B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		50C5C4F12B7F3BEC0028489B /* Swift.gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = Swift.gitignore; sourceTree = SOURCE_ROOT; };
 		50C5C4F32B7F3C6F0028489B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		50C5C4F72B7F3CB50028489B /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
+		50C5C4F92B7F3CE50028489B /* WishlistsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistsView.swift; sourceTree = "<group>"; };
+		50C5C4FB2B7F3CF90028489B /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +61,7 @@
 		50C5C4E22B7F3BC20028489B /* fast-rent */ = {
 			isa = PBXGroup;
 			children = (
+				50C5C4F52B7F3C9A0028489B /* Views */,
 				50C5C4F32B7F3C6F0028489B /* README.md */,
 				50C5C4F12B7F3BEC0028489B /* Swift.gitignore */,
 				50C5C4E32B7F3BC20028489B /* fast_rentApp.swift */,
@@ -71,6 +78,16 @@
 				50C5C4EA2B7F3BC40028489B /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		50C5C4F52B7F3C9A0028489B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				50C5C4F72B7F3CB50028489B /* ExploreView.swift */,
+				50C5C4F92B7F3CE50028489B /* WishlistsView.swift */,
+				50C5C4FB2B7F3CF90028489B /* MainTabView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,8 +162,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50C5C4FC2B7F3CF90028489B /* MainTabView.swift in Sources */,
 				50C5C4E62B7F3BC20028489B /* ContentView.swift in Sources */,
 				50C5C4E42B7F3BC20028489B /* fast_rentApp.swift in Sources */,
+				50C5C4F82B7F3CB50028489B /* ExploreView.swift in Sources */,
+				50C5C4FA2B7F3CE50028489B /* WishlistsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
