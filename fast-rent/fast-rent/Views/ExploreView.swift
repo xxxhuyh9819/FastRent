@@ -9,7 +9,13 @@ import SwiftUI
 
 struct ExploreView: View {
     var body: some View {
-        Text("Explore")
+        NavigationStack {
+            ScrollView {
+                ForEach(0...3, id: \.self) {rect in
+                    ListItemView()
+                }
+            }
+        }
     }
 }
 
