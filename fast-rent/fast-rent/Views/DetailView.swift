@@ -28,8 +28,8 @@ struct DetailView: View {
                                     .fill(.white)
                                     .frame(width: 28, height: 28)
                             }
-                            .padding(.horizontal, 32)
-                            .padding(.vertical, 40)
+                            .padding(.horizontal, 24)
+                            .padding(.vertical, 56)
                     }
                 }
             
@@ -106,7 +106,7 @@ struct DetailView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 10))
             }
             .padding()
-            .padding(.bottom, 100)
+            .padding(.bottom, 64)
             
         }
         .ignoresSafeArea()
@@ -145,6 +145,7 @@ struct DetailView: View {
             .padding(.horizontal)
             .background(.white)
         }
+        .padding(.bottom)
     }
 }
 
