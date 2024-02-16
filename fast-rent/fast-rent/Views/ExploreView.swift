@@ -8,11 +8,18 @@
 import SwiftUI
 
 struct ExploreView: View {
+    
+    
+    
     var body: some View {
         NavigationStack {
             ScrollView {
                 ForEach(0...3, id: \.self) {rect in
-                    ListItemView()
+                    NavigationLink{
+                        DetailView()
+                    } label: {
+                        ListItemView()
+                    }
                 }
             }
         }

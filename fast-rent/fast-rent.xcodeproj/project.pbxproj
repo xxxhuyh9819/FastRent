@@ -17,6 +17,7 @@
 		50C5C4FC2B7F3CF90028489B /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C4FB2B7F3CF90028489B /* MainTabView.swift */; };
 		50C5C4FF2B7F3FB30028489B /* ListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C4FE2B7F3FB30028489B /* ListItemView.swift */; };
 		50C5C5012B7F42BF0028489B /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C5002B7F42BF0028489B /* CarouselView.swift */; };
+		50C5C5032B7F43500028489B /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C5022B7F43500028489B /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		50C5C4FB2B7F3CF90028489B /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		50C5C4FE2B7F3FB30028489B /* ListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemView.swift; sourceTree = "<group>"; };
 		50C5C5002B7F42BF0028489B /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
+		50C5C5022B7F43500028489B /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				50C5C4F72B7F3CB50028489B /* ExploreView.swift */,
 				50C5C4F92B7F3CE50028489B /* WishlistsView.swift */,
 				50C5C4FB2B7F3CF90028489B /* MainTabView.swift */,
+				50C5C5022B7F43500028489B /* DetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 				50C5C4FF2B7F3FB30028489B /* ListItemView.swift in Sources */,
 				50C5C4FC2B7F3CF90028489B /* MainTabView.swift in Sources */,
 				50C5C4E42B7F3BC20028489B /* fast_rentApp.swift in Sources */,
+				50C5C5032B7F43500028489B /* DetailView.swift in Sources */,
 				50C5C4F82B7F3CB50028489B /* ExploreView.swift in Sources */,
 				50C5C5012B7F42BF0028489B /* CarouselView.swift in Sources */,
 				50C5C4FA2B7F3CE50028489B /* WishlistsView.swift in Sources */,
