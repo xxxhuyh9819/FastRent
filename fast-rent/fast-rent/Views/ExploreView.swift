@@ -17,8 +17,10 @@ struct ExploreView: View {
                 ForEach(0...3, id: \.self) {rect in
                     NavigationLink{
                         DetailView()
+                            .navigationBarBackButtonHidden()
                     } label: {
                         ListItemView()
+                            .tint(.black)
                     }
                 }
             }
