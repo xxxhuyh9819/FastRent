@@ -17,15 +17,15 @@ struct DetailView: View {
     
     init(apartment: Apartment) {
         self.apartment = apartment
-        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 41.7936, longitude: -87.5859), span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
+        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: apartment.latitude, longitude: apartment.longitude), span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
         self._cameraPosition = State(initialValue: .region(region))
     }
 
     var body: some View {
         ScrollView {
             // picture
-            CarouselView()
-                .frame(height: 350)
+            CarouselView(apartment: apartment)
+                .frame(height: 320)
             // custom back button
                 .overlay(alignment: .topLeading) {
                     Button {
@@ -45,12 +45,12 @@ struct DetailView: View {
             
             // Apartment info
             VStack(alignment: .leading, spacing: 8) {
-                Text("Luxury 1B1B Apartment")
+                Text(apartment.title)
                     .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                Text("1616 E 56th St, Chicago, IL")
+                Text(apartment.address)
                     .font(.subheadline)
                     .fontWeight(.semibold)
-                Text("1 bedroom - 1 bathroom")
+                Text("\(apartment.numBedrooms) bedroom - \(apartment.numBathrooms) bathroom")
                     .font(.subheadline)
                     .foregroundStyle(.gray)
             }
@@ -65,25 +65,34 @@ struct DetailView: View {
                     Text("Landlord")
                         .font(.headline)
                         .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                    Text("Alan Walker")
+                    Text(apartment.landlordName)
                         .fontWeight(.semibold)
                 }
                 
                 Spacer()
                 
-                Image(systemName: "star.fill")
+                Image(.manAvatar)
                     .resizable()
                     .frame(width: 64, height: 64)
                     .scaledToFill()
                     .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
             }
-            .padding()
+            .padding(.leading)
+            .padding(.trailing)
             
             Divider()
             
             // description
-            Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut condimentum tellus at sagittis ullamcorper. Praesent ipsum dui, fringilla nec nulla nec, commodo dictum tortor. Suspendisse tempus maximus metus, ac facilisis dolor facilisis in. Integer a sagittis sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet mollis ")
-                .padding()
+            VStack(alignment: .leading, spacing: 8) {
+                Text("Description")
+                    .font(.headline)
+                    .fontWeight(.bold)
+                
+                Text(apartment.description)
+                    
+            }
+            .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
+            .padding()
             
             Divider()
             
@@ -93,11 +102,16 @@ struct DetailView: View {
                     .font(.headline)
                     .fontWeight(.bold)
                 
-                ForEach(0..<3) {_ in
+                ForEach(apartment.amenities, id: \.self) { amenity in
                     HStack {
-                        Image(systemName: "washer")
-                        Text("Laundry")
+                        Image(systemName: amenity.imageName)
+                            .frame(width: 10)
+                            .padding(.trailing, 5)
+                        Text(amenity.title)
+                            .font(.footnote)
+                            .fontWeight(.semibold)
                     }
+                    .padding(.horizontal, 6)
                 }
             }
             .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
@@ -112,7 +126,7 @@ struct DetailView: View {
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                 
                 Map(position: $cameraPosition) {
-                    Marker("Solstice", coordinate: CLLocationCoordinate2D(latitude: 41.7936, longitude: -87.5859))
+                    Marker(apartment.apartmentName, coordinate: CLLocationCoordinate2D(latitude: 41.7936, longitude: -87.5859))
                 }
                 .frame(height: 200)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
@@ -162,5 +176,5 @@ struct DetailView: View {
 }
 
 #Preview {
-    DetailView(apartment: Apartment(id: "", price: 1000))
+    DetailView(apartment: dummyApartment)
 }

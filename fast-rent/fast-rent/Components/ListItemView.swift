@@ -14,19 +14,18 @@ struct ListItemView: View {
     var body: some View {
         VStack {
             // a carousel of images
-            CarouselView()
+            CarouselView(apartment: apartment)
                 .frame(height: 300)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
             
             HStack {
                 VStack(alignment: .leading) {
-                    Text("Regents Park")
+                    Text(apartment.address)
                         .font(.subheadline)
                         .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                    Text("1 bedroom - 1 bathroom")
+                    Text("\(apartment.numBedrooms) bedroom - \(apartment.numBathrooms) bathroom")
                         .font(.footnote)
                         .fontWeight(.semibold)
-                    
                 }
                 
                 Spacer()
@@ -34,7 +33,7 @@ struct ListItemView: View {
                 HStack {
                     Text("$\(apartment.price)")
                         .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                    Text("/ night")
+                    Text("/ month")
                 }
             }
         }
@@ -43,5 +42,5 @@ struct ListItemView: View {
 }
 
 #Preview {
-    ListItemView(apartment: Apartment(id: "", price: 1000))
+    ListItemView(apartment: dummyApartment)
 }

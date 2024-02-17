@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct CarouselView: View {
-    var photos = ["regents-park", "solstice"]
+    
+    let apartment: Apartment
+    
     var body: some View {
         // a carousel of photos
         TabView {
-            ForEach(photos, id: \.self) { photo in
+            ForEach(apartment.imageUrls, id: \.self) { photo in
                 Image(photo)
                     .resizable()
                     .scaledToFill()
@@ -23,5 +25,5 @@ struct CarouselView: View {
 }
 
 #Preview {
-    CarouselView()
+    CarouselView(apartment: dummyApartments[0])
 }

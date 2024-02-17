@@ -9,11 +9,7 @@ import SwiftUI
 
 struct ExploreView: View {
     
-    let apartments: [Apartment] = [
-        Apartment(id: NSUUID().uuidString, price: 1900),
-        Apartment(id: NSUUID().uuidString, price: 2000),
-        Apartment(id: NSUUID().uuidString, price: 1500),
-    ]
+    let apartments: [Apartment] = dummyApartments
     
     var body: some View {
         NavigationStack {
