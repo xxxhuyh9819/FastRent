@@ -23,15 +23,7 @@ struct ApartmentPopOverView: View {
                     
                     Spacer()
                     
-                    Circle()
-                        .fill(Color("round-button-color"))
-                        .frame(width: 28, height: 28)
-                        .overlay(
-                            Image(systemName: "xmark")
-                                .imageScale(.small)
-                                .font(.callout.weight(.bold))
-                                .foregroundStyle(.gray)
-                        )
+                    RoundButton(imageName: "xmark")
                         .onTapGesture {
                             dismiss()
                         }
@@ -54,15 +46,7 @@ struct ApartmentPopOverView: View {
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                             .navigationBarBackButtonHidden()
                     } label: {
-                        Circle()
-                            .fill(Color("round-button-color"))
-                            .frame(width: 28, height: 28)
-                            .overlay(
-                                Image(systemName: "chevron.right")
-                                    .imageScale(.small)
-                                    .font(.callout.weight(.bold))
-                                    .foregroundStyle(.gray)
-                            )
+                        RoundButton(imageName: "chevron.right")
                             .onTapGesture {
                                 showDetail.toggle()
                             }

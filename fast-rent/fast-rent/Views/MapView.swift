@@ -17,7 +17,7 @@ struct MapView: View {
     init(apartments: [Apartment]) {
         self.apartments = apartments
     }
-
+    
     var body: some View {
         ZStack {
             Map(position: $cameraPosition) {
@@ -30,29 +30,7 @@ struct MapView: View {
         }
         .edgesIgnoringSafeArea(.all)
         .overlay(alignment: .topLeading) {
-//            Button {
-//                dismiss()
-//            } label: {
-//                Image(systemName: "chevron.left")
-//                    .foregroundStyle(.gray)
-//                    .imageScale(.small)
-//                    .background {
-//                        Circle()
-//                            .fill(.white)
-//                            .frame(width: 28, height: 28)
-//                    }
-//                    .padding(.horizontal, 24)
-//                    .padding(.vertical, 32)
-//            }
-            Circle()
-                .fill(Color("round-button-color"))
-                .frame(width: 28, height: 28)
-                .overlay(
-                    Image(systemName: "xmark")
-                        .imageScale(.small)
-                        .font(.callout.weight(.bold))
-                        .foregroundStyle(.gray)
-                )
+            RoundButton(imageName: "chevron.left")
                 .onTapGesture {
                     dismiss()
                 }

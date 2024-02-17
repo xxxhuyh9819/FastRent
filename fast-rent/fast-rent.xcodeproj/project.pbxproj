@@ -23,6 +23,7 @@
 		50C5C51B2B8051F30028489B /* ApartmentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C51A2B8051F30028489B /* ApartmentButton.swift */; };
 		50C5C51D2B8056010028489B /* ApartmentPopOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C51C2B8056010028489B /* ApartmentPopOverView.swift */; };
 		50C5C5212B806F5D0028489B /* Landlord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C5202B806F5D0028489B /* Landlord.swift */; };
+		50C5C5252B807AFE0028489B /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C5242B807AFE0028489B /* RoundButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		50C5C51A2B8051F30028489B /* ApartmentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentButton.swift; sourceTree = "<group>"; };
 		50C5C51C2B8056010028489B /* ApartmentPopOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentPopOverView.swift; sourceTree = "<group>"; };
 		50C5C5202B806F5D0028489B /* Landlord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Landlord.swift; sourceTree = "<group>"; };
+		50C5C5242B807AFE0028489B /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 				50C5C4FE2B7F3FB30028489B /* ListItemView.swift */,
 				50C5C5002B7F42BF0028489B /* ImageCarousel.swift */,
 				50C5C51A2B8051F30028489B /* ApartmentButton.swift */,
+				50C5C5242B807AFE0028489B /* RoundButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 				50C5C4E42B7F3BC20028489B /* fast_rentApp.swift in Sources */,
 				50C5C5032B7F43500028489B /* DetailView.swift in Sources */,
 				50C5C4F82B7F3CB50028489B /* ExploreView.swift in Sources */,
+				50C5C5252B807AFE0028489B /* RoundButton.swift in Sources */,
 				50C5C5012B7F42BF0028489B /* ImageCarousel.swift in Sources */,
 				50C5C5142B8034F00028489B /* Apartment.swift in Sources */,
 				50C5C51B2B8051F30028489B /* ApartmentButton.swift in Sources */,

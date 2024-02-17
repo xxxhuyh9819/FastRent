@@ -29,20 +29,12 @@ struct DetailView: View {
                 .frame(height: 320)
             // custom back button
                 .overlay(alignment: .topLeading) {
-                    Button {
-                        dismiss()
-                    } label: {
-                        Image(systemName: "chevron.left")
-                            .imageScale(.small)
-                            .foregroundStyle(.gray)
-                            .background {
-                                Circle()
-                                    .fill(Color("round-button-color"))
-                                    .frame(width: 28, height: 28)
-                            }
-                            .padding(.horizontal, 24)
-                            .padding(.vertical, 56)
-                    }
+                    RoundButton(imageName: "chevron.left")
+                        .onTapGesture {
+                            dismiss()
+                        }
+                        .padding(.horizontal, 24)
+                        .padding(.vertical, 56)
                 }
             
             // Apartment info
