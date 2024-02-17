@@ -35,7 +35,7 @@ struct MapView: View {
             Map(position: $cameraPosition) {
                 ForEach(apartments, id: \.id) { apartment in
                     Annotation("$\(apartment.price)", coordinate: CLLocationCoordinate2D(latitude: apartment.latitude, longitude: apartment.longitude)) {
-                        Image(systemName: "house")
+                        PlaceButton()
                     }
                 }
             }

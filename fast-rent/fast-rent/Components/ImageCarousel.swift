@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CarouselView: View {
+struct ImageCarousel: View {
     
     let apartment: Apartment
     
@@ -25,5 +25,5 @@ struct CarouselView: View {
 }
 
 #Preview {
-    CarouselView(apartment: dummyApartments[0])
+    ImageCarousel(apartment: dummyApartments[0])
 }

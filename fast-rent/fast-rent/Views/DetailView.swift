@@ -24,7 +24,7 @@ struct DetailView: View {
     var body: some View {
         ScrollView {
             // picture
-            CarouselView(apartment: apartment)
+            ImageCarousel(apartment: apartment)
                 .frame(height: 320)
             // custom back button
                 .overlay(alignment: .topLeading) {
