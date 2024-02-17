@@ -24,7 +24,8 @@ struct WishlistsView: View {
             ScrollView {
                 LazyVGrid(columns: columns) {
                     ForEach(wishlist, id: \.id) { apartment in
-                        Text(apartment.address)
+                        WishlistItemView(apartment: apartment)
+                            .frame(width: 150, height: 200)
                     }
                 }
             }
