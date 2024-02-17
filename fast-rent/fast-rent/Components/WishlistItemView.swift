@@ -13,30 +13,52 @@ struct WishlistItemView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            VStack(alignment: .leading) {
-                Image(apartment.imageUrls[0])
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: geometry.size.width + 10, height: 100)
-                VStack(alignment: .leading) {
-                    Text(apartment.title)
-                        .font(.headline)
-                    Text("\(apartment.numBedrooms) bedroom - \(apartment.numBathrooms) bathroom")
-                        .font(.subheadline)
-                        .foregroundStyle(.gray)
-                    Text("$\(apartment.price) / month")
-                        .font(.subheadline)
-                        .fontWeight(.semibold)
+            NavigationStack {
+                NavigationLink {
+                    DetailView(apartment: apartment)
+                        .navigationBarBackButtonHidden()
+                } label: {
+                    VStack(alignment: .leading) {
+                        Image(apartment.imageUrls[0])
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: geometry.size.width + 10)
+                        
+                        VStack(alignment: .leading) {
+                            Text(apartment.title)
+                                .font(.subheadline)
+                                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                            HStack {
+                                Text("\(apartment.numBedrooms)")
+                                Image(systemName: "bed.double")
+                                    .imageScale(.small)
+                                Text("-")
+                                Text("\(apartment.numBathrooms)")
+                                    .imageScale(.small)
+                                Image(systemName: "shower")
+                            }
+                            .font(.footnote)
+                            .fontWeight(.semibold)
+
+                            Text("$\(apartment.price) / month")
+                                .font(.subheadline)
+                                .fontWeight(.semibold)
+                            Divider()
+                        }
+                        .padding(.leading, 4)
+                        .padding(.bottom)
+                    }
+                    .foregroundStyle(Color("font-color"))
+                    .overlay {
+                        Rectangle()
+                            .foregroundStyle(.white.opacity(0))
+                            .frame(width: geometry.size.width + 10, height: geometry.size.height + 10)
+                            .shadow(radius: 20)
+                    }
                 }
-                .padding(.bottom)
+                
             }
-            .overlay {
-                Rectangle()
-                    .stroke(lineWidth: /*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/)
-                    .foregroundStyle(.black)
-                    .frame(width: geometry.size.width + 10)
-                    .shadow(radius: 5)
-            }
+            .navigationTitle("Wishlist")
         }
         .clipShape(RoundedRectangle(cornerRadius: 10))
         

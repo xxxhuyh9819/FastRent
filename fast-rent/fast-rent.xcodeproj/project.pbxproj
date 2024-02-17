@@ -13,7 +13,7 @@
 		50C5C4F22B7F3BEC0028489B /* Swift.gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 50C5C4F12B7F3BEC0028489B /* Swift.gitignore */; };
 		50C5C4F42B7F3C6F0028489B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 50C5C4F32B7F3C6F0028489B /* README.md */; };
 		50C5C4F82B7F3CB50028489B /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C4F72B7F3CB50028489B /* ExploreView.swift */; };
-		50C5C4FA2B7F3CE50028489B /* WishlistsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C4F92B7F3CE50028489B /* WishlistsView.swift */; };
+		50C5C4FA2B7F3CE50028489B /* WishlistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C4F92B7F3CE50028489B /* WishlistView.swift */; };
 		50C5C4FC2B7F3CF90028489B /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C4FB2B7F3CF90028489B /* MainTabView.swift */; };
 		50C5C4FF2B7F3FB30028489B /* ListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C4FE2B7F3FB30028489B /* ListItemView.swift */; };
 		50C5C5012B7F42BF0028489B /* ImageCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C5002B7F42BF0028489B /* ImageCarousel.swift */; };
@@ -35,7 +35,7 @@
 		50C5C4F12B7F3BEC0028489B /* Swift.gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = Swift.gitignore; sourceTree = SOURCE_ROOT; };
 		50C5C4F32B7F3C6F0028489B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		50C5C4F72B7F3CB50028489B /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
-		50C5C4F92B7F3CE50028489B /* WishlistsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistsView.swift; sourceTree = "<group>"; };
+		50C5C4F92B7F3CE50028489B /* WishlistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistView.swift; sourceTree = "<group>"; };
 		50C5C4FB2B7F3CF90028489B /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		50C5C4FE2B7F3FB30028489B /* ListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemView.swift; sourceTree = "<group>"; };
 		50C5C5002B7F42BF0028489B /* ImageCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCarousel.swift; sourceTree = "<group>"; };
@@ -104,7 +104,7 @@
 			children = (
 				50C5C4FB2B7F3CF90028489B /* MainTabView.swift */,
 				50C5C4F72B7F3CB50028489B /* ExploreView.swift */,
-				50C5C4F92B7F3CE50028489B /* WishlistsView.swift */,
+				50C5C4F92B7F3CE50028489B /* WishlistView.swift */,
 				50C5C5022B7F43500028489B /* DetailView.swift */,
 				50C5C5172B8047A70028489B /* MapView.swift */,
 				50C5C51C2B8056010028489B /* ApartmentPopOverView.swift */,
@@ -218,7 +218,7 @@
 				50C5C51D2B8056010028489B /* ApartmentPopOverView.swift in Sources */,
 				50C5C5182B8047A70028489B /* MapView.swift in Sources */,
 				50C5C5272B8080F80028489B /* WishlistItemView.swift in Sources */,
-				50C5C4FA2B7F3CE50028489B /* WishlistsView.swift in Sources */,
+				50C5C4FA2B7F3CE50028489B /* WishlistView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

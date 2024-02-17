@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct WishlistsView: View {
+struct WishlistView: View {
     
     let wishlist: [Apartment]
 
@@ -16,16 +16,16 @@ struct WishlistsView: View {
         
         // 2 items per row
         let columns: [GridItem] = [
-                GridItem(.flexible()),
-                GridItem(.flexible())
+                GridItem(),
+                GridItem()
             ]
         
         NavigationStack {
             ScrollView {
-                LazyVGrid(columns: columns) {
+                LazyVGrid(columns: columns, spacing: 2) {
                     ForEach(wishlist, id: \.id) { apartment in
                         WishlistItemView(apartment: apartment)
-                            .frame(width: 150, height: 200)
+                            .frame(width: 160, height: 200)
                     }
                 }
             }
@@ -34,14 +34,5 @@ struct WishlistsView: View {
 }
 
 #Preview {
-    WishlistsView(wishlist: dummyApartments)
+    WishlistView(wishlist: dummyApartments)
 }
-
-
-//NavigationLink{
-//    DetailView(apartment: apartment)
-//        .navigationBarBackButtonHidden()
-//} label: {
-//    ListItemView(apartment: apartment)
-//        .tint(Color("font-color"))
-//}
