@@ -20,7 +20,7 @@ struct DetailView: View {
         let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: apartment.latitude, longitude: apartment.longitude), span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
         self._cameraPosition = State(initialValue: .region(region))
     }
-
+    
     var body: some View {
         ScrollView {
             // picture
@@ -89,7 +89,7 @@ struct DetailView: View {
                     .fontWeight(.bold)
                 
                 Text(apartment.description)
-                    
+                
             }
             .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
             .padding()
@@ -158,16 +158,31 @@ struct DetailView: View {
                     
                     Spacer()
                     
-                    Button {
-                        // action
-                    } label: {
-                        Text("Contact")
-                            .foregroundStyle(.white)
-                            .font(.subheadline)
-                            .fontWeight(.semibold)
-                            .frame(width: 140, height: 40)
-                            .background(.red)
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                    HStack {
+                        // src: https://stackoverflow.com/questions/57582653/how-to-create-tappable-url-phone-number-in-swiftui
+                        // will produce warnings in simulators, works well in real devices
+                        Link(destination: URL(string: "tel:8005551212")!) {
+                            Image(systemName: "phone.fill")
+                                .foregroundStyle(.white)
+                                .font(.subheadline)
+                                .fontWeight(.semibold)
+                                .frame(width: 40, height: 40)
+                                .background(.red)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                        }
+                        .padding(.horizontal, 10)
+                        
+                        
+                        Link(destination: URL(string: "mailto:apple@me.com")!) {
+                            Image(systemName: "envelope.fill")
+                                .foregroundStyle(.white)
+                                .font(.subheadline)
+                                .fontWeight(.semibold)
+                                .frame(width: 40, height: 40)
+                                .background(.red)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                        }
+                        .padding(.horizontal, 10)
                     }
                 }
             }
