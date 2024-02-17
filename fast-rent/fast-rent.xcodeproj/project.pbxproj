@@ -22,6 +22,7 @@
 		50C5C5182B8047A70028489B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C5172B8047A70028489B /* MapView.swift */; };
 		50C5C51B2B8051F30028489B /* ApartmentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C51A2B8051F30028489B /* ApartmentButton.swift */; };
 		50C5C51D2B8056010028489B /* ApartmentPopOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C51C2B8056010028489B /* ApartmentPopOverView.swift */; };
+		50C5C5212B806F5D0028489B /* Landlord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C5202B806F5D0028489B /* Landlord.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		50C5C5172B8047A70028489B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		50C5C51A2B8051F30028489B /* ApartmentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentButton.swift; sourceTree = "<group>"; };
 		50C5C51C2B8056010028489B /* ApartmentPopOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentPopOverView.swift; sourceTree = "<group>"; };
+		50C5C5202B806F5D0028489B /* Landlord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Landlord.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				50C5C5132B8034F00028489B /* Apartment.swift */,
+				50C5C5202B806F5D0028489B /* Landlord.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50C5C4FF2B7F3FB30028489B /* ListItemView.swift in Sources */,
+				50C5C5212B806F5D0028489B /* Landlord.swift in Sources */,
 				50C5C4FC2B7F3CF90028489B /* MainTabView.swift in Sources */,
 				50C5C4E42B7F3BC20028489B /* fast_rentApp.swift in Sources */,
 				50C5C5032B7F43500028489B /* DetailView.swift in Sources */,

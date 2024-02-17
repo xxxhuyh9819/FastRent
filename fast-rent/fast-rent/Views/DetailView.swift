@@ -66,7 +66,7 @@ struct DetailView: View {
                     Text("Landlord")
                         .font(.headline)
                         .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                    Text(apartment.landlordName)
+                    Text(apartment.landlord.name)
                         .fontWeight(.semibold)
                 }
                 
@@ -168,7 +168,7 @@ struct DetailView: View {
                     HStack {
                         // src: https://stackoverflow.com/questions/57582653/how-to-create-tappable-url-phone-number-in-swiftui
                         // will produce warnings in simulators, works well in real devices
-                        Link(destination: URL(string: "tel:\(apartment.landlordPhone)")!) {
+                        Link(destination: URL(string: "tel:\(apartment.landlord.tel)")!) {
                             Image(systemName: "phone.fill")
                                 .foregroundStyle(.white)
                                 .font(.subheadline)
@@ -180,7 +180,7 @@ struct DetailView: View {
                         .padding(.horizontal, 10)
                         
                         
-                        Link(destination: URL(string: "mailto:\(apartment.landlordEmail)")!) {
+                        Link(destination: URL(string: "mailto:\(apartment.landlord.email)")!) {
                             Image(systemName: "envelope.fill")
                                 .foregroundStyle(.white)
                                 .font(.subheadline)
