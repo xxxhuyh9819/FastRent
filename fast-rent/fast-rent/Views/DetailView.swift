@@ -150,7 +150,7 @@ struct DetailView: View {
                         Text("For 12 months")
                             .font(.footnote)
                             .fontWeight(.semibold)
-                            .foregroundStyle(.gray)
+                            .foregroundStyle(.secondary)
                     }
                     
                     Spacer()
@@ -169,7 +169,7 @@ struct DetailView: View {
                 }
             }
             .padding(.horizontal)
-            .background(.white)
+            .background(Color("background-color"))
         }
         .padding(.bottom)
     }

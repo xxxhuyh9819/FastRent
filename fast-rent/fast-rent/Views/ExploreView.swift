@@ -21,7 +21,7 @@ struct ExploreView: View {
                             .navigationBarBackButtonHidden()
                     } label: {
                         ListItemView(apartment: apartment)
-                            .tint(.black)
+                            .tint(Color("font-color"))
                     }
                 }
             }
