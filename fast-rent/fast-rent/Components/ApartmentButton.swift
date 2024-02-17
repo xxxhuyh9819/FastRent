@@ -22,7 +22,7 @@ struct ApartmentButton: View {
         }
         .popover(isPresented: $showPopOver, attachmentAnchor: .point(.center)) {
             ApartmentPopOverView(apartment: apartment)
-                .frame(height: 400)
+                .frame(width: 300, height: 300)
                 .presentationCompactAdaptation(.popover)
         }
     }
