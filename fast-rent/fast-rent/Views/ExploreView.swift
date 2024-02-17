@@ -45,7 +45,7 @@ struct ExploreView: View {
                 
             }
             .sheet(isPresented: $showMap) {
-                MapView()
+                MapView(apartments: apartments)
             }
         }
     }
