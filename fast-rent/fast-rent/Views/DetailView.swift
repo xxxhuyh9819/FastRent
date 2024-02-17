@@ -6,11 +6,18 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct DetailView: View {
     
     @Environment(\.dismiss) var dismiss
+    @State private var cameraPosition: MapCameraPosition
     
+    init() {
+        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 41.7936, longitude: -87.5859), span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
+        self._cameraPosition = State(initialValue: .region(region))
+    }
+
     var body: some View {
         ScrollView {
             // picture
@@ -101,9 +108,11 @@ struct DetailView: View {
                     .font(.headline)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                 
-                Rectangle()
-                    .frame(height: 200)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                Map(position: $cameraPosition) {
+                    Marker("Solstice", coordinate: CLLocationCoordinate2D(latitude: 41.7936, longitude: -87.5859))
+                }
+                .frame(height: 200)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
             }
             .padding()
             .padding(.bottom, 64)
