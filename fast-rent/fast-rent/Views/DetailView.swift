@@ -33,10 +33,11 @@ struct DetailView: View {
                         dismiss()
                     } label: {
                         Image(systemName: "chevron.left")
+                            .imageScale(.small)
                             .foregroundStyle(.gray)
                             .background {
                                 Circle()
-                                    .fill(.white)
+                                    .fill(Color("round-button-color"))
                                     .frame(width: 28, height: 28)
                             }
                             .padding(.horizontal, 24)
@@ -72,7 +73,7 @@ struct DetailView: View {
                 
                 Spacer()
                 
-                Image(.manAvatar)
+                Image(apartment.landlord.avatarUrl)
                     .resizable()
                     .frame(width: 64, height: 64)
                     .scaledToFill()
@@ -160,7 +161,7 @@ struct DetailView: View {
                         Text("For 12 months")
                             .font(.footnote)
                             .fontWeight(.semibold)
-                            .foregroundStyle(.secondary)
+                            .foregroundStyle(.gray)
                     }
                     
                     Spacer()

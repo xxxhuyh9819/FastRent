@@ -24,13 +24,13 @@ struct ApartmentPopOverView: View {
                     Spacer()
                     
                     Circle()
-                        .fill(Color(uiColor: .tertiarySystemFill))
+                        .fill(Color("round-button-color"))
                         .frame(width: 28, height: 28)
                         .overlay(
                             Image(systemName: "xmark")
                                 .imageScale(.small)
                                 .font(.callout.weight(.bold))
-                                .foregroundColor(.secondary)
+                                .foregroundStyle(.gray)
                         )
                         .onTapGesture {
                             dismiss()
@@ -55,13 +55,13 @@ struct ApartmentPopOverView: View {
                             .navigationBarBackButtonHidden()
                     } label: {
                         Circle()
-                            .fill(Color(uiColor: .tertiarySystemFill))
+                            .fill(Color("round-button-color"))
                             .frame(width: 28, height: 28)
                             .overlay(
                                 Image(systemName: "chevron.right")
                                     .imageScale(.small)
                                     .font(.callout.weight(.bold))
-                                    .foregroundColor(.secondary)
+                                    .foregroundStyle(.gray)
                             )
                             .onTapGesture {
                                 showDetail.toggle()
