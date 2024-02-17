@@ -19,6 +19,7 @@
 		50C5C5012B7F42BF0028489B /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C5002B7F42BF0028489B /* CarouselView.swift */; };
 		50C5C5032B7F43500028489B /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C5022B7F43500028489B /* DetailView.swift */; };
 		50C5C5142B8034F00028489B /* Apartment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C5132B8034F00028489B /* Apartment.swift */; };
+		50C5C5182B8047A70028489B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C5172B8047A70028489B /* MapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		50C5C5002B7F42BF0028489B /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
 		50C5C5022B7F43500028489B /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		50C5C5132B8034F00028489B /* Apartment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apartment.swift; sourceTree = "<group>"; };
+		50C5C5172B8047A70028489B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,10 +92,11 @@
 		50C5C4F52B7F3C9A0028489B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				50C5C4FB2B7F3CF90028489B /* MainTabView.swift */,
 				50C5C4F72B7F3CB50028489B /* ExploreView.swift */,
 				50C5C4F92B7F3CE50028489B /* WishlistsView.swift */,
-				50C5C4FB2B7F3CF90028489B /* MainTabView.swift */,
 				50C5C5022B7F43500028489B /* DetailView.swift */,
+				50C5C5172B8047A70028489B /* MapView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -194,6 +197,7 @@
 				50C5C4F82B7F3CB50028489B /* ExploreView.swift in Sources */,
 				50C5C5012B7F42BF0028489B /* CarouselView.swift in Sources */,
 				50C5C5142B8034F00028489B /* Apartment.swift in Sources */,
+				50C5C5182B8047A70028489B /* MapView.swift in Sources */,
 				50C5C4FA2B7F3CE50028489B /* WishlistsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
