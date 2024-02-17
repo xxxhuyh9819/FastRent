@@ -24,6 +24,8 @@ struct Apartment: Hashable {
     var latitude: Double
     var longitude: Double
     var amenities: [Amenities]
+    var landlordPhone: String
+    var landlordEmail: String
 }
 
 enum Amenities {
@@ -69,8 +71,8 @@ enum Amenities {
     }
 }
 
-let dummyApartment = Apartment(id: NSUUID().uuidString, address: "1616 E 56th St", price: 2000, title: "1b1b apartment", imageUrls: ["regents-park", "solstice"], apartmentName: "Solstice on the park",  numBedrooms: 1, numBathrooms: 1, landlordName: "Alan Smith", AvatarUrl: "man-avatar", description: "A great lake view", latitude: 41.7936, longitude: -87.5859, amenities: [.gym, .laundry, .wifi, .pet])
-let dummyApartment1 = Apartment(id: NSUUID().uuidString, address: "1451 E 55th St", price: 2400, title: "2b2b apartment", imageUrls: ["regents-park", "solstice"], apartmentName: "UPC on the park", numBedrooms: 2, numBathrooms: 2, landlordName: "Alan Smith", AvatarUrl: "man-avatar2", description: "A great lake view", latitude: 41.7936, longitude: -87.5859, amenities: [.gym, .laundry, .parking, .wifi])
-let dummyApartment2 = Apartment(id: NSUUID().uuidString, address: "1210 S Indiana Ave", price: 2700, title: "1b1b apartment", imageUrls: ["regents-park", "solstice", "nema-chicago"], apartmentName: "NEMA Chicago", numBedrooms: 1, numBathrooms: 1, landlordName: "Alan Smith", AvatarUrl: "man-avatar3", description: "A great lake view", latitude: 41.7953, longitude: -87.5905, amenities: [.gym, .laundry, .parking, .wifi, .airConditioning])
+let dummyApartment = Apartment(id: NSUUID().uuidString, address: "1616 E 56th St", price: 2000, title: "1b1b apartment", imageUrls: ["regents-park", "solstice"], apartmentName: "Solstice on the park",  numBedrooms: 1, numBathrooms: 1, landlordName: "Alan Smith", AvatarUrl: "man-avatar", description: "A great lake view", latitude: 41.7936, longitude: -87.5859, amenities: [.gym, .laundry, .wifi, .pet], landlordPhone: "8005551212", landlordEmail: "apple@me.com")
+let dummyApartment1 = Apartment(id: NSUUID().uuidString, address: "1451 E 55th St", price: 2400, title: "2b2b apartment", imageUrls: ["regents-park", "solstice"], apartmentName: "UPC on the park", numBedrooms: 2, numBathrooms: 2, landlordName: "Alan Smith", AvatarUrl: "man-avatar2", description: "A great lake view", latitude: 41.7936, longitude: -87.5859, amenities: [.gym, .laundry, .parking, .wifi], landlordPhone: "8005551212", landlordEmail: "apple@me.com")
+let dummyApartment2 = Apartment(id: NSUUID().uuidString, address: "1210 S Indiana Ave", price: 2700, title: "1b1b apartment", imageUrls: ["regents-park", "solstice", "nema-chicago"], apartmentName: "NEMA Chicago", numBedrooms: 1, numBathrooms: 1, landlordName: "Alan Smith", AvatarUrl: "man-avatar3", description: "A great lake view", latitude: 41.7953, longitude: -87.5905, amenities: [.gym, .laundry, .parking, .wifi, .airConditioning], landlordPhone: "8005551212", landlordEmail: "apple@me.com")
 
 let dummyApartments = [dummyApartment, dummyApartment1, dummyApartment2]

@@ -12,6 +12,7 @@ struct DetailView: View {
     
     @Environment(\.dismiss) var dismiss
     @State private var cameraPosition: MapCameraPosition
+    @State var showMap: Bool = false
     
     let apartment: Apartment
     
@@ -133,6 +134,12 @@ struct DetailView: View {
                 }
                 .frame(height: 200)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
+                .onTapGesture {
+                    showMap.toggle()
+                }
+                .sheet(isPresented: $showMap, content: {
+                    MapView(apartments: [apartment])
+                })
             }
             .padding()
             .padding(.bottom, 64)
@@ -161,7 +168,7 @@ struct DetailView: View {
                     HStack {
                         // src: https://stackoverflow.com/questions/57582653/how-to-create-tappable-url-phone-number-in-swiftui
                         // will produce warnings in simulators, works well in real devices
-                        Link(destination: URL(string: "tel:8005551212")!) {
+                        Link(destination: URL(string: "tel:\(apartment.landlordPhone)")!) {
                             Image(systemName: "phone.fill")
                                 .foregroundStyle(.white)
                                 .font(.subheadline)
@@ -173,7 +180,7 @@ struct DetailView: View {
                         .padding(.horizontal, 10)
                         
                         
-                        Link(destination: URL(string: "mailto:apple@me.com")!) {
+                        Link(destination: URL(string: "mailto:\(apartment.landlordEmail)")!) {
                             Image(systemName: "envelope.fill")
                                 .foregroundStyle(.white)
                                 .font(.subheadline)
