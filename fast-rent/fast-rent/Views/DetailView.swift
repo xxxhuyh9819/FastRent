@@ -13,7 +13,10 @@ struct DetailView: View {
     @Environment(\.dismiss) var dismiss
     @State private var cameraPosition: MapCameraPosition
     
-    init() {
+    let apartment: Apartment
+    
+    init(apartment: Apartment) {
+        self.apartment = apartment
         let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 41.7936, longitude: -87.5859), span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
         self._cameraPosition = State(initialValue: .region(region))
     }
@@ -127,7 +130,7 @@ struct DetailView: View {
                 // price
                 HStack {
                     VStack(alignment: .leading) {
-                        Text("$1900 / month")
+                        Text("$\(apartment.price) / month")
                             .font(.subheadline)
                             .fontWeight(.semibold)
                         Text("For 12 months")
@@ -159,5 +162,5 @@ struct DetailView: View {
 }
 
 #Preview {
-    DetailView()
+    DetailView(apartment: Apartment(id: "", price: 1000))
 }

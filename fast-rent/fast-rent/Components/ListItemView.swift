@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ListItemView: View {
     
+    let apartment: Apartment
     
     var body: some View {
         VStack {
@@ -31,7 +32,7 @@ struct ListItemView: View {
                 Spacer()
                 
                 HStack {
-                    Text("$1900")
+                    Text("$\(apartment.price)")
                         .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                     Text("/ night")
                 }
@@ -42,5 +43,5 @@ struct ListItemView: View {
 }
 
 #Preview {
-    ListItemView()
+    ListItemView(apartment: Apartment(id: "", price: 1000))
 }

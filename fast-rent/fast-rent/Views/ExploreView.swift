@@ -9,17 +9,21 @@ import SwiftUI
 
 struct ExploreView: View {
     
-    
+    let apartments: [Apartment] = [
+        Apartment(id: NSUUID().uuidString, price: 1900),
+        Apartment(id: NSUUID().uuidString, price: 2000),
+        Apartment(id: NSUUID().uuidString, price: 1500),
+    ]
     
     var body: some View {
         NavigationStack {
             ScrollView {
-                ForEach(0...3, id: \.self) {rect in
+                ForEach(apartments, id: \.id) {apartment in
                     NavigationLink{
-                        DetailView()
+                        DetailView(apartment: apartment)
                             .navigationBarBackButtonHidden()
                     } label: {
-                        ListItemView()
+                        ListItemView(apartment: apartment)
                             .tint(.black)
                     }
                 }

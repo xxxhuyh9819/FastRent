@@ -18,6 +18,7 @@
 		50C5C4FF2B7F3FB30028489B /* ListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C4FE2B7F3FB30028489B /* ListItemView.swift */; };
 		50C5C5012B7F42BF0028489B /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C5002B7F42BF0028489B /* CarouselView.swift */; };
 		50C5C5032B7F43500028489B /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C5022B7F43500028489B /* DetailView.swift */; };
+		50C5C5142B8034F00028489B /* Apartment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C5132B8034F00028489B /* Apartment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		50C5C4FE2B7F3FB30028489B /* ListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemView.swift; sourceTree = "<group>"; };
 		50C5C5002B7F42BF0028489B /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
 		50C5C5022B7F43500028489B /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		50C5C5132B8034F00028489B /* Apartment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apartment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				50C5C4E32B7F3BC20028489B /* fast_rentApp.swift */,
 				50C5C4E72B7F3BC40028489B /* Assets.xcassets */,
 				50C5C4E92B7F3BC40028489B /* Preview Content */,
+				50C5C5132B8034F00028489B /* Apartment.swift */,
 			);
 			path = "fast-rent";
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 				50C5C5032B7F43500028489B /* DetailView.swift in Sources */,
 				50C5C4F82B7F3CB50028489B /* ExploreView.swift in Sources */,
 				50C5C5012B7F42BF0028489B /* CarouselView.swift in Sources */,
+				50C5C5142B8034F00028489B /* Apartment.swift in Sources */,
 				50C5C4FA2B7F3CE50028489B /* WishlistsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
