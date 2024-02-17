@@ -17,7 +17,7 @@ struct DetailView: View {
     
     init(apartment: Apartment) {
         self.apartment = apartment
-        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: apartment.latitude, longitude: apartment.longitude), span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
+        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: apartment.latitude, longitude: apartment.longitude), span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
         self._cameraPosition = State(initialValue: .region(region))
     }
 
@@ -126,7 +126,10 @@ struct DetailView: View {
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                 
                 Map(position: $cameraPosition) {
-                    Marker(apartment.apartmentName, coordinate: CLLocationCoordinate2D(latitude: 41.7936, longitude: -87.5859))
+                    Annotation("$\(apartment.price)", coordinate: CLLocationCoordinate2D(latitude: apartment.latitude, longitude: apartment.longitude)) {
+                        ApartmentButton(apartment: apartment)
+                            .disabled(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                    }
                 }
                 .frame(height: 200)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
