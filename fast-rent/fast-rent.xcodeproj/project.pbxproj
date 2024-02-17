@@ -24,6 +24,7 @@
 		50C5C51D2B8056010028489B /* ApartmentPopOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C51C2B8056010028489B /* ApartmentPopOverView.swift */; };
 		50C5C5212B806F5D0028489B /* Landlord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C5202B806F5D0028489B /* Landlord.swift */; };
 		50C5C5252B807AFE0028489B /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C5242B807AFE0028489B /* RoundButton.swift */; };
+		50C5C5272B8080F80028489B /* WishlistItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C5262B8080F80028489B /* WishlistItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		50C5C51C2B8056010028489B /* ApartmentPopOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentPopOverView.swift; sourceTree = "<group>"; };
 		50C5C5202B806F5D0028489B /* Landlord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Landlord.swift; sourceTree = "<group>"; };
 		50C5C5242B807AFE0028489B /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		50C5C5262B8080F80028489B /* WishlistItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				50C5C5022B7F43500028489B /* DetailView.swift */,
 				50C5C5172B8047A70028489B /* MapView.swift */,
 				50C5C51C2B8056010028489B /* ApartmentPopOverView.swift */,
+				50C5C5262B8080F80028489B /* WishlistItemView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 				50C5C51B2B8051F30028489B /* ApartmentButton.swift in Sources */,
 				50C5C51D2B8056010028489B /* ApartmentPopOverView.swift in Sources */,
 				50C5C5182B8047A70028489B /* MapView.swift in Sources */,
+				50C5C5272B8080F80028489B /* WishlistItemView.swift in Sources */,
 				50C5C4FA2B7F3CE50028489B /* WishlistsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
