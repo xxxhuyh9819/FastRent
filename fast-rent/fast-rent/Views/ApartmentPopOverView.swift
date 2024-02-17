@@ -25,7 +25,7 @@ struct ApartmentPopOverView: View {
                     
                     Circle()
                         .fill(Color(uiColor: .tertiarySystemFill))
-                        .frame(width: 30, height: 30)
+                        .frame(width: 28, height: 28)
                         .overlay(
                             Image(systemName: "xmark")
                                 .imageScale(.small)
@@ -54,10 +54,15 @@ struct ApartmentPopOverView: View {
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                             .navigationBarBackButtonHidden()
                     } label: {
-                        Text("Details")
-                            .font(.subheadline)
-                            .foregroundStyle(Color("font-color"))
-                            .padding(.trailing, 2)
+                        Circle()
+                            .fill(Color(uiColor: .tertiarySystemFill))
+                            .frame(width: 28, height: 28)
+                            .overlay(
+                                Image(systemName: "chevron.right")
+                                    .imageScale(.small)
+                                    .font(.callout.weight(.bold))
+                                    .foregroundColor(.secondary)
+                            )
                             .onTapGesture {
                                 showDetail.toggle()
                             }
