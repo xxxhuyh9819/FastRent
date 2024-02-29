@@ -16,44 +16,8 @@ public class DataManager {
     
     //This prevents others from using the default '()' initializer
     fileprivate init() {
-        // set up the empty array for the first time
-//        if defaults.object(forKey: "test") == nil {
-//            defaults.setValue([String](), forKey: "test")
-//        }
     }
     let defaults = UserDefaults.standard
-    
-    
-    // MARK: for Userdefaults
-//    func saveFavorites(name: String) {
-//        var names = listFavorites()
-//        names.append(name)
-//        defaults.setValue(names, forKey: "test")
-//    }
-//    
-//    func deleteFavorite(name: String?) {
-//        let names = listFavorites()
-//        let newNames = names.filter() {
-//            n in n != name
-//        }
-//        defaults.setValue(newNames, forKey: "test")
-//    }
-    
-    // Among all places, get those that are favorite
-    func listFavorites() -> [String] {
-        let favorites = defaults.object(forKey: "test") as! [String]
-        if (favorites.isEmpty) {
-            print("Empty!")
-        }
-        for f in favorites {
-            print(f)
-        }
-        return favorites
-    }
-    
-    func clear() {
-        defaults.setValue([String](), forKey: "test")
-    }
     
     
     // MARK: For new models
@@ -63,6 +27,7 @@ public class DataManager {
         do {
             let snapshot = try await Firestore.firestore().collection("Apartment").getDocuments()
             let apartments = snapshot.documents.compactMap({ try? $0.data(as: House.self) })
+            print(apartments.count)
             return apartments
         } catch {
             print(error.localizedDescription)
