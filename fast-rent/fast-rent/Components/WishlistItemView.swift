@@ -23,7 +23,6 @@ struct WishlistItemView: View {
                         Image(convertedHouse.imageUrls[0])
                             .resizable()
                             .scaledToFill()
-                            .frame(width: geometry.size.width + 10)
                         
                         VStack(alignment: .leading) {
                             Text(convertedHouse.title)
@@ -38,17 +37,10 @@ struct WishlistItemView: View {
                         .padding(.leading, 4)
                         .padding(.bottom)
                     }
+                    .background(Color(red: 0.9, green: 0.9, blue: 0.9))
                     .foregroundStyle(Color("font-color"))
-                    .overlay {
-                        Rectangle()
-                            .foregroundStyle(.black.opacity(0.8))
-                            .frame(width: geometry.size.width + 10, height: geometry.size.height + 10)
-                            .shadow(color: .black, radius: 100)
-                    }
                 }
-                
             }
-            
         }
         .clipShape(RoundedRectangle(cornerRadius: 10))
         

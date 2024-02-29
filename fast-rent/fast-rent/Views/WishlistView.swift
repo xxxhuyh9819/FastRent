@@ -10,6 +10,7 @@ import SwiftUI
 struct WishlistView: View {
     
     @StateObject var viewModel = WishlistViewModel()
+    @State var isDeleting = false
     
     var favHouses: [ConvertedHouse] {
         return Array(viewModel.savedItems)
@@ -33,17 +34,30 @@ struct WishlistView: View {
                                 .frame(width: 160, height: 200)
                         }
                         .overlay {
-                            FavoriteButton(house: house, imageName: fast_rentApp.db.contains(house, viewModel.savedItems) ? "heart.fill" : "heart")
+                            FavoriteButton(house: house, imageName: fast_rentApp.db.contains(house, viewModel.savedItems) ? "heart.fill" : "heart", size: 20)
                                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+                                .offset(x: 8, y: -8)
                                 .onTapGesture {
-                                    print("tapped")
-                                    fast_rentApp.db.toggleFav(convertedHouse: house, savedHouses: &viewModel.savedItems)
+                                    isDeleting = true
+                                }
+                            // show an alert after clicking the wishlist icon
+                                .alert("Remove from wishlist?", isPresented: $isDeleting) {
+                                    Button("Remove", role: .destructive) {
+                                        fast_rentApp.db.toggleFav(convertedHouse: house, savedHouses: &viewModel.savedItems)
+                                        isDeleting = false
+                                    }
+                                    Button("Cancel", role: .cancel) {
+                                        isDeleting = false
+                                    }
+                                } message: {
+                                    Text("\"\(house.title)\" will be permanently deleted.")
                                 }
                         }
                         
                         
                     }
                 }
+                
             }
             .navigationTitle("Wishlist")
             .navigationBarTitleDisplayMode(.inline)

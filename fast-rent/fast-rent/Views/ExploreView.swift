@@ -24,7 +24,7 @@ struct ExploreView: View {
                             .tint(Color("font-color"))
                     }
                     .overlay {
-                        FavoriteButton(house: ConvertedHouse(house: house), imageName: fast_rentApp.db.contains(ConvertedHouse(house: house), viewModel.savedItems) ? "heart.fill" : "heart")
+                        FavoriteButton(house: ConvertedHouse(house: house), imageName: fast_rentApp.db.contains(ConvertedHouse(house: house), viewModel.savedItems) ? "heart.fill" : "heart", size: 24)
                             .padding([.top, .trailing])
                             .onTapGesture {
                                 fast_rentApp.db.toggleFav(convertedHouse: ConvertedHouse(house: house), savedHouses: &viewModel.savedItems)

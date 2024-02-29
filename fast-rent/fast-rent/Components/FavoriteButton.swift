@@ -11,10 +11,13 @@ struct FavoriteButton: View {
     
     let house: ConvertedHouse
     var imageName: String
+    var size: CGFloat
     
     var body: some View {
         Image(systemName: imageName)
-            .imageScale(.large)
+            .resizable()
+            .scaledToFit()
+            .frame(width: size)
             .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity, maxHeight: .infinity/*@END_MENU_TOKEN@*/,  alignment: .topTrailing)
             .padding([.top, .trailing])
             .foregroundStyle(.red)
@@ -22,5 +25,5 @@ struct FavoriteButton: View {
 }
 
 #Preview {
-    FavoriteButton(house: ConvertedHouse(house: Preview.dummyApartment), imageName: "heart")
+    FavoriteButton(house: ConvertedHouse(house: Preview.dummyApartment), imageName: "heart", size: 20)
 }
