@@ -18,6 +18,8 @@
 		50344FCD2B8FF59900549F9D /* Amenity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50344FCC2B8FF59900549F9D /* Amenity.swift */; };
 		50344FCF2B8FFDF400549F9D /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50344FCE2B8FFDF400549F9D /* FavoriteButton.swift */; };
 		50344FD12B8FFEC700549F9D /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50344FD02B8FFEC700549F9D /* Preview.swift */; };
+		50344FF42B9050C600549F9D /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50344FF32B9050C600549F9D /* Database.swift */; };
+		50344FF62B9052D600549F9D /* WishlistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50344FF52B9052D600549F9D /* WishlistViewModel.swift */; };
 		50C5C4E42B7F3BC20028489B /* fast_rentApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C4E32B7F3BC20028489B /* fast_rentApp.swift */; };
 		50C5C4E82B7F3BC40028489B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50C5C4E72B7F3BC40028489B /* Assets.xcassets */; };
 		50C5C4EB2B7F3BC40028489B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50C5C4EA2B7F3BC40028489B /* Preview Assets.xcassets */; };
@@ -47,6 +49,8 @@
 		50344FCC2B8FF59900549F9D /* Amenity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Amenity.swift; sourceTree = "<group>"; };
 		50344FCE2B8FFDF400549F9D /* FavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
 		50344FD02B8FFEC700549F9D /* Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preview.swift; sourceTree = "<group>"; };
+		50344FF32B9050C600549F9D /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		50344FF52B9052D600549F9D /* WishlistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistViewModel.swift; sourceTree = "<group>"; };
 		50C5C4E02B7F3BC20028489B /* fast-rent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "fast-rent.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50C5C4E32B7F3BC20028489B /* fast_rentApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fast_rentApp.swift; sourceTree = "<group>"; };
 		50C5C4E72B7F3BC40028489B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -94,6 +98,7 @@
 			children = (
 				50344FC22B8FAC7600549F9D /* ExploreViewModel.swift */,
 				50344FCA2B8FEAB100549F9D /* DetailViewModel.swift */,
+				50344FF52B9052D600549F9D /* WishlistViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -129,6 +134,7 @@
 				50C5C4E72B7F3BC40028489B /* Assets.xcassets */,
 				50C5C4E92B7F3BC40028489B /* Preview Content */,
 				50344FA92B8FA3EE00549F9D /* DataManager.swift */,
+				50344FF32B9050C600549F9D /* Database.swift */,
 			);
 			path = "fast-rent";
 			sourceTree = "<group>";
@@ -266,12 +272,14 @@
 				50344FCF2B8FFDF400549F9D /* FavoriteButton.swift in Sources */,
 				50344FD12B8FFEC700549F9D /* Preview.swift in Sources */,
 				50344FCB2B8FEAB100549F9D /* DetailViewModel.swift in Sources */,
+				50344FF62B9052D600549F9D /* WishlistViewModel.swift in Sources */,
 				50344FCD2B8FF59900549F9D /* Amenity.swift in Sources */,
 				50C5C4FC2B7F3CF90028489B /* MainTabView.swift in Sources */,
 				50C5C4E42B7F3BC20028489B /* fast_rentApp.swift in Sources */,
 				50C5C5032B7F43500028489B /* DetailView.swift in Sources */,
 				50C5C4F82B7F3CB50028489B /* ExploreView.swift in Sources */,
 				50C5C5252B807AFE0028489B /* RoundButton.swift in Sources */,
+				50344FF42B9050C600549F9D /* Database.swift in Sources */,
 				50C5C5012B7F42BF0028489B /* ImageCarousel.swift in Sources */,
 				50C5C5142B8034F00028489B /* Apartment.swift in Sources */,
 				50C5C51B2B8051F30028489B /* ApartmentButton.swift in Sources */,

@@ -7,7 +7,6 @@
 
 import Foundation
 import CoreLocation
-import SwiftUI
 import FirebaseFirestoreSwift
 
 
@@ -33,48 +32,38 @@ struct House: Codable, Identifiable, Hashable {
     }
 }
 
-enum Amenities: Int, CaseIterable, Codable {
-    case gym
-    case laundry
-    case parking
-    case wifi
-    case pet
-    case airConditioning
+struct Demo: Codable, Identifiable, Hashable {
+    var id: String
+    var name: String
+    var address: String
+    var city: String
+    var state: String
+    var price: Int
+    var title: String
+    var imageUrls: [String]
+    var numBedrooms: Int
+    var numBathrooms: Int
+    var bio: String
+    var latitude: Double
+    var longitude: Double
+    var landlordId: String
+    var amenities: [String]
     
-    var title: String {
-        switch self {
-        case .gym:
-            return "Gym"
-        case .laundry:
-            return "Laundry"
-        case .parking:
-            return "Parking"
-        case .wifi:
-            return "Wifi"
-        case .pet:
-            return "Pet Friendly"
-        case .airConditioning:
-            return "Air Conditioning"
-        }
-    }
-    
-    var imageName: String {
-        switch self {
-        case .gym:
-            return "dumbbell"
-        case .laundry:
-            return "washer"
-        case .parking:
-            return "parkingsign.circle.fill"
-        case .wifi:
-            return "wifi"
-        case .pet:
-            return "pawprint.fill"
-        case .airConditioning:
-            return "air.conditioner.horizontal.fill"
-        }
+    init(house: House) {
+        self.id = house.id
+        self.name = house.name
+        self.address = house.address
+        self.city = house.city
+        self.state = house.state
+        self.price = house.price
+        self.title = house.title
+        self.imageUrls = house.imageUrls
+        self.numBedrooms = house.numBedrooms
+        self.numBathrooms = house.numBathrooms
+        self.bio = house.description
+        self.latitude = house.latitude
+        self.longitude = house.longitude
+        self.landlordId = house.landlordId
+        self.amenities = house.amenities
     }
 }
-
-
-//let dummyApartment2 = Apartment(id: NSUUID().uuidString, address: "1210 S Indiana Ave", price: 2700, title: "Luxury 1b1b apartment", imageUrls: ["regents-park", "solstice", "nema-chicago"], apartmentName: "NEMA Chicago",  numBedrooms: 1, numBathrooms: 1, description: "A great lake view", latitude: 41.8670, longitude: -87.6234, amenities: [.gym, .laundry, .wifi, .pet], landlord: Landlord(name: "John Smith", avatarUrl: "man-avatar3", tel: "8005551212", email: "apple@me.com"))

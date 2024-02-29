@@ -25,6 +25,8 @@ struct fast_rentApp: App {
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
+    static var db = Database()
+    
     var body: some Scene {
         WindowGroup {
             MainTabView()

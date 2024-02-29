@@ -11,10 +11,14 @@ struct ExploreView: View {
     
     @State var showMap: Bool = false
     @StateObject var viewModel = ExploreViewModel()
-    @State var selectedHouse: House?
     
     var body: some View {
         NavigationStack {
+//            Button {
+//                viewModel.clear()
+//            } label: {
+//                Text("dasd")
+//            }
             ScrollView {
                 ForEach(viewModel.houses, id: \.id) {house in
                     NavigationLink {
@@ -25,13 +29,14 @@ struct ExploreView: View {
                             .tint(Color("font-color"))
                     }
                     .overlay {
-                        FavoriteButton(house: house)
+//                        FavoriteButton(house: house)
+                        Image(systemName: viewModel.contains(house) ? "heart.fill" : "heart")
+                            .imageScale(.large)
+                            .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity, maxHeight: .infinity/*@END_MENU_TOKEN@*/,  alignment: .topTrailing)
+                            .foregroundStyle(.red)
                             .padding([.top, .trailing])
                             .onTapGesture {
-                                selectedHouse = house
-                                if let city = selectedHouse?.name {
-                                    print(city)
-                                }
+                                viewModel.toggleFav(item: house)
                             }
                     }
                 }
@@ -58,6 +63,13 @@ struct ExploreView: View {
             .sheet(isPresented: $showMap) {
                 MapView(houses: viewModel.houses)
             }
+        }
+        // refresh the saved items upon entering and leaving the page
+        .onAppear() {
+            viewModel.savedItems = fast_rentApp.db.load()
+        }
+        .onDisappear {
+            viewModel.savedItems = fast_rentApp.db.load()
         }
     }
 }

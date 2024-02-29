@@ -14,10 +14,9 @@ struct MainTabView: View {
                 .tabItem {
                     Label("Explore", systemImage: "magnifyingglass")
                 }
-//            WishlistView(wishlist: dummyApartments)
-            Text("Wishlist")
+            WishlistView()
                 .tabItem {
-                    Label("Wishlists", systemImage: "heart")
+                    Label("Wishlist", systemImage: "heart.fill")
                 }
         }.tint(.red)
         

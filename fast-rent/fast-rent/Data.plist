@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>places</key>
+	<array>
+		<dict>
+			<key>name</key>
+			<string>Apple Michigan Avenue</string>
+			<key>description</key>
+			<string>An apple store</string>
+			<key>lat</key>
+			<real>41.8894</real>
+			<key>long</key>
+			<real>-87.6234</real>
+			<key>type</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Regents Park Chicago</string>
+			<key>description</key>
+			<string>Apartment</string>
+			<key>lat</key>
+			<real>41.8032</real>
+			<key>long</key>
+			<real>-87.5852</real>
+			<key>type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Northwestern University</string>
+			<key>description</key>
+			<string>A private research university in Evanston, Illinois, United States.</string>
+			<key>lat</key>
+			<real>42.055984</real>
+			<key>long</key>
+			<real>-87.6752</real>
+			<key>type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Wrigley Field</string>
+			<key>description</key>
+			<string>Ivy-covered walls &amp; manual scoreboard add retro charm to 2nd oldest baseball stadium in the majors.</string>
+			<key>lat</key>
+			<real>41.948287</real>
+			<key>long</key>
+			<real>-87.655697</real>
+			<key>type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Gleacher Center</string>
+			<key>description</key>
+			<string>The University of Chicago Booth School of business.</string>
+			<key>lat</key>
+			<real>41.889729</real>
+			<key>long</key>
+			<real>-87.622128</real>
+			<key>type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Chicago Children&apos;s Museum</string>
+			<key>description</key>
+			<string>Family museum on Navy Pier with lots of hands-on-exhibits, including many for young kids.</string>
+			<key>lat</key>
+			<real>41.891455</real>
+			<key>long</key>
+			<real>-87.60923699999999</real>
+			<key>type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Willis Tower</string>
+			<key>description</key>
+			<string>Big building in the middle of the city.</string>
+			<key>lat</key>
+			<real>-34.3423423</real>
+			<key>long</key>
+			<real>-87.635893</real>
+			<key>type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>University Park Condominium</string>
+			<key>description</key>
+			<string>Hangyi and Shengsheng&apos;s home</string>
+			<key>lat</key>
+			<real>41.7953</real>
+			<key>long</key>
+			<real>-87.5908</real>
+			<key>type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Shedd Aquarium</string>
+			<key>description</key>
+			<string>State-of-the-art indoor aquarium, famous for its variety of habitats &amp; views of Lake Michigan.</string>
+			<key>lat</key>
+			<real>41.8676</real>
+			<key>long</key>
+			<real>-87.614</real>
+			<key>type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>The Wormhole Coffee</string>
+			<key>description</key>
+			<string>&apos;80s-themed rustic coffee shop, complete with a DeLorean, pouring locally roasted coffee.</string>
+			<key>lat</key>
+			<real>41.90833</real>
+			<key>long</key>
+			<real>-87.67448</real>
+			<key>type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>John Crerar Library</string>
+			<key>description</key>
+			<string>A great place for iOS office hours!</string>
+			<key>lat</key>
+			<real>41.790732</real>
+			<key>long</key>
+			<real>-87.602811</real>
+			<key>type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Hutch American Bistro</string>
+			<key>description</key>
+			<string>Best brunch north of the loop</string>
+			<key>lat</key>
+			<real>41.942159</real>
+			<key>long</key>
+			<real>-87.652224</real>
+			<key>type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Chicago History Museum</string>
+			<key>description</key>
+			<string>Explore Chicago&apos;s storied past</string>
+			<key>lat</key>
+			<real>41.912184</real>
+			<key>long</key>
+			<real>-87.63166</real>
+			<key>type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Garfield Park Conservatory</string>
+			<key>description</key>
+			<string>One of the largest and most stunning botanical conservatories in the nation</string>
+			<key>lat</key>
+			<real>41.889295</real>
+			<key>long</key>
+			<real>-87.71753099999999</real>
+			<key>type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Montrose Dog Beach</string>
+			<key>description</key>
+			<string>A tail-wagging good time 🐶</string>
+			<key>lat</key>
+			<real>41.969752</real>
+			<key>long</key>
+			<real>-87.64311600000001</real>
+			<key>type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Chicago Diner</string>
+			<key>description</key>
+			<string>Home of Chicago&apos;s best vegan milkshakes</string>
+			<key>lat</key>
+			<real>41.944377</real>
+			<key>long</key>
+			<real>-87.64926</real>
+			<key>type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Frederick C. Robie House</string>
+			<key>description</key>
+			<string>Notable 1910 Prairie-style house designed by Frank Lloyd Wright, offering tours five days a week</string>
+			<key>lat</key>
+			<real>41.790387</real>
+			<key>long</key>
+			<real>-87.596054</real>
+			<key>type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Diversy Driving Range</string>
+			<key>description</key>
+			<string>⛳️ on the lakefront</string>
+			<key>lat</key>
+			<real>41.93498</real>
+			<key>long</key>
+			<real>-87.635114</real>
+			<key>type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Soldier Field</string>
+			<key>description</key>
+			<string>Navy Pier Terminal is a small passenger port and a very famous tourist attraction located in the central part of Chicago, the largest city of Illinois. It is a very popular entertainment facility visited by hundreds of people, both local residents and tourists.</string>
+			<key>lat</key>
+			<real>41.85749657</real>
+			<key>long</key>
+			<real>-87.6166642</real>
+			<key>type</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Navy Pier</string>
+			<key>description</key>
+			<string>Navy Pier Terminal is a small passenger port and a very famous tourist attraction located in the central part of Chicago, the largest city of Illinois. It is a very popular entertainment facility visited by hundreds of people, both local residents and tourists.</string>
+			<key>lat</key>
+			<real>41.892654</real>
+			<key>long</key>
+			<real>-87.610168</real>
+			<key>type</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>region</key>
+	<array>
+		<real>41.948287</real>
+		<real>-87.655697</real>
+		<real>0.00978871051851371</real>
+		<real>0.008167393319212124</real>
+	</array>
+</dict>
+</plist>
