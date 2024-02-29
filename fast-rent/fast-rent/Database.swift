@@ -20,4 +20,22 @@ final class Database {
         print("has \(array.count) items")
         return Set(array)
     }
+    
+    
+    
+    func save(items: Set<Demo>) {
+        let array = Array(items)
+        if let array = try? JSONEncoder().encode(array) {
+            UserDefaults.standard.set(array, forKey: FAV_KEY)
+        }
+    }
+    
+    func load() -> Set<Demo> {
+        if let contentData = UserDefaults.standard.object(forKey: FAV_KEY) as? Data,
+            let content = try? JSONDecoder().decode([Demo].self, from: contentData) {
+            print(content.count)
+            return Set(content)
+        }
+        return Set<Demo>()
+    }
 }

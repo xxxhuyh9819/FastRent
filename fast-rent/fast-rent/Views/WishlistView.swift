@@ -11,7 +11,7 @@ struct WishlistView: View {
     
     @StateObject var viewModel = WishlistViewModel()
     
-    var favHouses: [String] {
+    var favHouses: [Demo] {
         return Array(viewModel.savedItems)
     }
 
@@ -27,18 +27,18 @@ struct WishlistView: View {
         NavigationStack {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 2) {
-                    ForEach(favHouses, id: \.self) { name in
+                    ForEach(favHouses, id: \.self) { demo in
                         //                        WishlistItemView(house: house)
                         //                            .frame(width: 160, height: 200)
                         HStack {
-                            Text(name)
-                            Image(systemName: viewModel.contains(name) ? "heart.fill" : "heart")
+                            Text(demo.name)
+                            Image(systemName: viewModel.contains(demo) ? "heart.fill" : "heart")
                                 .imageScale(.large)
                                 .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity, maxHeight: .infinity/*@END_MENU_TOKEN@*/,  alignment: .topTrailing)
                                 .foregroundStyle(.red)
                                 .padding([.top, .trailing])
                                 .onTapGesture {
-                                    viewModel.toggleFav(name: name)
+                                    viewModel.toggleFav(demo: demo)
                                 }
                                 
                         }

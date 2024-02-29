@@ -9,7 +9,8 @@ import Foundation
 
 class ExploreViewModel: ObservableObject {
     @Published var houses = [House]()
-    @Published var savedItems: Set<String> = []
+//    @Published var savedItems: Set<String> = []
+    @Published var savedItems: Set<Demo> = []
     
     
     
@@ -27,15 +28,18 @@ class ExploreViewModel: ObservableObject {
     
     
     func contains(_ item: House) -> Bool {
-        savedItems.contains(item.title)
+//        savedItems.contains(item.title)
+        let demo = Demo(house: item)
+        return savedItems.contains(demo)
     }
     
     // Toggle saved items
     func toggleFav(item: House) {
+        let demo = Demo(house: item)
         if contains(item) {
-            savedItems.remove(item.title)
+            savedItems.remove(demo)
         } else {
-            savedItems.insert(item.title)
+            savedItems.insert(demo)
         }
         print("ToggleFav: Has item to save! the set has \(savedItems.count) items!")
         fast_rentApp.db.save(items: savedItems)
