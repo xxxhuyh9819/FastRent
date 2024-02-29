@@ -15,9 +15,9 @@ struct DetailView: View {
     @State var showMap: Bool = false
     @StateObject var viewModel: DetailViewModel
     
-    let house: House
+    let house: ConvertedHouse
     
-    init(house: House) {
+    init(house: ConvertedHouse) {
         self.house = house
         self._viewModel = StateObject(wrappedValue: DetailViewModel(house: house))
         let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: house.latitude, longitude: house.longitude), span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
@@ -210,5 +210,5 @@ struct DetailView: View {
 }
 
 #Preview {
-    DetailView(house: ExploreViewModel().houses[0])
+    DetailView(house: ConvertedHouse(house: Preview.dummyApartment))
 }

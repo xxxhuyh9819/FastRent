@@ -8,11 +8,11 @@
 import Foundation
 
 class DetailViewModel: ObservableObject {
-    let house: House
+    let house: ConvertedHouse
     @Published var landlord: Landlord?
     @Published var amenities = [Amenity]()
     
-    init(house: House) {
+    init(house: ConvertedHouse) {
         self.house = house
         Task {
             try await getLandlordById(id: house.landlordId)

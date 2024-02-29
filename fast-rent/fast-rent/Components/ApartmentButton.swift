@@ -10,7 +10,7 @@ import SwiftUI
 struct ApartmentButton: View {
         
     @State private var showPopOver: Bool = false
-    let house: House
+    let house: ConvertedHouse
     
     var body: some View {
         Button {
@@ -29,5 +29,5 @@ struct ApartmentButton: View {
 }
 
 #Preview {
-    ApartmentButton(house: ExploreViewModel().houses[0])
+    ApartmentButton(house: ConvertedHouse(house: Preview.dummyApartment))
 }

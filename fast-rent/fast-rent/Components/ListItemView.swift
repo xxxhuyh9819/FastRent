@@ -10,7 +10,7 @@ import SwiftUI
 struct ListItemView: View {
     
 //    let apartment: Apartment
-    let house: House
+    let house: ConvertedHouse
     
     var body: some View {
 
@@ -46,5 +46,5 @@ struct ListItemView: View {
 }
 
 #Preview {
-    ListItemView(house: ExploreViewModel().houses[0])
+    ListItemView(house: ConvertedHouse(house: Preview.dummyApartment))
 }

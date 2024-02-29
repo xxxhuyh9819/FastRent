@@ -45,7 +45,7 @@ struct ConvertedHouse: Codable, Identifiable, Hashable {
     var imageUrls: [String]
     var numBedrooms: Int
     var numBathrooms: Int
-    var bio: String
+    var description: String
     var latitude: Double
     var longitude: Double
     var landlordId: String
@@ -62,7 +62,7 @@ struct ConvertedHouse: Codable, Identifiable, Hashable {
         self.imageUrls = house.imageUrls
         self.numBedrooms = house.numBedrooms
         self.numBathrooms = house.numBathrooms
-        self.bio = house.description
+        self.description = house.description
         self.latitude = house.latitude
         self.longitude = house.longitude
         self.landlordId = house.landlordId

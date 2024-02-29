@@ -11,10 +11,10 @@ import MapKit
 struct MapView: View {
     
     @Environment(\.dismiss) var dismiss
-    let houses: [House]
+    let houses: [ConvertedHouse]
     @State private var cameraPosition: MapCameraPosition = .automatic
     
-    init(houses: [House]) {
+    init(houses: [ConvertedHouse]) {
         self.houses = houses
     }
     
@@ -41,5 +41,5 @@ struct MapView: View {
 }
 
 #Preview {
-    MapView(houses: ExploreViewModel().houses)
+    MapView(houses: [ConvertedHouse(house: Preview.dummyApartment)])
 }

@@ -16,7 +16,7 @@ struct MainTabView: View {
                 }
             WishlistView()
                 .tabItem {
-                    Label("Wishlist", systemImage: "heart.fill")
+                    Label("Wishlist", systemImage: "heart")
                 }
         }
         

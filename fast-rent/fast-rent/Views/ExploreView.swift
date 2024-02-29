@@ -12,15 +12,24 @@ struct ExploreView: View {
     @State var showMap: Bool = false
     @StateObject var viewModel = ExploreViewModel()
     
+    var convertedHouses: [ConvertedHouse] {
+        var h = [ConvertedHouse]()
+        
+        for house in viewModel.houses {
+            h.append(ConvertedHouse(house: house))
+        }
+        return h
+    }
+    
     var body: some View {
         NavigationStack {
             ScrollView {
                 ForEach(viewModel.houses, id: \.id) {house in
                     NavigationLink {
-                        DetailView(house: house)
+                        DetailView(house: ConvertedHouse(house: house))
                             .navigationBarBackButtonHidden()
                     } label: {
-                        ListItemView(house: house)
+                        ListItemView(house: ConvertedHouse(house: house))
                             .tint(Color("font-color"))
                     }
                     .overlay {
@@ -53,7 +62,7 @@ struct ExploreView: View {
                 
             }
             .sheet(isPresented: $showMap) {
-                MapView(houses: viewModel.houses)
+                MapView(houses: convertedHouses)
             }
         }
         // refresh the saved items upon entering and leaving the page

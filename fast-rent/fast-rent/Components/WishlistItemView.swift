@@ -15,9 +15,8 @@ struct WishlistItemView: View {
         GeometryReader { geometry in
             NavigationStack {
                 NavigationLink {
-//                    DetailView(apartment: apartment)
-                    Text("hahaha")
-//                        .navigationBarBackButtonHidden()
+                    DetailView(house: convertedHouse)
+                        .navigationBarBackButtonHidden()
                 } label: {
                     VStack(alignment: .leading) {
                         Image(convertedHouse.imageUrls[0])

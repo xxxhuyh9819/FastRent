@@ -27,7 +27,7 @@ struct WishlistView: View {
         
         NavigationStack {
             ScrollView {
-                LazyVGrid(columns: columns, spacing: 2) {
+                LazyVGrid(columns: columns, spacing: 30) {
                     ForEach(favHouses, id: \.self) { house in
                         HStack {
                             WishlistItemView(convertedHouse: house)
@@ -57,6 +57,7 @@ struct WishlistView: View {
                         
                     }
                 }
+                .padding(.top)
                 
             }
             .navigationTitle("Wishlist")

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ApartmentPopOverView: View {
     
-    let house: House
+    let house: ConvertedHouse
     @Environment(\.dismiss) var dismiss
     @State private var showDetail: Bool = false
     
@@ -68,5 +68,5 @@ struct ApartmentPopOverView: View {
 }
 
 #Preview {
-    ApartmentPopOverView(house: ExploreViewModel().houses[0])
+    ApartmentPopOverView(house: ConvertedHouse(house: Preview.dummyApartment))
 }

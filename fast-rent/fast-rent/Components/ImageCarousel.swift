@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ImageCarousel: View {
     
-    let house: House
+    let house: ConvertedHouse
     
     var body: some View {
         // a carousel of photos
@@ -25,5 +25,5 @@ struct ImageCarousel: View {
 }
 
 #Preview {
-    ImageCarousel(house: ExploreViewModel().houses[0])
+    ImageCarousel(house: ConvertedHouse(house: Preview.dummyApartment))
 }
