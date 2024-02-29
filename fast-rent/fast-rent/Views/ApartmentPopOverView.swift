@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ApartmentPopOverView: View {
     
-    let apartment: Apartment
+    let house: House
     @Environment(\.dismiss) var dismiss
     @State private var showDetail: Bool = false
     
@@ -17,7 +17,7 @@ struct ApartmentPopOverView: View {
         NavigationStack {
             VStack(alignment: .leading) {
                 HStack(alignment: .top) {
-                    Text(apartment.title)
+                    Text(house.title)
                         .font(.title2)
                         .fontWeight(.semibold)
                     
@@ -31,10 +31,10 @@ struct ApartmentPopOverView: View {
                 
                 HStack {
                     VStack(alignment: .leading) {
-                        Text(apartment.address)
+                        Text(house.address)
                             .font(.subheadline)
                             .fontWeight(.semibold)
-                        Text("$\(apartment.price) / month")
+                        Text("$\(house.price) / month")
                             .font(.subheadline)
                             .fontWeight(.bold)
                     }
@@ -42,7 +42,7 @@ struct ApartmentPopOverView: View {
                     Spacer()
                     
                     NavigationLink {
-                        DetailView(apartment: apartment)
+                        DetailView(house: house)
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                             .navigationBarBackButtonHidden()
                     } label: {
@@ -51,13 +51,13 @@ struct ApartmentPopOverView: View {
                                 showDetail.toggle()
                             }
                     }
-                    // src https://www.hackingwithswift.com/quick-start/swiftui/how-to-present-a-full-screen-modal-view-using-fullscreencover
+                     //src https://www.hackingwithswift.com/quick-start/swiftui/how-to-present-a-full-screen-modal-view-using-fullscreencover
                     .fullScreenCover(isPresented: $showDetail, content: {
-                        DetailView.init(apartment: apartment)
+                        DetailView.init(house: house)
                     })
                 }
                 GeometryReader { geometry in
-                    ImageCarousel(apartment: apartment)
+                    ImageCarousel(house: house)
                         .frame(width: geometry.size.width)
                         .cornerRadius(10)
                 }
@@ -68,5 +68,5 @@ struct ApartmentPopOverView: View {
 }
 
 #Preview {
-    ApartmentPopOverView(apartment: dummyApartments[0])
+    ApartmentPopOverView(house: ExploreViewModel().houses[0])
 }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct WishlistView: View {
     
-    let wishlist: [Apartment]
+    let wishlist: [House]
 
     
     var body: some View {
@@ -23,8 +23,8 @@ struct WishlistView: View {
         NavigationStack {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 2) {
-                    ForEach(wishlist, id: \.id) { apartment in
-                        WishlistItemView(apartment: apartment)
+                    ForEach(wishlist, id: \.id) { house in
+                        WishlistItemView(house: house)
                             .frame(width: 160, height: 200)
                     }
                 }
@@ -33,6 +33,6 @@ struct WishlistView: View {
     }
 }
 
-#Preview {
-    WishlistView(wishlist: dummyApartments)
-}
+//#Preview {
+//    WishlistView(wishlist: dummyApartments)
+//}

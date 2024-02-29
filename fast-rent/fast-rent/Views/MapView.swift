@@ -11,19 +11,19 @@ import MapKit
 struct MapView: View {
     
     @Environment(\.dismiss) var dismiss
-    let apartments: [Apartment]
+    let houses: [House]
     @State private var cameraPosition: MapCameraPosition = .automatic
     
-    init(apartments: [Apartment]) {
-        self.apartments = apartments
+    init(houses: [House]) {
+        self.houses = houses
     }
     
     var body: some View {
         ZStack {
             Map(position: $cameraPosition) {
-                ForEach(apartments, id: \.id) { apartment in
-                    Annotation("$\(apartment.price)", coordinate: CLLocationCoordinate2D(latitude: apartment.latitude, longitude: apartment.longitude)) {
-                        ApartmentButton(apartment: apartment)
+                ForEach(houses, id: \.id) { house in
+                    Annotation("$\(house.price)", coordinate: CLLocationCoordinate2D(latitude: house.latitude, longitude: house.longitude)) {
+                        ApartmentButton(house: house)
                     }
                 }
             }
@@ -41,5 +41,5 @@ struct MapView: View {
 }
 
 #Preview {
-    MapView(apartments: dummyApartments)
+    MapView(houses: ExploreViewModel().houses)
 }

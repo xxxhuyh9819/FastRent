@@ -9,19 +9,30 @@ import SwiftUI
 
 struct ExploreView: View {
     
-    let apartments: [Apartment] = dummyApartments
     @State var showMap: Bool = false
+    @StateObject var viewModel = ExploreViewModel()
+    @State var selectedHouse: House?
     
     var body: some View {
         NavigationStack {
             ScrollView {
-                ForEach(apartments, id: \.id) {apartment in
-                    NavigationLink{
-                        DetailView(apartment: apartment)
+                ForEach(viewModel.houses, id: \.id) {house in
+                    NavigationLink {
+                        DetailView(house: house)
                             .navigationBarBackButtonHidden()
                     } label: {
-                        ListItemView(apartment: apartment)
+                        ListItemView(house: house)
                             .tint(Color("font-color"))
+                    }
+                    .overlay {
+                        FavoriteButton(house: house)
+                            .padding([.top, .trailing])
+                            .onTapGesture {
+                                selectedHouse = house
+                                if let city = selectedHouse?.name {
+                                    print(city)
+                                }
+                            }
                     }
                 }
             }
@@ -45,7 +56,7 @@ struct ExploreView: View {
                 
             }
             .sheet(isPresented: $showMap) {
-                MapView(apartments: apartments)
+                MapView(houses: viewModel.houses)
             }
         }
     }

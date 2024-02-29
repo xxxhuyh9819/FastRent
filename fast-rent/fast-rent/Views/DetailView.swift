@@ -13,20 +13,23 @@ struct DetailView: View {
     @Environment(\.dismiss) var dismiss
     @State private var cameraPosition: MapCameraPosition
     @State var showMap: Bool = false
+    @StateObject var viewModel: DetailViewModel
     
-    let apartment: Apartment
+    let house: House
     
-    init(apartment: Apartment) {
-        self.apartment = apartment
-        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: apartment.latitude, longitude: apartment.longitude), span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
+    init(house: House) {
+        self.house = house
+        self._viewModel = StateObject(wrappedValue: DetailViewModel(house: house))
+        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: house.latitude, longitude: house.longitude), span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
         self._cameraPosition = State(initialValue: .region(region))
     }
     
     var body: some View {
         ScrollView {
             // picture
-            ImageCarousel(apartment: apartment)
+            ImageCarousel(house: house)
                 .frame(height: 320)
+            
             // custom back button
                 .overlay(alignment: .topLeading) {
                     RoundButton(imageName: "chevron.left")
@@ -39,12 +42,12 @@ struct DetailView: View {
             
             // Apartment info
             VStack(alignment: .leading, spacing: 8) {
-                Text(apartment.title)
+                Text(house.title)
                     .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                Text(apartment.address)
+                Text(house.address)
                     .font(.subheadline)
                     .fontWeight(.semibold)
-                Text("\(apartment.numBedrooms) bedroom - \(apartment.numBathrooms) bathroom")
+                Text("\(house.numBedrooms) bedroom - \(house.numBathrooms) bathroom")
                     .font(.subheadline)
                     .foregroundStyle(.gray)
             }
@@ -59,17 +62,25 @@ struct DetailView: View {
                     Text("Landlord")
                         .font(.headline)
                         .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                    Text(apartment.landlord.name)
+                    Text(viewModel.landlord?.name ?? "")
                         .fontWeight(.semibold)
                 }
                 
                 Spacer()
                 
-                Image(apartment.landlord.avatarUrl)
-                    .resizable()
-                    .frame(width: 64, height: 64)
-                    .scaledToFill()
-                    .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                if let url = viewModel.landlord?.avatarUrl {
+                    Image(url)
+                        .resizable()
+                        .frame(width: 64, height: 64)
+                        .scaledToFill()
+                        .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                } else {
+                    Image(systemName: "person.slash.fill")
+                        .resizable()
+                        .frame(width: 64, height: 64)
+                        .scaledToFill()
+                        .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                }
             }
             .padding(.leading)
             .padding(.trailing)
@@ -82,7 +93,7 @@ struct DetailView: View {
                     .font(.headline)
                     .fontWeight(.bold)
                 
-                Text(apartment.description)
+                Text(house.description)
                 
             }
             .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
@@ -96,7 +107,7 @@ struct DetailView: View {
                     .font(.headline)
                     .fontWeight(.bold)
                 
-                ForEach(apartment.amenities, id: \.self) { amenity in
+                ForEach(viewModel.amenities, id: \.id) { amenity in
                     HStack {
                         Image(systemName: amenity.imageName)
                             .frame(width: 10)
@@ -120,8 +131,8 @@ struct DetailView: View {
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                 
                 Map(position: $cameraPosition) {
-                    Annotation("$\(apartment.price)", coordinate: CLLocationCoordinate2D(latitude: apartment.latitude, longitude: apartment.longitude)) {
-                        ApartmentButton(apartment: apartment)
+                    Annotation("$\(house.price)", coordinate: CLLocationCoordinate2D(latitude: house.latitude, longitude: house.longitude)) {
+                        ApartmentButton(house: house)
                             .disabled(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
                     }
                 }
@@ -131,7 +142,7 @@ struct DetailView: View {
                     showMap.toggle()
                 }
                 .sheet(isPresented: $showMap, content: {
-                    MapView(apartments: [apartment])
+                    MapView(houses: [house])
                 })
             }
             .padding()
@@ -147,7 +158,7 @@ struct DetailView: View {
                 // price
                 HStack {
                     VStack(alignment: .leading) {
-                        Text("$\(apartment.price) / month")
+                        Text("$\(house.price) / month")
                             .font(.subheadline)
                             .fontWeight(.semibold)
                         Text("For 12 months")
@@ -161,28 +172,33 @@ struct DetailView: View {
                     HStack {
                         // src: https://stackoverflow.com/questions/57582653/how-to-create-tappable-url-phone-number-in-swiftui
                         // will produce warnings in simulators, works well in real devices
-                        Link(destination: URL(string: "tel:\(apartment.landlord.tel)")!) {
-                            Image(systemName: "phone.fill")
-                                .foregroundStyle(.white)
-                                .font(.subheadline)
-                                .fontWeight(.semibold)
-                                .frame(width: 40, height: 40)
-                                .background(.red)
-                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                        if let tel = viewModel.landlord?.tel {
+                            Link(destination: URL(string: "tel:\(tel)")!) {
+                                Image(systemName: "phone.fill")
+                                    .foregroundStyle(.white)
+                                    .font(.subheadline)
+                                    .fontWeight(.semibold)
+                                    .frame(width: 40, height: 40)
+                                    .background(.red)
+                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                            }
+                            .padding(.horizontal, 10)
                         }
-                        .padding(.horizontal, 10)
                         
                         
-                        Link(destination: URL(string: "mailto:\(apartment.landlord.email)")!) {
-                            Image(systemName: "envelope.fill")
-                                .foregroundStyle(.white)
-                                .font(.subheadline)
-                                .fontWeight(.semibold)
-                                .frame(width: 40, height: 40)
-                                .background(.red)
-                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                        if let email = viewModel.landlord?.email {
+                            Link(destination: URL(string: "mailto:\(email)")!) {
+                                Image(systemName: "envelope.fill")
+                                    .foregroundStyle(.white)
+                                    .font(.subheadline)
+                                    .fontWeight(.semibold)
+                                    .frame(width: 40, height: 40)
+                                    .background(.red)
+                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                            }
+                            .padding(.horizontal, 10)
                         }
-                        .padding(.horizontal, 10)
+                        
                     }
                 }
             }
@@ -194,5 +210,5 @@ struct DetailView: View {
 }
 
 #Preview {
-    DetailView(apartment: dummyApartment)
+    DetailView(house: ExploreViewModel().houses[0])
 }

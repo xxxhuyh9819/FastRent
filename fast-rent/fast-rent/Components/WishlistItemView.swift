@@ -9,38 +9,38 @@ import SwiftUI
 
 struct WishlistItemView: View {
     
-    let apartment: Apartment
+    let house: House
     
     var body: some View {
         GeometryReader { geometry in
             NavigationStack {
                 NavigationLink {
-                    DetailView(apartment: apartment)
-                        .navigationBarBackButtonHidden()
+//                    DetailView(apartment: apartment)
+//                        .navigationBarBackButtonHidden()
                 } label: {
                     VStack(alignment: .leading) {
-                        Image(apartment.imageUrls[0])
+                        Image(house.imageUrls[0])
                             .resizable()
                             .scaledToFill()
                             .frame(width: geometry.size.width + 10)
                         
                         VStack(alignment: .leading) {
-                            Text(apartment.title)
+                            Text(house.title)
                                 .font(.subheadline)
                                 .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                             HStack {
-                                Text("\(apartment.numBedrooms)")
+                                Text("\(house.numBedrooms)")
                                 Image(systemName: "bed.double")
                                     .imageScale(.small)
                                 Text("-")
-                                Text("\(apartment.numBathrooms)")
+                                Text("\(house.numBathrooms)")
                                     .imageScale(.small)
                                 Image(systemName: "shower")
                             }
                             .font(.footnote)
                             .fontWeight(.semibold)
 
-                            Text("$\(apartment.price) / month")
+                            Text("$\(house.price) / month")
                                 .font(.subheadline)
                                 .fontWeight(.semibold)
                             Divider()
@@ -65,6 +65,6 @@ struct WishlistItemView: View {
     }
 }
 
-#Preview {
-    WishlistItemView(apartment: dummyApartments[0])
-}
+//#Preview {
+//    WishlistItemView(apartment: dummyApartments[0])
+//}

@@ -10,7 +10,7 @@ import SwiftUI
 struct ApartmentButton: View {
         
     @State private var showPopOver: Bool = false
-    let apartment: Apartment
+    let house: House
     
     var body: some View {
         Button {
@@ -21,7 +21,7 @@ struct ApartmentButton: View {
                .foregroundStyle(.pink)
         }
         .popover(isPresented: $showPopOver, attachmentAnchor: .point(.center)) {
-            ApartmentPopOverView(apartment: apartment)
+            ApartmentPopOverView(house: house)
                 .frame(width: 350, height: 320)
                 .presentationCompactAdaptation(.popover)
         }
@@ -29,5 +29,5 @@ struct ApartmentButton: View {
 }
 
 #Preview {
-    ApartmentButton(apartment: dummyApartments[0])
+    ApartmentButton(house: ExploreViewModel().houses[0])
 }
