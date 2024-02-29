@@ -32,7 +32,9 @@ struct House: Codable, Identifiable, Hashable {
     }
 }
 
-struct Demo: Codable, Identifiable, Hashable {
+
+// A class created to bypass the problem with encoding and decoding Firebase related objects
+struct ConvertedHouse: Codable, Identifiable, Hashable {
     var id: String
     var name: String
     var address: String

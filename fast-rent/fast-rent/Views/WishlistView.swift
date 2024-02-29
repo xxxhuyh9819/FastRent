@@ -11,7 +11,7 @@ struct WishlistView: View {
     
     @StateObject var viewModel = WishlistViewModel()
     
-    var favHouses: [Demo] {
+    var favHouses: [ConvertedHouse] {
         return Array(viewModel.savedItems)
     }
 
@@ -27,24 +27,26 @@ struct WishlistView: View {
         NavigationStack {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 2) {
-                    ForEach(favHouses, id: \.self) { demo in
-                        //                        WishlistItemView(house: house)
-                        //                            .frame(width: 160, height: 200)
+                    ForEach(favHouses, id: \.self) { house in
                         HStack {
-                            Text(demo.name)
-                            Image(systemName: viewModel.contains(demo) ? "heart.fill" : "heart")
-                                .imageScale(.large)
-                                .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity, maxHeight: .infinity/*@END_MENU_TOKEN@*/,  alignment: .topTrailing)
-                                .foregroundStyle(.red)
-                                .padding([.top, .trailing])
-                                .onTapGesture {
-                                    viewModel.toggleFav(demo: demo)
-                                }
-                                
+                            WishlistItemView(convertedHouse: house)
+                                .frame(width: 160, height: 200)
                         }
+                        .overlay {
+                            FavoriteButton(house: house, imageName: fast_rentApp.db.contains(house, viewModel.savedItems) ? "heart.fill" : "heart")
+                                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+                                .onTapGesture {
+                                    print("tapped")
+                                    fast_rentApp.db.toggleFav(convertedHouse: house, savedHouses: &viewModel.savedItems)
+                                }
+                        }
+                        
+                        
                     }
                 }
             }
+            .navigationTitle("Wishlist")
+            .navigationBarTitleDisplayMode(.inline)
         }
         // refresh the saved items upon entering and leaving the page
         .onAppear() {

@@ -18,7 +18,9 @@ struct MainTabView: View {
                 .tabItem {
                     Label("Wishlist", systemImage: "heart.fill")
                 }
-        }.tint(.red)
+        }
+        
+        .tint(.red)
         
     }
 }

@@ -14,11 +14,6 @@ struct ExploreView: View {
     
     var body: some View {
         NavigationStack {
-//            Button {
-//                viewModel.clear()
-//            } label: {
-//                Text("dasd")
-//            }
             ScrollView {
                 ForEach(viewModel.houses, id: \.id) {house in
                     NavigationLink {
@@ -29,18 +24,15 @@ struct ExploreView: View {
                             .tint(Color("font-color"))
                     }
                     .overlay {
-//                        FavoriteButton(house: house)
-                        Image(systemName: viewModel.contains(Demo(house: house)) ? "heart.fill" : "heart")
-                            .imageScale(.large)
-                            .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity, maxHeight: .infinity/*@END_MENU_TOKEN@*/,  alignment: .topTrailing)
-                            .foregroundStyle(.red)
+                        FavoriteButton(house: ConvertedHouse(house: house), imageName: fast_rentApp.db.contains(ConvertedHouse(house: house), viewModel.savedItems) ? "heart.fill" : "heart")
                             .padding([.top, .trailing])
                             .onTapGesture {
-                                viewModel.toggleFav(item: Demo(house: house))
+                                fast_rentApp.db.toggleFav(convertedHouse: ConvertedHouse(house: house), savedHouses: &viewModel.savedItems)
                             }
                     }
                 }
             }
+//            .background(Color(uiColor: .systemGray4))
             .overlay(alignment: .bottom) {
                 Button {
                     showMap.toggle()

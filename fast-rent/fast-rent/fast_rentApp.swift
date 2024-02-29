@@ -30,7 +30,6 @@ struct fast_rentApp: App {
     var body: some Scene {
         WindowGroup {
             MainTabView()
-//            xxView()
         }
     }
 }

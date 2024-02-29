@@ -9,18 +9,18 @@ import SwiftUI
 
 struct FavoriteButton: View {
     
-    let house: House
+    let house: ConvertedHouse
+    var imageName: String
     
     var body: some View {
-        Image(systemName: "star")
+        Image(systemName: imageName)
             .imageScale(.large)
             .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity, maxHeight: .infinity/*@END_MENU_TOKEN@*/,  alignment: .topTrailing)
             .padding([.top, .trailing])
             .foregroundStyle(.red)
-        
     }
 }
 
 #Preview {
-    FavoriteButton(house: Preview.dummyApartment)
+    FavoriteButton(house: ConvertedHouse(house: Preview.dummyApartment), imageName: "heart")
 }

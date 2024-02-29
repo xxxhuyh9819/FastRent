@@ -9,38 +9,28 @@ import SwiftUI
 
 struct WishlistItemView: View {
     
-    let house: House
+    let convertedHouse: ConvertedHouse
     
     var body: some View {
         GeometryReader { geometry in
             NavigationStack {
                 NavigationLink {
 //                    DetailView(apartment: apartment)
+                    Text("hahaha")
 //                        .navigationBarBackButtonHidden()
                 } label: {
                     VStack(alignment: .leading) {
-                        Image(house.imageUrls[0])
+                        Image(convertedHouse.imageUrls[0])
                             .resizable()
                             .scaledToFill()
                             .frame(width: geometry.size.width + 10)
                         
                         VStack(alignment: .leading) {
-                            Text(house.title)
+                            Text(convertedHouse.title)
                                 .font(.subheadline)
                                 .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                            HStack {
-                                Text("\(house.numBedrooms)")
-                                Image(systemName: "bed.double")
-                                    .imageScale(.small)
-                                Text("-")
-                                Text("\(house.numBathrooms)")
-                                    .imageScale(.small)
-                                Image(systemName: "shower")
-                            }
-                            .font(.footnote)
-                            .fontWeight(.semibold)
 
-                            Text("$\(house.price) / month")
+                            Text("$\(convertedHouse.price) / month")
                                 .font(.subheadline)
                                 .fontWeight(.semibold)
                             Divider()
@@ -51,14 +41,14 @@ struct WishlistItemView: View {
                     .foregroundStyle(Color("font-color"))
                     .overlay {
                         Rectangle()
-                            .foregroundStyle(.white.opacity(0))
+                            .foregroundStyle(.black.opacity(0.8))
                             .frame(width: geometry.size.width + 10, height: geometry.size.height + 10)
-                            .shadow(radius: 20)
+                            .shadow(color: .black, radius: 100)
                     }
                 }
                 
             }
-            .navigationTitle("Wishlist")
+            
         }
         .clipShape(RoundedRectangle(cornerRadius: 10))
         
