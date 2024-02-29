@@ -30,13 +30,13 @@ struct ExploreView: View {
                     }
                     .overlay {
 //                        FavoriteButton(house: house)
-                        Image(systemName: viewModel.contains(house) ? "heart.fill" : "heart")
+                        Image(systemName: viewModel.contains(Demo(house: house)) ? "heart.fill" : "heart")
                             .imageScale(.large)
                             .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity, maxHeight: .infinity/*@END_MENU_TOKEN@*/,  alignment: .topTrailing)
                             .foregroundStyle(.red)
                             .padding([.top, .trailing])
                             .onTapGesture {
-                                viewModel.toggleFav(item: house)
+                                viewModel.toggleFav(item: Demo(house: house))
                             }
                     }
                 }

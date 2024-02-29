@@ -32,5 +32,4 @@ class WishlistViewModel: ObservableObject {
         print("ToggleFav: Has item to save! the set has \(savedItems.count) items!")
         fast_rentApp.db.save(items: savedItems)
     }
-    
 }
