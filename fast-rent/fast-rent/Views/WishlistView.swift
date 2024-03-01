@@ -36,7 +36,8 @@ struct WishlistView: View {
                         .overlay {
                             FavoriteButton(house: house, imageName: fast_rentApp.db.contains(house, viewModel.savedItems) ? "heart.fill" : "heart", size: 20)
                                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
-                                .offset(x: 8, y: -8)
+                                .padding([.top, .trailing], 16)
+//                                .offset(x: 8, y: -8)
                                 .onTapGesture {
                                     isDeleting = true
                                 }

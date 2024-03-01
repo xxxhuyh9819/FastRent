@@ -18,8 +18,8 @@ struct FavoriteButton: View {
             .resizable()
             .scaledToFit()
             .frame(width: size)
-            .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity, maxHeight: .infinity/*@END_MENU_TOKEN@*/,  alignment: .topTrailing)
-            .padding([.top, .trailing])
+//            .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity, maxHeight: .infinity/*@END_MENU_TOKEN@*/,  alignment: .topTrailing)
+//            .padding([.top, .trailing])
             .foregroundStyle(.red)
     }
 }

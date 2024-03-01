@@ -31,7 +31,7 @@ struct ExploreView: View {
                     SearchBar(location: $viewModel.location)
                         .onTapGesture {
                             withAnimation(.spring) {
-                                showSearchView.toggle() 
+                                showSearchView.toggle()
                             }
                         }
                     
@@ -45,7 +45,8 @@ struct ExploreView: View {
                         }
                         .overlay {
                             FavoriteButton(house: ConvertedHouse(house: house), imageName: fast_rentApp.db.contains(ConvertedHouse(house: house), viewModel.savedItems) ? "heart.fill" : "heart", size: 24)
-                                .padding([.top, .trailing])
+                                .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity, maxHeight: .infinity/*@END_MENU_TOKEN@*/,  alignment: .topTrailing)
+                                .padding([.top, .trailing], 32)
                                 .onTapGesture {
                                     fast_rentApp.db.toggleFav(convertedHouse: ConvertedHouse(house: house), savedHouses: &viewModel.savedItems)
                                 }
