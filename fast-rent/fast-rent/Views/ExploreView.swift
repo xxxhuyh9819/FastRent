@@ -10,6 +10,7 @@ import SwiftUI
 struct ExploreView: View {
     
     @State var showMap: Bool = false
+    @State private var showSearchView = false
     @StateObject var viewModel = ExploreViewModel()
     
     var convertedHouses: [ConvertedHouse] {
@@ -23,47 +24,60 @@ struct ExploreView: View {
     
     var body: some View {
         NavigationStack {
-            ScrollView {
-                ForEach(viewModel.houses, id: \.id) {house in
-                    NavigationLink {
-                        DetailView(house: ConvertedHouse(house: house))
-                            .navigationBarBackButtonHidden()
-                    } label: {
-                        ListItemView(house: ConvertedHouse(house: house))
-                            .tint(Color("font-color"))
-                    }
-                    .overlay {
-                        FavoriteButton(house: ConvertedHouse(house: house), imageName: fast_rentApp.db.contains(ConvertedHouse(house: house), viewModel.savedItems) ? "heart.fill" : "heart", size: 24)
-                            .padding([.top, .trailing])
-                            .onTapGesture {
-                                fast_rentApp.db.toggleFav(convertedHouse: ConvertedHouse(house: house), savedHouses: &viewModel.savedItems)
+            if showSearchView {
+                SearchView(show: $showSearchView, viewModel: viewModel)
+            } else {
+                ScrollView {
+                    SearchBar(location: $viewModel.location)
+                        .onTapGesture {
+                            withAnimation(.spring) {
+                                showSearchView.toggle() 
                             }
+                        }
+                    
+                    ForEach(viewModel.houses, id: \.id) {house in
+                        NavigationLink {
+                            DetailView(house: ConvertedHouse(house: house))
+                                .navigationBarBackButtonHidden()
+                        } label: {
+                            ListItemView(house: ConvertedHouse(house: house))
+                                .tint(Color("font-color"))
+                        }
+                        .overlay {
+                            FavoriteButton(house: ConvertedHouse(house: house), imageName: fast_rentApp.db.contains(ConvertedHouse(house: house), viewModel.savedItems) ? "heart.fill" : "heart", size: 24)
+                                .padding([.top, .trailing])
+                                .onTapGesture {
+                                    fast_rentApp.db.toggleFav(convertedHouse: ConvertedHouse(house: house), savedHouses: &viewModel.savedItems)
+                                }
+                        }
+                        
+                        Divider()
                     }
                 }
-            }
-//            .background(Color(uiColor: .systemGray4))
-            .overlay(alignment: .bottom) {
-                Button {
-                    showMap.toggle()
-                } label: {
-                    HStack {
-                        Text("Map")
-                            .fontWeight(.semibold)
-                        Image(systemName: "map.fill")
+                .overlay(alignment: .bottom) {
+                    Button {
+                        showMap.toggle()
+                    } label: {
+                        HStack {
+                            Text("Map")
+                                .fontWeight(.semibold)
+                            Image(systemName: "map.fill")
+                        }
+                        .frame(width: 84, height: 30)
+                        .foregroundStyle(.white)
+                        .padding(.vertical, 12)
+                        .padding(.horizontal)
+                        .background(.gray)
+                        .clipShape(Capsule())
+                        .padding()
                     }
-                    .frame(width: 84, height: 30)
-                    .foregroundStyle(.white)
-                    .padding(.vertical, 12)
-                    .padding(.horizontal)
-                    .background(.gray)
-                    .clipShape(Capsule())
-                    .padding()
+                    
                 }
-                
+                .sheet(isPresented: $showMap) {
+                    MapView(houses: convertedHouses)
+                }
             }
-            .sheet(isPresented: $showMap) {
-                MapView(houses: convertedHouses)
-            }
+            
         }
         // refresh the saved items upon entering and leaving the page
         .onAppear() {
