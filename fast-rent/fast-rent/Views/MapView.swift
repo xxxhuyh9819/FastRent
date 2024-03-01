@@ -13,6 +13,8 @@ struct MapView: View {
     @Environment(\.dismiss) var dismiss
     let houses: [ConvertedHouse]
     @State private var cameraPosition: MapCameraPosition = .automatic
+    @EnvironmentObject var viewModel: MainViewModel
+    @State var showInfo = false
     
     init(houses: [ConvertedHouse]) {
         self.houses = houses
@@ -27,6 +29,11 @@ struct MapView: View {
                     }
                 }
             }
+            
+            
+            
+            
+            
         }
         .edgesIgnoringSafeArea(.all)
         .overlay(alignment: .topLeading) {
