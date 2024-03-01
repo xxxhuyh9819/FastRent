@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ListItemView: View {
     
-//    let apartment: Apartment
     let house: ConvertedHouse
     
     var body: some View {

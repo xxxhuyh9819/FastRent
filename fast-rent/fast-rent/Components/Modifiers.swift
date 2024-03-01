@@ -30,3 +30,17 @@ struct InputModifier: ViewModifier {
             .clipShape(RoundedRectangle(cornerRadius: 10))
     }
 }
+
+struct CapsuleModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .padding(.horizontal)
+            .padding(.vertical, 12)
+            .overlay {
+                Capsule()
+                    .stroke(lineWidth: 0.5)
+                    .foregroundStyle(.gray)
+                    .shadow(color: .black.opacity(0.4), radius: 2)
+            }
+    }
+}

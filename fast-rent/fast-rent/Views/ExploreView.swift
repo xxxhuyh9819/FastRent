@@ -24,7 +24,7 @@ struct ExploreView: View {
     var body: some View {
         NavigationStack {
             if viewModel.showSearchView {
-                SearchView(show: $viewModel.showSearchView)
+                SearchView(showSearchView: $viewModel.showSearchView)
             } else {
                 ScrollView {
                     SearchBar(location: $viewModel.location)

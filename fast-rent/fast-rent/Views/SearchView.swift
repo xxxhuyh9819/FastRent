@@ -9,32 +9,38 @@ import SwiftUI
 
 struct SearchView: View {
     
-    @Binding var show: Bool
+    @Binding var showSearchView: Bool
     @State var isLeaving = false
-
+    
     @EnvironmentObject var viewModel: MainViewModel
-        
+    
+    var locationIsEmpty: Bool {
+        return viewModel.location.isEmpty
+    }
+    
     var body: some View {
         
         NavigationStack {
             VStack(alignment: .leading, spacing: 8) {
                 
-                Text("Where to live?")
+                Text("Location")
                     .font(.title3)
                     .fontWeight(.bold)
                 
-                HStack {
-                    Image(systemName: "magnifyingglass")
-                    TextField("Enter city", text: $viewModel.location)
-                        .font(.footnote)
-                }
-                .padding(.horizontal)
-                .padding(.vertical, 10)
-                .overlay {
-                    Capsule()
-                        .stroke(lineWidth: 0.5)
-                        .foregroundStyle(.gray)
-                        .shadow(color: .black.opacity(0.4), radius: 2)
+                VStack {
+                    HStack {
+                        Image(systemName: "magnifyingglass")
+                        TextField("Enter city", text: $viewModel.location)
+                            .font(.footnote)
+                    }
+                    .modifier(CapsuleModifier())
+                    
+                    if (locationIsEmpty) {
+                        Text("Location is required!")
+                            .font(.footnote)
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+                            .foregroundStyle(.red)
+                    }
                 }
             }
             .modifier(SearchSectionModifier())
@@ -42,47 +48,46 @@ struct SearchView: View {
             
             VStack(alignment: .leading, spacing: 8) {
                 
-                Text("What's your budget?")
+                Text("Price")
                     .font(.title3)
                     .fontWeight(.bold)
                 
                 HStack(spacing: 10) {
-                    HStack {
-                        TextField("No Min", text: $viewModel.minPrice)
-                            .keyboardType(.numberPad)
-                    }
-                    .padding(.horizontal)
-                    .padding(.vertical, 12)
-                    .overlay {
-                        Capsule()
-                            .stroke(lineWidth: 0.5)
-                            .foregroundStyle(.gray)
-                            .shadow(color: .black.opacity(0.4), radius: 2)
-                    }
+                    TextField("No Min", text: $viewModel.minPrice)
+                        .keyboardType(.numberPad)
+                        .modifier(CapsuleModifier())
                     
                     Rectangle()
                         .frame(width: 12, height: 1)
                         .foregroundStyle(.gray)
                     
-                    HStack {
-                        TextField("No Max", text: $viewModel.maxPrice)
-                            .keyboardType(.numberPad)
-                    }
-                    .padding(.horizontal)
-                    .padding(.vertical, 10)
-                    .overlay {
-                        Capsule()
-                            .stroke(lineWidth: 0.5)
-                            .foregroundStyle(.gray)
-                            .shadow(color: .black.opacity(0.4), radius: 2)
-                    }
+                    TextField("No Max", text: $viewModel.maxPrice)
+                        .keyboardType(.numberPad)
+                        .modifier(CapsuleModifier())
                 }
                 .font(.footnote)
             }
             .modifier(SearchSectionModifier())
             .padding()
             
-
+            
+            VStack(alignment: .leading, spacing: 8) {
+                
+                Text("Beds & Baths")
+                    .font(.title3)
+                    .fontWeight(.bold)
+                
+                VStack(alignment: .leading, spacing: 16) {
+                    CustomStepper(number: $viewModel.numBedrooms, title: "Bedrooms")
+                        .modifier(CapsuleModifier())
+                    
+                    CustomStepper(number: $viewModel.numBathrooms, title: "Bathrooms")
+                        .modifier(CapsuleModifier())
+                }
+                .font(.footnote)
+            }
+            .modifier(SearchSectionModifier())
+            .padding()
             
             .navigationTitle("Search")
             .navigationBarTitleDisplayMode(.inline)
@@ -93,27 +98,27 @@ struct SearchView: View {
                             isLeaving = true
                         } else {
                             withAnimation(.spring) {
-                                show.toggle()
-                            } 
+                                showSearchView.toggle()
+                            }
                         }
                     } label: {
-                        Image(systemName: "xmark.circle")
-                            .foregroundStyle(.gray)
+                        Text("Cancel")
+                            .fontWeight(.semibold)
+                            .foregroundStyle(.black)
                     }
                     // show an alert after clicking the x button
                     .alert("Leave the searching page?", isPresented: $isLeaving) {
                         Button("Leave", role: .destructive) {
                             withAnimation(.spring) {
-                                show.toggle()
+                                showSearchView.toggle()
                                 viewModel.clear()
-                                print("Left!")
                             }
                         }
                         Button("Cancel", role: .cancel) {
                             isLeaving = false
                         }
                     } message: {
-                        Text("You have an unsaved destination. Leaving the page will erase it.")
+                        Text("You have unsaved input. Leaving the page will erase it.")
                     }
                 }
                 
@@ -123,7 +128,7 @@ struct SearchView: View {
                         withAnimation(.spring) {
                             viewModel.didFilter = true
                             print("Finished Searching!")
-                            show.toggle()
+                            showSearchView.toggle()
                         }
                     } label: {
                         Text("Done")
@@ -131,7 +136,7 @@ struct SearchView: View {
                             .foregroundStyle(.black)
                     }
                     .disabled(viewModel.location.isEmpty)
-                    .opacity(viewModel.location.isEmpty ? 0.5 : 1)
+                    .opacity(viewModel.location.isEmpty ? 0.4 : 1)
                 }
             }
         }
@@ -143,5 +148,5 @@ struct SearchView: View {
 
 
 #Preview {
-    SearchView(show: .constant(true))
+    SearchView(showSearchView: .constant(true))
 }

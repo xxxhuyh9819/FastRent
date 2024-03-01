@@ -24,7 +24,7 @@ struct MapView: View {
     
     var body: some View {
         if (showSearchView) {
-            SearchView(show: $showSearchView)
+            SearchView(showSearchView: $showSearchView)
         } else {
             NavigationStack {
                 ZStack {
@@ -44,12 +44,8 @@ struct MapView: View {
                     if let house = selectedHouse {
                         if (showInfo) {
                             withAnimation(.spring) {
-                                NavigationLink {
-                                    DetailView(house: house)
-                                        .navigationBarBackButtonHidden()
-                                } label: {
-                                    HouseInfoView(house: house, showInfo: $showInfo)
-                                }
+                                HouseInfoView(house: house, showInfo: $showInfo)
+                               
                             }
                         }
                     }

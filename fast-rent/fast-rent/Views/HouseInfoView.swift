@@ -14,37 +14,45 @@ struct HouseInfoView: View {
     @EnvironmentObject var viewModel: MainViewModel
     
     var body: some View {
-        HStack(alignment: .top) {
-            Image(house.imageUrls[0])
-                .resizable()
-                .scaledToFill()
-                .frame(width: 80, height: 120)
-                .padding(.trailing, 20)
-            
-            Spacer()
-            Spacer()
-            
-            VStack(alignment: .leading) {
-                HStack {
-                    Text("\(house.city), \(house.state)")
+        
+        NavigationStack {
+            NavigationLink {
+                DetailView(house: house)
+                    .navigationBarBackButtonHidden()
+            } label: {
+                HStack(alignment: .top) {
+                    Image(house.imageUrls[0])
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 80, height: 120)
+                        .padding(.trailing, 20)
+                    
+                    Spacer()
                     Spacer()
                     
-                    FavoriteButton(house: house, imageName: fast_rentApp.db.contains(house, viewModel.savedItems) ? "heart.fill" : "heart", size: 18)
-                        .onTapGesture {
-                            fast_rentApp.db.toggleFav(convertedHouse: house, savedHouses: &viewModel.savedItems)
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Text("\(house.city), \(house.state)")
+                            Spacer()
+                            
+                            FavoriteButton(house: house, imageName: fast_rentApp.db.contains(house, viewModel.savedItems) ? "heart.fill" : "heart", size: 18)
+                                .onTapGesture {
+                                    fast_rentApp.db.toggleFav(convertedHouse: house, savedHouses: &viewModel.savedItems)
+                                }
                         }
-                }
-                
-                Spacer()
-                
-                HStack {
-                    Text("$\(house.price)")
-                        .fontWeight(.semibold)
+                        
+                        Spacer()
+                        
+                        HStack {
+                            Text("$\(house.price)")
+                                .fontWeight(.semibold)
+                        }
+                    }
+                    .foregroundStyle(.black)
+                    .padding()
+                    .padding(.leading, 8)
                 }
             }
-            .foregroundStyle(.black)
-            .padding()
-            .padding(.leading, 8)
         }
         .overlay {
             RoundButton(imageName: "xmark", size: 20)

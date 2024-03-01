@@ -14,8 +14,11 @@ class MainViewModel: ObservableObject {
     @Published var location = ""
     @Published var minPrice = ""
     @Published var maxPrice = ""
-    @Published var showSearchView = false
     @Published var didFilter = false
+    @Published var numBathrooms = 0
+    @Published var numBedrooms = 0
+    
+    @Published var showSearchView = false
     
     var housesCopy = [House]()
     
@@ -32,8 +35,9 @@ class MainViewModel: ObservableObject {
         }
         
         result = filterByPrice(listToFilter: &result)
+//        result = filterByRooms(listToFilter: &result, numOfBeds: Int(numBedrooms) ?? 0, numOfBaths: Int(numBathrooms) ?? 0)
+        result = filterByRooms(listToFilter: &result, numOfBeds: numBedrooms, numOfBaths: numBathrooms)
         return result.isEmpty ? houses : result
-        
     }
     
     init() {
@@ -49,21 +53,11 @@ class MainViewModel: ObservableObject {
         self.houses = try await DataManager.shared.fetchHouses()
     }
     
-    func filterHousesByLocation() {
-        let trimmed = location.trimmingCharacters(in: .whitespacesAndNewlines)
-        let filteredHouses = houses.filter({
-            $0.city.lowercased() == trimmed.lowercased() || $0.state.lowercased() == trimmed.lowercased()
-        })
-        
-        // if search a city that doesn't not exist, just give a default listing that contains everything
-        self.houses = filteredHouses.isEmpty ? housesCopy : filteredHouses
-        print("Houses filtered by location! there are \(filteredHouses.count) results!")
-    }
     
     func filterByPrice(listToFilter: inout [House]) -> [House] {
-        // no input in both, do nothing
+        // no input in both, no filtering is needed, just return the list passed in
         if (Int(minPrice) ?? 0 == 0 && Int(maxPrice) ?? Int.max == Int.max) {
-            return listToFilter.isEmpty ? houses : listToFilter
+            return listToFilter
         }
         
         // only min value entered
@@ -85,13 +79,41 @@ class MainViewModel: ObservableObject {
         return listToFilter.isEmpty ? houses : listToFilter
     }
     
+    // filter by exact match
+    func filterByRooms(listToFilter: inout [House], numOfBeds: Int, numOfBaths: Int) -> [House] {
+        // no input or the input is zero, just return the list passed in
+        if (numOfBeds == 0 && numOfBaths == 0) {
+            return listToFilter
+        }
+        
+        if (numOfBeds != 0 && numOfBaths == 0) {
+            listToFilter = listToFilter.filter {$0.numBedrooms == numOfBeds}
+            return listToFilter.isEmpty ? houses : listToFilter
+        }
+        
+        if (numOfBeds == 0 && numOfBaths != 0) {
+            listToFilter = listToFilter.filter {$0.numBathrooms == numOfBaths}
+            return listToFilter.isEmpty ? houses : listToFilter
+        }
+        
+        if (numOfBeds != 0 && numOfBaths != 0) {
+            listToFilter = listToFilter.filter {$0.numBedrooms == numOfBeds && $0.numBathrooms == numOfBaths}
+            return listToFilter.isEmpty ? houses : listToFilter
+        }
+        
+        return listToFilter.isEmpty ? houses : listToFilter
+    }
+    
+    
     func inputNotEmpty() -> Bool {
-        return !location.isEmpty || !minPrice.isEmpty || !maxPrice.isEmpty
+        return !location.isEmpty || !minPrice.isEmpty || !maxPrice.isEmpty || numBedrooms != 0 || numBathrooms != 0
     }
     
     func clear() {
         location = ""
         minPrice = ""
         maxPrice = ""
+        numBedrooms = 0
+        numBathrooms = 0
     }
 }
