@@ -11,7 +11,7 @@ struct SearchView: View {
     
     @Binding var show: Bool
     @State var isLeaving = false
-    @ObservedObject var viewModel: ExploreViewModel
+    @EnvironmentObject var viewModel: MainViewModel
         
     var body: some View {
         
@@ -138,5 +138,5 @@ struct SearchView: View {
 
 
 #Preview {
-    SearchView(show: .constant(true), viewModel: ExploreViewModel())
+    SearchView(show: .constant(true))
 }

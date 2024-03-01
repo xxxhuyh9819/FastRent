@@ -14,6 +14,7 @@ struct DetailView: View {
     @State private var cameraPosition: MapCameraPosition
     @State var showMap: Bool = false
     @StateObject var viewModel: DetailViewModel
+    @EnvironmentObject var rootViewModel: MainViewModel
     
     let house: ConvertedHouse
     
@@ -32,12 +33,21 @@ struct DetailView: View {
             
             // custom back button
                 .overlay(alignment: .topLeading) {
-                    RoundButton(imageName: "chevron.left")
-                        .onTapGesture {
-                            dismiss()
-                        }
-                        .padding(.horizontal, 24)
-                        .padding(.vertical, 56)
+                    HStack {
+                        RoundButton(imageName: "chevron.left")
+                            .onTapGesture {
+                                dismiss()
+                            }
+                        
+                        Spacer()
+                        
+                        FavoriteButton(house: house, imageName: fast_rentApp.db.contains(house, rootViewModel.savedItems) ? "heart.fill" : "heart", size: 24)
+                            .onTapGesture {
+                                fast_rentApp.db.toggleFav(convertedHouse: house, savedHouses: &rootViewModel.savedItems)
+                            }
+                    }
+                    .padding(.top, 48)
+                    .padding(.horizontal, 20)
                 }
             
             // Apartment info

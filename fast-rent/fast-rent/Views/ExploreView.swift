@@ -11,7 +11,7 @@ struct ExploreView: View {
     
     @State var showMap: Bool = false
     @State private var showSearchView = false
-    @StateObject var viewModel = ExploreViewModel()
+    @EnvironmentObject var viewModel: MainViewModel
     
     var convertedHouses: [ConvertedHouse] {
         var h = [ConvertedHouse]()
@@ -25,7 +25,7 @@ struct ExploreView: View {
     var body: some View {
         NavigationStack {
             if showSearchView {
-                SearchView(show: $showSearchView, viewModel: viewModel)
+                SearchView(show: $showSearchView)
             } else {
                 ScrollView {
                     SearchBar(location: $viewModel.location)

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ExploreViewModel: ObservableObject {
+class MainViewModel: ObservableObject {
     @Published var houses = [House]()
     @Published var savedItems: Set<ConvertedHouse> = []
     @Published var location = ""

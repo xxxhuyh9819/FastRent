@@ -9,7 +9,7 @@ import SwiftUI
 
 struct WishlistView: View {
     
-    @StateObject var viewModel = WishlistViewModel()
+    @EnvironmentObject var viewModel: MainViewModel
     @State var isDeleting = false
     
     var favHouses: [ConvertedHouse] {
