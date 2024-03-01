@@ -32,11 +32,10 @@ struct ListItemView: View {
                     
                     Spacer()
                     
-                    HStack {
-                        Text("$\(house.price)")
-                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                        Text("/ month")
-                    }
+
+                    Text("$\(house.price)")
+                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                    
                 }
             }
             .padding()

@@ -11,6 +11,7 @@ struct SearchView: View {
     
     @Binding var show: Bool
     @State var isLeaving = false
+
     @EnvironmentObject var viewModel: MainViewModel
         
     var body: some View {
@@ -88,8 +89,12 @@ struct SearchView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
-                        withAnimation(.spring) {
+                        if (viewModel.inputNotEmpty()) {
                             isLeaving = true
+                        } else {
+                            withAnimation(.spring) {
+                                show.toggle()
+                            } 
                         }
                     } label: {
                         Image(systemName: "xmark.circle")
@@ -116,7 +121,7 @@ struct SearchView: View {
                     Button {
                         // exit SearchView
                         withAnimation(.spring) {
-                            viewModel.filterHouses()
+                            viewModel.didFilter = true
                             print("Finished Searching!")
                             show.toggle()
                         }

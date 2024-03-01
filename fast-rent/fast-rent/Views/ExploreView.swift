@@ -10,7 +10,6 @@ import SwiftUI
 struct ExploreView: View {
     
     @State var showMap: Bool = false
-    @State private var showSearchView = false
     @EnvironmentObject var viewModel: MainViewModel
     
     var convertedHouses: [ConvertedHouse] {
@@ -24,18 +23,18 @@ struct ExploreView: View {
     
     var body: some View {
         NavigationStack {
-            if showSearchView {
-                SearchView(show: $showSearchView)
+            if viewModel.showSearchView {
+                SearchView(show: $viewModel.showSearchView)
             } else {
                 ScrollView {
                     SearchBar(location: $viewModel.location)
                         .onTapGesture {
                             withAnimation(.spring) {
-                                showSearchView.toggle()
+                                viewModel.showSearchView.toggle()
                             }
                         }
                     
-                    ForEach(viewModel.houses, id: \.id) {house in
+                    ForEach(viewModel.filteredHouses, id: \.id) {house in
                         NavigationLink {
                             DetailView(house: ConvertedHouse(house: house))
                                 .navigationBarBackButtonHidden()
@@ -74,7 +73,7 @@ struct ExploreView: View {
                     }
                     
                 }
-                .sheet(isPresented: $showMap) {
+                .fullScreenCover(isPresented: $showMap) {
                     MapView(houses: convertedHouses)
                 }
             }

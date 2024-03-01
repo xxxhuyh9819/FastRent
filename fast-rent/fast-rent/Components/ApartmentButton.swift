@@ -8,23 +8,13 @@
 import SwiftUI
 
 struct ApartmentButton: View {
-        
-    @State private var showPopOver: Bool = false
+    
     let house: ConvertedHouse
     
     var body: some View {
-        Button {
-            showPopOver = true
-        } label: {
-            Image(systemName: "house")
-               .symbolRenderingMode(.palette)
-               .foregroundStyle(.pink)
-        }
-        .popover(isPresented: $showPopOver, attachmentAnchor: .point(.center)) {
-            ApartmentPopOverView(house: house)
-                .frame(width: 350, height: 320)
-                .presentationCompactAdaptation(.popover)
-        }
+        Image(systemName: "house")
+            .symbolRenderingMode(.palette)
+            .foregroundStyle(.pink)
     }
 }
 
