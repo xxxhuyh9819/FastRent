@@ -26,8 +26,14 @@ class MainViewModel: ObservableObject {
         if didFilter {
             guard !location.isEmpty else {return houses}
         }
-        let result = houses.filter {$0.city.localizedCaseInsensitiveContains(location)}
+        var result = houses.filter {$0.city.localizedCaseInsensitiveContains(location)}
+        if result.isEmpty {
+            return houses
+        }
+        
+        result = filterByPrice(listToFilter: &result)
         return result.isEmpty ? houses : result
+        
     }
     
     init() {
@@ -54,56 +60,31 @@ class MainViewModel: ObservableObject {
         print("Houses filtered by location! there are \(filteredHouses.count) results!")
     }
     
+    func filterByPrice(listToFilter: inout [House]) -> [House] {
+        // no input in both, do nothing
+        if (Int(minPrice) ?? 0 == 0 && Int(maxPrice) ?? Int.max == Int.max) {
+            return listToFilter.isEmpty ? houses : listToFilter
+        }
+        
+        // only min value entered
+        if (Int(minPrice) ?? 0 != 0 && Int(maxPrice) ?? Int.max == Int.max) {
+            listToFilter = listToFilter.filter {$0.price >= Int(minPrice)!}
+            return listToFilter.isEmpty ? houses : listToFilter
+        }
+        
+        // only max value entered
+        if (Int(minPrice) ?? 0 == 0 && Int(maxPrice) ?? Int.max != Int.max) {
+            listToFilter = listToFilter.filter {$0.price <= Int(maxPrice)!}
+            return listToFilter.isEmpty ? houses : listToFilter
+        }
+        
+        // both values entered
+        if (Int(minPrice) ?? 0 != 0 && Int(maxPrice) ?? Int.max != Int.max) {
+            listToFilter = listToFilter.filter {$0.price >= Int(minPrice)! && $0.price <= Int(maxPrice)!}
+        }
+        return listToFilter.isEmpty ? houses : listToFilter
+    }
     
-    /* Has to go through city first
-       Th
-     */
-    
-//    func filterHouses() {
-//        
-//        let priceRange: [String: Int] = ["min": Int(minPrice) ?? 0, "max": Int(maxPrice) ?? Int.max]
-//        print("min: \(priceRange["min"]!), max: \(priceRange["max"]!)")
-//        
-//        let trimmed = location.trimmingCharacters(in: .whitespacesAndNewlines)
-//        print(trimmed)
-//        for h in houses {
-//            print(h.city)
-//        }
-//        let filteredHouses = houses.filter({
-//            $0.city.lowercased() == trimmed.lowercased() || $0.state.lowercased() == trimmed.lowercased()
-//        })
-//        // if search a city that doesn't not exist, just give a default listing that contains everything
-//        if (filteredHouses.isEmpty) {
-//            print("There is no such city!")
-////            self.houses = housesCopy
-//            return
-//        }
-//        if (priceRange["min"] == 0 && priceRange["max"] == Int.max) {
-//            self.houses = filteredHouses
-//            print("there are \(self.houses.count) results!")
-//            return
-//        }
-//        if (priceRange["min"] != 0 && priceRange["max"] == Int.max) {
-//            self.houses = filteredHouses.filter({
-//                $0.price >= priceRange["min"]!
-//            })
-//            print("there are \(self.houses.count) results!")
-//            return
-//        }
-//        if (priceRange["min"] == 0 && priceRange["max"] != Int.max) {
-//            self.houses = filteredHouses.filter({
-//                $0.price <= priceRange["max"]!
-//            })
-//            print("there are \(self.houses.count) results!")
-//            return
-//        }
-//        self.houses = filteredHouses.filter({
-//            $0.price >= priceRange["min"]! && $0.price <= priceRange["max"]!
-//        })
-//        print("there are \(self.houses.count) results!")
-//        return
-//    }
-//    
     func inputNotEmpty() -> Bool {
         return !location.isEmpty || !minPrice.isEmpty || !maxPrice.isEmpty
     }
