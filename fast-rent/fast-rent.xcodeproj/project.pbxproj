@@ -20,10 +20,11 @@
 		50344FF42B9050C600549F9D /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50344FF32B9050C600549F9D /* Database.swift */; };
 		50344FFA2B91558900549F9D /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50344FF92B91558900549F9D /* SearchBar.swift */; };
 		50344FFC2B91579B00549F9D /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50344FFB2B91579B00549F9D /* SearchView.swift */; };
-		50344FFE2B915E4F00549F9D /* InputWithClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50344FFD2B915E4F00549F9D /* InputWithClearButton.swift */; };
 		503450002B9162C100549F9D /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50344FFF2B9162C100549F9D /* Modifiers.swift */; };
 		503450062B92402900549F9D /* HouseInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503450052B92402900549F9D /* HouseInfoView.swift */; };
 		503450082B92755300549F9D /* CustomStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503450072B92755300549F9D /* CustomStepper.swift */; };
+		503450122B92D74E00549F9D /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 503450112B92D74E00549F9D /* Launch Screen.storyboard */; };
+		503450142B92D84300549F9D /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503450132B92D84300549F9D /* SplashScreen.swift */; };
 		50C5C4E42B7F3BC20028489B /* fast_rentApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C4E32B7F3BC20028489B /* fast_rentApp.swift */; };
 		50C5C4E82B7F3BC40028489B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50C5C4E72B7F3BC40028489B /* Assets.xcassets */; };
 		50C5C4EB2B7F3BC40028489B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50C5C4EA2B7F3BC40028489B /* Preview Assets.xcassets */; };
@@ -54,10 +55,12 @@
 		50344FF32B9050C600549F9D /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		50344FF92B91558900549F9D /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		50344FFB2B91579B00549F9D /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
-		50344FFD2B915E4F00549F9D /* InputWithClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputWithClearButton.swift; sourceTree = "<group>"; };
 		50344FFF2B9162C100549F9D /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 		503450052B92402900549F9D /* HouseInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseInfoView.swift; sourceTree = "<group>"; };
 		503450072B92755300549F9D /* CustomStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStepper.swift; sourceTree = "<group>"; };
+		5034500E2B92D39000549F9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		503450112B92D74E00549F9D /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		503450132B92D84300549F9D /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		50C5C4E02B7F3BC20028489B /* fast-rent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "fast-rent.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50C5C4E32B7F3BC20028489B /* fast_rentApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fast_rentApp.swift; sourceTree = "<group>"; };
 		50C5C4E72B7F3BC40028489B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -128,6 +131,7 @@
 		50C5C4E22B7F3BC20028489B /* fast-rent */ = {
 			isa = PBXGroup;
 			children = (
+				5034500E2B92D39000549F9D /* Info.plist */,
 				50344FC12B8FAC6B00549F9D /* ViewModels */,
 				50344FAB2B8FA4F900549F9D /* GoogleService-Info.plist */,
 				50C5C5152B8039A20028489B /* Model */,
@@ -140,6 +144,7 @@
 				50C5C4E92B7F3BC40028489B /* Preview Content */,
 				50344FA92B8FA3EE00549F9D /* DataManager.swift */,
 				50344FF32B9050C600549F9D /* Database.swift */,
+				503450112B92D74E00549F9D /* Launch Screen.storyboard */,
 			);
 			path = "fast-rent";
 			sourceTree = "<group>";
@@ -162,6 +167,7 @@
 				50C5C5172B8047A70028489B /* MapView.swift */,
 				50344FFB2B91579B00549F9D /* SearchView.swift */,
 				503450052B92402900549F9D /* HouseInfoView.swift */,
+				503450132B92D84300549F9D /* SplashScreen.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -177,7 +183,6 @@
 				50344FCE2B8FFDF400549F9D /* FavoriteButton.swift */,
 				50344FD02B8FFEC700549F9D /* Preview.swift */,
 				50344FF92B91558900549F9D /* SearchBar.swift */,
-				50344FFD2B915E4F00549F9D /* InputWithClearButton.swift */,
 				50344FFF2B9162C100549F9D /* Modifiers.swift */,
 				503450072B92755300549F9D /* CustomStepper.swift */,
 			);
@@ -260,6 +265,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				503450122B92D74E00549F9D /* Launch Screen.storyboard in Resources */,
 				50C5C4EB2B7F3BC40028489B /* Preview Assets.xcassets in Resources */,
 				50C5C4E82B7F3BC40028489B /* Assets.xcassets in Resources */,
 				50344FAC2B8FA4F900549F9D /* GoogleService-Info.plist in Resources */,
@@ -293,9 +299,9 @@
 				50344FF42B9050C600549F9D /* Database.swift in Sources */,
 				50C5C5012B7F42BF0028489B /* ImageCarousel.swift in Sources */,
 				503450002B9162C100549F9D /* Modifiers.swift in Sources */,
-				50344FFE2B915E4F00549F9D /* InputWithClearButton.swift in Sources */,
 				50C5C5142B8034F00028489B /* Apartment.swift in Sources */,
 				50C5C51B2B8051F30028489B /* ApartmentButton.swift in Sources */,
+				503450142B92D84300549F9D /* SplashScreen.swift in Sources */,
 				50344FC32B8FAC7600549F9D /* MainViewModel.swift in Sources */,
 				50344FFC2B91579B00549F9D /* SearchView.swift in Sources */,
 				50C5C5182B8047A70028489B /* MapView.swift in Sources */,
@@ -437,9 +443,10 @@
 				DEVELOPMENT_TEAM = CVMRKSHVBB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "fast-rent/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -469,9 +476,10 @@
 				DEVELOPMENT_TEAM = CVMRKSHVBB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "fast-rent/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

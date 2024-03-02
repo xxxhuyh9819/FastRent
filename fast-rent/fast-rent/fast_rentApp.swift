@@ -31,9 +31,11 @@ struct fast_rentApp: App {
     
     var body: some Scene {
         WindowGroup {
-            MainTabView()
-                .fontDesign(.rounded)
-                .environmentObject(viewModel)
+            ZStack {
+                SplashScreen()
+                    .fontDesign(.rounded)
+                    .environmentObject(viewModel)
+            }
         }
     }
 }

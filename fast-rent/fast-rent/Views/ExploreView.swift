@@ -39,6 +39,7 @@ struct ExploreView: View {
                                     .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity, maxHeight: .infinity/*@END_MENU_TOKEN@*/,  alignment: .topTrailing)
                                     .padding([.top, .trailing], 32)
                                     .onTapGesture {
+                                        print("Ex")
                                         fast_rentApp.db.toggleFav(convertedHouse: house, savedHouses: &viewModel.savedItems)
                                     }
                             }

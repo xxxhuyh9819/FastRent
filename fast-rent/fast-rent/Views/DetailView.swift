@@ -175,15 +175,9 @@ struct DetailView: View {
                 
                 // price
                 HStack {
-                    VStack(alignment: .leading) {
-                        Text("$\(house.price) / month")
-                            .font(.subheadline)
-                            .fontWeight(.semibold)
-                        Text("For 12 months")
-                            .font(.footnote)
-                            .fontWeight(.semibold)
-                            .foregroundStyle(.gray)
-                    }
+                    Text("$\(house.price) / month")
+                        .font(.subheadline)
+                        .fontWeight(.semibold)
                     
                     Spacer()
                     
