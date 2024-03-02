@@ -10,6 +10,9 @@ import CoreLocation
 import FirebaseFirestoreSwift
 
 
+/// the house model that is used by Firebase
+/// @DocumentID is a macro from FirebaseFirestoreSwift,
+/// Allows using the randomly generated ID at firestore as the object's ID
 struct House: Codable, Identifiable, Hashable {
     @DocumentID private var houseId: String?
     var name: String
@@ -24,6 +27,8 @@ struct House: Codable, Identifiable, Hashable {
     var description: String
     var latitude: Double
     var longitude: Double
+    
+    // use the ID of the landlord to find the landlord that owns the house
     var landlordId: String
     var amenities: [String]
     
@@ -33,7 +38,7 @@ struct House: Codable, Identifiable, Hashable {
 }
 
 
-// A class created to bypass the problem with encoding and decoding Firebase related objects
+/// The model used by UserDefaults  to bypass the problem with encoding and decoding Firebase related objects
 struct ConvertedHouse: Codable, Identifiable, Hashable {
     var id: String
     var name: String
@@ -51,6 +56,7 @@ struct ConvertedHouse: Codable, Identifiable, Hashable {
     var landlordId: String
     var amenities: [String]
     
+    /// constructor that converts a House object to a ConvertedHouse one
     init(house: House) {
         self.id = house.id
         self.name = house.name

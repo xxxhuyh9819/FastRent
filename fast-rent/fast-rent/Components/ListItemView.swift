@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// An extracted view to contain each single House object
 struct ListItemView: View {
     
     let house: ConvertedHouse
@@ -14,7 +15,7 @@ struct ListItemView: View {
     var body: some View {
 
             VStack {
-                // a carousel of images
+                
                 ImageCarousel(house: house)
                     .frame(height: 300)
                     .clipShape(RoundedRectangle(cornerRadius: 10))

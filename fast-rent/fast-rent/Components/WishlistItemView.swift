@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// An extracted view to contain a single House in the Wishlist View
 struct WishlistItemView: View {
     
     let convertedHouse: ConvertedHouse

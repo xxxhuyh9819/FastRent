@@ -12,7 +12,7 @@ struct WishlistView: View {
     @EnvironmentObject var viewModel: MainViewModel
     @State var isDeleting = false
     
-    var favHouses: [ConvertedHouse] {
+    var favoriteHouses: [ConvertedHouse] {
         return Array(viewModel.savedItems)
     }
 
@@ -28,7 +28,7 @@ struct WishlistView: View {
         NavigationStack {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 30) {
-                    ForEach(favHouses, id: \.self) { house in
+                    ForEach(favoriteHouses, id: \.self) { house in
                         HStack {
                             WishlistItemView(convertedHouse: house)
                                 .frame(width: 160, height: 200)
@@ -43,7 +43,7 @@ struct WishlistView: View {
                             // show an alert after clicking the wishlist icon
                                 .alert("Remove from wishlist?", isPresented: $isDeleting) {
                                     Button("Remove", role: .destructive) {
-                                        fast_rentApp.db.toggleFav(convertedHouse: house, savedHouses: &viewModel.savedItems)
+                                        fast_rentApp.db.toggleFavorite(convertedHouse: house, savedHouses: &viewModel.savedItems)
                                         isDeleting = false
                                     }
                                     Button("Cancel", role: .cancel) {

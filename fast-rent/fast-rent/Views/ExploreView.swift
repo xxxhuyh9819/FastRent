@@ -40,7 +40,7 @@ struct ExploreView: View {
                                     .padding([.top, .trailing], 32)
                                     .onTapGesture {
                                         print("Ex")
-                                        fast_rentApp.db.toggleFav(convertedHouse: house, savedHouses: &viewModel.savedItems)
+                                        fast_rentApp.db.toggleFavorite(convertedHouse: house, savedHouses: &viewModel.savedItems)
                                     }
                             }
                             

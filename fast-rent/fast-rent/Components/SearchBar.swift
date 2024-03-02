@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// A component to show the SearchView upon being tapped
 struct SearchBar: View {
     @Binding var location: String
     

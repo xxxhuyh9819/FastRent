@@ -10,6 +10,7 @@ import Foundation
 final class Database {
     private let FAV_KEY = "fav_key"
     
+    /// Encode the Set of ConvertedHouse objects and save it into UserDefaults
     func save(items: Set<ConvertedHouse>) {
         let array = Array(items)
         if let array = try? JSONEncoder().encode(array) {
@@ -17,6 +18,7 @@ final class Database {
         }
     }
     
+    /// Get data from UserDefaults and decode it into a Set of ConvertedHouse objects
     func load() -> Set<ConvertedHouse> {
         if let contentData = UserDefaults.standard.object(forKey: FAV_KEY) as? Data,
             let content = try? JSONDecoder().decode([ConvertedHouse].self, from: contentData) {
@@ -25,19 +27,26 @@ final class Database {
         return Set<ConvertedHouse>()
     }
     
-    
+    /// Check if an item is in UserDefaults
     func contains(_ house: ConvertedHouse, _ items: Set<ConvertedHouse>) -> Bool {
         return items.contains(house)
     }
     
     // src: https://stackoverflow.com/questions/24451959/mutate-function-parameters-in-swift
-    func toggleFav(convertedHouse: ConvertedHouse, savedHouses: inout Set<ConvertedHouse>) {
+    /// A function to insert/remove an item to UserDefaults
+    /// use inout keyword to make savedHouses mutable
+    func toggleFavorite(convertedHouse: ConvertedHouse, savedHouses: inout Set<ConvertedHouse>) {
         if contains(convertedHouse, savedHouses) {
+            // the item is in the set already, need to remove it.
+            print("ToggleFavorite: Removing \(convertedHouse.name) from the set!")
             savedHouses.remove(convertedHouse)
         } else {
+            // the item is not in the set, need to insert it.
+            print("ToggleFavorite: Inserting \(convertedHouse.name) into the set!")
             savedHouses.insert(convertedHouse)
         }
-        print("ToggleFav: Has item to save! the set has \(savedHouses.count) items!")
+        // Save the update to UserDefaults
         save(items: savedHouses)
+        print("ToggleFavorite: The set has \(savedHouses.count) items!")
     }
 }

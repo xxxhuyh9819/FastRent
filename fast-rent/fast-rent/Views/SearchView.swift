@@ -13,6 +13,7 @@ struct SearchView: View {
     @State var isLeaving = false
     
     @EnvironmentObject var viewModel: MainViewModel
+    
     @FocusState private var isEnteringLocation: Bool
     @FocusState private var isEnteringMinPrice: Bool
     @FocusState private var isEnteringMaxPrice: Bool
@@ -100,6 +101,10 @@ struct SearchView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
+                    
+                    // Button to cancel the search and dismiss SearchView
+                    // If there is input, then trigger the alert by setting isLeaving to true.
+                    // If there no input, then there's no loss of quitting. Just exit the view.
                     Button {
                         if (viewModel.inputNotEmpty()) {
                             isLeaving = true
@@ -112,11 +117,11 @@ struct SearchView: View {
                         Text("Cancel")
                             .fontWeight(.semibold)
                     }
-                    // show an alert after clicking the x button
                     .alert("Leave the searching page?", isPresented: $isLeaving) {
                         Button("Leave", role: .destructive) {
                             withAnimation(.spring) {
                                 showSearchView.toggle()
+                                // clear the fields when quitting
                                 viewModel.clear()
                             }
                         }
@@ -129,6 +134,9 @@ struct SearchView: View {
                 }
                 
                 ToolbarItem(placement: .topBarTrailing) {
+                    
+                    // Button to execure the search and dismiss SearchView
+                    // Disable when location is not entered (location is required in search)
                     Button {
                         // exit SearchView
                         withAnimation(.spring) {

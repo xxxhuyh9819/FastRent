@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// An extracted view to toggle whether a house is added to the wish list
 struct FavoriteButton: View {
     
     let house: ConvertedHouse

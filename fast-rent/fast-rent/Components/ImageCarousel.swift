@@ -7,20 +7,27 @@
 
 import SwiftUI
 
+/// An extracted view to contain pictures of Houses
 struct ImageCarousel: View {
     
     let house: ConvertedHouse
     
     var body: some View {
-        // a carousel of photos
-        TabView {
-            ForEach(house.imageUrls, id: \.self) { url in
-                Image(url)
-                    .resizable()
-                    .scaledToFill()
+        // if there is no image for the house, show the prepared placeholder.
+        // if there is image for the house, show the carousel.
+        if (house.imageUrls.isEmpty) {
+            Image(systemName: "photo")
+        } else {
+            TabView {
+                ForEach(house.imageUrls, id: \.self) { url in
+                    Image(url)
+                        .resizable()
+                        .scaledToFill()
+                }
             }
+            .tabViewStyle(.page)
         }
-        .tabViewStyle(.page)
+        
     }
 }
 

@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+/// An extracted component that is used in many places
+/// Mainly for buttons to dismiss a view or navigate between views
 struct RoundButton: View {
     
     let imageName: String

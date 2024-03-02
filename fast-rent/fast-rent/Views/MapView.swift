@@ -11,12 +11,14 @@ import MapKit
 struct MapView: View {
     
     @Environment(\.dismiss) var dismiss
-    let houses: [ConvertedHouse]
-    @State private var cameraPosition: MapCameraPosition = .automatic
     @EnvironmentObject var viewModel: MainViewModel
+    
+    @State private var cameraPosition: MapCameraPosition = .automatic
     @State var showInfo = false
     @State private var showSearchView = false
     @State var selectedHouse: ConvertedHouse?
+    
+    let houses: [ConvertedHouse]
     
     init(houses: [ConvertedHouse]) {
         self.houses = houses
@@ -31,6 +33,8 @@ struct MapView: View {
                     Map(position: $cameraPosition, interactionModes: [.zoom, .pan]) {
                         ForEach(houses, id: \.id) { house in
                             Annotation("$\(house.price)", coordinate: CLLocationCoordinate2D(latitude: house.latitude, longitude: house.longitude)) {
+                                
+                                // the button that shows HouseInfoView when tapped
                                 ApartmentButton(house: house)
                                     .onTapGesture {
                                         selectedHouse = house

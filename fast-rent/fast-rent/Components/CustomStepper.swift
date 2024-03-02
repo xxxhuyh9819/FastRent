@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+/// A custom stepper that shows the number between plus/minus buttons
+/// Used in SearchView
 struct CustomStepper: View {
     
     @Binding var number: Int

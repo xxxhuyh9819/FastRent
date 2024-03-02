@@ -8,37 +8,50 @@
 import Foundation
 import SwiftUI
 
+/// The main ViewModel that is used in many views as an environmental object
 class MainViewModel: ObservableObject {
     @Published var houses = [House]()
     @Published var savedItems: Set<ConvertedHouse> = []
+    
     @Published var location = ""
     @Published var minPrice = ""
     @Published var maxPrice = ""
-    @Published var didFilter = false
     @Published var numBathrooms = 0
     @Published var numBedrooms = 0
     
+    @Published var didFilter = false
+    
     @Published var showSearchView = false
-    
-    var housesCopy = [House]()
-    
+        
+    /// A method that filter houses with different filters
+    /// Filtering rules: location is required, while price and number of beds/baths are optional
     var filteredHouses: [House] {
+
         if !showSearchView && !didFilter {
             return houses
         }
+        // If the location is empty (entered but cleared), no filter is needed
         if didFilter {
             guard !location.isEmpty else {return houses}
         }
         var result = houses.filter {$0.city.localizedCaseInsensitiveContains(location)}
+        
+        // If no house satisfies the requirement, then just return the original houses
         if result.isEmpty {
             return houses
         }
         
+        // Filter by price range
         result = filterByPrice(listToFilter: &result)
+        
+        // Filter by number of bedrooms and/or bathrooms
         result = filterByRooms(listToFilter: &result, numOfBeds: numBedrooms, numOfBaths: numBathrooms)
+        
+        // If no house satisfies the requirement, then just return the original houses
         return result.isEmpty ? houses : result
     }
     
+    /// convert House objects to ConvertedHouse objects
     var convertedHouses: [ConvertedHouse] {
         var h = [ConvertedHouse]()
         
@@ -48,21 +61,24 @@ class MainViewModel: ObservableObject {
         return h
     }
     
+    /// constuctor that loads houses from Firebase and load favorite items from UserDefaults
     init() {
         self.savedItems = fast_rentApp.db.load()
         Task {
             try await getHouses()
-            housesCopy = houses
         }
     }
     
+    /// calls the function at DataManager to load houses from Firebase
     @MainActor
     func getHouses() async throws {
         self.houses = try await DataManager.shared.fetchHouses()
     }
     
-    
+    /// Filter houses by price range
+    /// Always check if the filtered result is empty before returning. If so, return the original array passed in
     func filterByPrice(listToFilter: inout [House]) -> [House] {
+        
         // no input in both, no filtering is needed, just return the list passed in
         if (Int(minPrice) ?? 0 == 0 && Int(maxPrice) ?? Int.max == Int.max) {
             return listToFilter
@@ -87,23 +103,28 @@ class MainViewModel: ObservableObject {
         return listToFilter.isEmpty ? houses : listToFilter
     }
     
-    // filter by exact match
+    /// Filter houses by the number of bathrooms and bedrooms with exact match
+    /// Always check if the filtered result is empty before returning. If so, return the original array passed in
     func filterByRooms(listToFilter: inout [House], numOfBeds: Int, numOfBaths: Int) -> [House] {
+        
         // no input or the input is zero, just return the list passed in
         if (numOfBeds == 0 && numOfBaths == 0) {
             return listToFilter
         }
         
+        // only number of bedrooms is entered
         if (numOfBeds != 0 && numOfBaths == 0) {
             listToFilter = listToFilter.filter {$0.numBedrooms == numOfBeds}
             return listToFilter.isEmpty ? houses : listToFilter
         }
         
+        // only number of bathrooms is entered
         if (numOfBeds == 0 && numOfBaths != 0) {
             listToFilter = listToFilter.filter {$0.numBathrooms == numOfBaths}
             return listToFilter.isEmpty ? houses : listToFilter
         }
         
+        // both number of bedrooms and number of bathroom are entered
         if (numOfBeds != 0 && numOfBaths != 0) {
             listToFilter = listToFilter.filter {$0.numBedrooms == numOfBeds && $0.numBathrooms == numOfBaths}
             return listToFilter.isEmpty ? houses : listToFilter
@@ -112,11 +133,14 @@ class MainViewModel: ObservableObject {
         return listToFilter.isEmpty ? houses : listToFilter
     }
     
-    
+    /// A function to check if input is empty
+    /// Used for popping alerts when exiting SearchView with inputs left
     func inputNotEmpty() -> Bool {
         return !location.isEmpty || !minPrice.isEmpty || !maxPrice.isEmpty || numBedrooms != 0 || numBathrooms != 0
     }
     
+    /// A function to reset all published variables
+    /// Used when a search is executed
     func clear() {
         location = ""
         minPrice = ""

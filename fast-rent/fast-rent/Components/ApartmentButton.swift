@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// An extracted component that is used in MapView
 struct ApartmentButton: View {
     
     let house: ConvertedHouse

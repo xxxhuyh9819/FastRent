@@ -8,7 +8,9 @@
 import Foundation
 import SwiftUI
 
-// custom modifier
+/// For extracted custom modifiers that are reused in different views
+/// Mainly for styling
+
 struct SearchSectionModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
@@ -17,17 +19,6 @@ struct SearchSectionModifier: ViewModifier {
             .background(Color(.systemGray6))
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .shadow(color: Color(.systemGray6), radius: 5)
-    }
-}
-
-struct InputModifier: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .textInputAutocapitalization(.never)
-            .padding()
-            .frame(width: 340, height: 40)
-            .background(Color(.systemGray5))
-            .clipShape(RoundedRectangle(cornerRadius: 10))
     }
 }
 

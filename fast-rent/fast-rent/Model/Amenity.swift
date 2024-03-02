@@ -8,6 +8,9 @@
 import Foundation
 import FirebaseFirestoreSwift
 
+/// the amenity model 
+/// @DocumentID is a macro from FirebaseFirestoreSwift,
+/// Allows using the randomly generated ID at firestore as the object's ID
 struct Amenity: Codable, Identifiable {
     @DocumentID private var amenityId: String?
     var title: String

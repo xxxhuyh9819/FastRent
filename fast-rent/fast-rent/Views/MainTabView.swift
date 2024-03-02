@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// The main TabView for the App
 struct MainTabView: View {
     var body: some View {
         TabView {
@@ -19,7 +20,6 @@ struct MainTabView: View {
                     Label("Wishlist", systemImage: "heart")
                 }
         }
-        
         .tint(.red)
         
     }

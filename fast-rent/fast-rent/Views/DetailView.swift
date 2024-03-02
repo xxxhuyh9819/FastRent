@@ -46,13 +46,13 @@ struct DetailView: View {
                                 if (fast_rentApp.db.contains(house, rootViewModel.savedItems)) {
                                     isDeleting = true
                                 } else {
-                                    fast_rentApp.db.toggleFav(convertedHouse: house, savedHouses: &rootViewModel.savedItems)
+                                    fast_rentApp.db.toggleFavorite(convertedHouse: house, savedHouses: &rootViewModel.savedItems)
                                 }
                             }
                         // show an alert after clicking the wishlist icon
                             .alert("Remove from wishlist?", isPresented: $isDeleting) {
                                 Button("Remove", role: .destructive) {
-                                    fast_rentApp.db.toggleFav(convertedHouse: house, savedHouses: &rootViewModel.savedItems)
+                                    fast_rentApp.db.toggleFavorite(convertedHouse: house, savedHouses: &rootViewModel.savedItems)
                                     isDeleting = false
                                 }
                                 Button("Cancel", role: .cancel) {
