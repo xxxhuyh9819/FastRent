@@ -38,7 +38,6 @@
 		50C5C5142B8034F00028489B /* Apartment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C5132B8034F00028489B /* Apartment.swift */; };
 		50C5C5182B8047A70028489B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C5172B8047A70028489B /* MapView.swift */; };
 		50C5C51B2B8051F30028489B /* ApartmentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C51A2B8051F30028489B /* ApartmentButton.swift */; };
-		50C5C51D2B8056010028489B /* ApartmentPopOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C51C2B8056010028489B /* ApartmentPopOverView.swift */; };
 		50C5C5212B806F5D0028489B /* Landlord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C5202B806F5D0028489B /* Landlord.swift */; };
 		50C5C5252B807AFE0028489B /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C5242B807AFE0028489B /* RoundButton.swift */; };
 		50C5C5272B8080F80028489B /* WishlistItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C5262B8080F80028489B /* WishlistItemView.swift */; };
@@ -74,7 +73,6 @@
 		50C5C5132B8034F00028489B /* Apartment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apartment.swift; sourceTree = "<group>"; };
 		50C5C5172B8047A70028489B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		50C5C51A2B8051F30028489B /* ApartmentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentButton.swift; sourceTree = "<group>"; };
-		50C5C51C2B8056010028489B /* ApartmentPopOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentPopOverView.swift; sourceTree = "<group>"; };
 		50C5C5202B806F5D0028489B /* Landlord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Landlord.swift; sourceTree = "<group>"; };
 		50C5C5242B807AFE0028489B /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		50C5C5262B8080F80028489B /* WishlistItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistItemView.swift; sourceTree = "<group>"; };
@@ -162,7 +160,6 @@
 				50C5C4F92B7F3CE50028489B /* WishlistView.swift */,
 				50C5C5022B7F43500028489B /* DetailView.swift */,
 				50C5C5172B8047A70028489B /* MapView.swift */,
-				50C5C51C2B8056010028489B /* ApartmentPopOverView.swift */,
 				50344FFB2B91579B00549F9D /* SearchView.swift */,
 				503450052B92402900549F9D /* HouseInfoView.swift */,
 			);
@@ -299,7 +296,6 @@
 				50344FFE2B915E4F00549F9D /* InputWithClearButton.swift in Sources */,
 				50C5C5142B8034F00028489B /* Apartment.swift in Sources */,
 				50C5C51B2B8051F30028489B /* ApartmentButton.swift in Sources */,
-				50C5C51D2B8056010028489B /* ApartmentPopOverView.swift in Sources */,
 				50344FC32B8FAC7600549F9D /* MainViewModel.swift in Sources */,
 				50344FFC2B91579B00549F9D /* SearchView.swift in Sources */,
 				50C5C5182B8047A70028489B /* MapView.swift in Sources */,

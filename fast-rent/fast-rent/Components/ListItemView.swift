@@ -44,5 +44,5 @@ struct ListItemView: View {
 }
 
 #Preview {
-    ListItemView(house: ConvertedHouse(house: Preview.dummyApartment))
+    ListItemView(house: Preview.dummyHouse)
 }

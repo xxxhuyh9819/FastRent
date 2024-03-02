@@ -82,15 +82,6 @@ struct HouseInfoView: View {
                 }
             }
         }
-        .overlay {
-//            RoundButton(imageName: "xmark", size: 24)
-//                .onTapGesture {
-//                    withAnimation(.spring) {
-//                        showInfo.toggle()
-//                    }
-//                }
-//                .padding([.top, .leading])
-        }
         .frame(height: 100)
         .font(.subheadline)
         .background(.white)
@@ -99,6 +90,7 @@ struct HouseInfoView: View {
         .padding(.bottom, 20)
         .frame(maxHeight: .infinity, alignment: .bottom)
     }
+        
 }
 
 #Preview {

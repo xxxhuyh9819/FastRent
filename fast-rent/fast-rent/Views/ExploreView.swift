@@ -12,15 +12,6 @@ struct ExploreView: View {
     @State var showMap: Bool = false
     @EnvironmentObject var viewModel: MainViewModel
     
-    var convertedHouses: [ConvertedHouse] {
-        var h = [ConvertedHouse]()
-        
-        for house in viewModel.houses {
-            h.append(ConvertedHouse(house: house))
-        }
-        return h
-    }
-    
     var body: some View {
         NavigationStack {
             if viewModel.showSearchView {
@@ -35,20 +26,20 @@ struct ExploreView: View {
                         }
                     
                     LazyVStack {
-                        ForEach(viewModel.filteredHouses, id: \.id) { house in
+                        ForEach(viewModel.convertedHouses) { house in
                             NavigationLink {
-                                DetailView(house: ConvertedHouse(house: house))
+                                DetailView(house: house)
                                     .navigationBarBackButtonHidden()
                             } label: {
-                                ListItemView(house: ConvertedHouse(house: house))
+                                ListItemView(house: house)
                                     .tint(Color("font-color"))
                             }
                             .overlay {
-                                FavoriteButton(house: ConvertedHouse(house: house), imageName: fast_rentApp.db.contains(ConvertedHouse(house: house), viewModel.savedItems) ? "heart.fill" : "heart", size: 24)
+                                FavoriteButton(house: house, imageName: fast_rentApp.db.contains(house, viewModel.savedItems) ? "heart.fill" : "heart", size: 24)
                                     .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity, maxHeight: .infinity/*@END_MENU_TOKEN@*/,  alignment: .topTrailing)
                                     .padding([.top, .trailing], 32)
                                     .onTapGesture {
-                                        fast_rentApp.db.toggleFav(convertedHouse: ConvertedHouse(house: house), savedHouses: &viewModel.savedItems)
+                                        fast_rentApp.db.toggleFav(convertedHouse: house, savedHouses: &viewModel.savedItems)
                                     }
                             }
                             
@@ -76,7 +67,7 @@ struct ExploreView: View {
                     
                 }
                 .fullScreenCover(isPresented: $showMap) {
-                    MapView(houses: convertedHouses)
+                    MapView(houses: viewModel.convertedHouses)
                 }
             }
             

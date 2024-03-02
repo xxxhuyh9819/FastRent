@@ -162,12 +162,6 @@ struct DetailView: View {
                 .disabled(true)
                 .frame(height: 200)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
-//                .onTapGesture {
-//                    showMap.toggle()
-//                }
-//                .sheet(isPresented: $showMap, content: {
-//                    MapView(houses: [house])
-//                })
             }
             .padding()
             .padding(.bottom, 64)
@@ -234,5 +228,5 @@ struct DetailView: View {
 }
 
 #Preview {
-    DetailView(house: ConvertedHouse(house: Preview.dummyApartment))
+    DetailView(house: Preview.dummyHouse)
 }

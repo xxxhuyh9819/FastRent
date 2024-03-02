@@ -73,6 +73,6 @@ struct WishlistView: View {
     }
 }
 
-//#Preview {
-//    WishlistView(wishlist: dummyApartments)
-//}
+#Preview {
+    WishlistView()
+}

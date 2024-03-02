@@ -46,6 +46,6 @@ struct WishlistItemView: View {
     }
 }
 
-//#Preview {
-//    WishlistItemView(apartment: dummyApartments[0])
-//}
+#Preview {
+    WishlistItemView(convertedHouse: Preview.dummyHouse)
+}

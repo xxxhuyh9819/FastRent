@@ -40,6 +40,15 @@ class MainViewModel: ObservableObject {
         return result.isEmpty ? houses : result
     }
     
+    var convertedHouses: [ConvertedHouse] {
+        var h = [ConvertedHouse]()
+        
+        for house in filteredHouses {
+            h.append(ConvertedHouse(house: house))
+        }
+        return h
+    }
+    
     init() {
         self.savedItems = fast_rentApp.db.load()
         Task {

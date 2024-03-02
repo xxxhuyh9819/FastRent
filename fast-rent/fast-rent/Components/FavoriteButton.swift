@@ -25,5 +25,5 @@ struct FavoriteButton: View {
 }
 
 #Preview {
-    FavoriteButton(house: ConvertedHouse(house: Preview.dummyApartment), imageName: "heart", size: 20)
+    FavoriteButton(house: Preview.dummyHouse, imageName: "heart", size: 20)
 }

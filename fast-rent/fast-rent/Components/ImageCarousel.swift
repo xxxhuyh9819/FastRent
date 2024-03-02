@@ -25,5 +25,5 @@ struct ImageCarousel: View {
 }
 
 #Preview {
-    ImageCarousel(house: ConvertedHouse(house: Preview.dummyApartment))
+    ImageCarousel(house: Preview.dummyHouse)
 }

@@ -19,5 +19,5 @@ struct ApartmentButton: View {
 }
 
 #Preview {
-    ApartmentButton(house: ConvertedHouse(house: Preview.dummyApartment))
+    ApartmentButton(house: Preview.dummyHouse)
 }

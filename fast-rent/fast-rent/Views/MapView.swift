@@ -28,7 +28,7 @@ struct MapView: View {
         } else {
             NavigationStack {
                 ZStack {
-                    Map(position: $cameraPosition) {
+                    Map(position: $cameraPosition, interactionModes: [.zoom, .pan]) {
                         ForEach(houses, id: \.id) { house in
                             Annotation("$\(house.price)", coordinate: CLLocationCoordinate2D(latitude: house.latitude, longitude: house.longitude)) {
                                 ApartmentButton(house: house)
@@ -39,11 +39,16 @@ struct MapView: View {
                             }
                         }
                     }
+                    .mapStyle(.standard(
+                        elevation: .flat,
+                        showsTraffic: false
+                    ))
                     
                     if let house = selectedHouse {
                         if (showInfo) {
                             withAnimation(.spring) {
                                 HouseInfoView(house: house, showInfo: $showInfo)
+                                    .modifier(SwipeToDismissModifier(onDismiss: {showInfo.toggle()}))
                                
                             }
                         }
@@ -68,5 +73,5 @@ struct MapView: View {
 }
 
 #Preview {
-    MapView(houses: [ConvertedHouse(house: Preview.dummyApartment)])
+    MapView(houses: [Preview.dummyHouse])
 }
