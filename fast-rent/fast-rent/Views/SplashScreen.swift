@@ -13,10 +13,21 @@ import SwiftUI
 struct SplashScreen: View {
     
     @State private var showSplashScreen = false
+    @State private var isHidden = false
+    @ObservedObject var monitor = NetworkMonitor()
     
     var body: some View {
         if showSplashScreen {
-            MainTabView()
+            ZStack {
+                MainTabView()
+                // only show warning when there is no connection and the warning is not dismissed
+                if (!monitor.isConnected) {
+                    NoConnectionView()
+                        .padding()
+                        .padding()
+                        .offset(y: 200)
+                }
+            }
         } else {
             VStack {
                 Image(.splashScreen)

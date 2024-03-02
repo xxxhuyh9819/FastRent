@@ -12,10 +12,10 @@ struct MapView: View {
     
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var viewModel: MainViewModel
+    @ObservedObject var monitor = NetworkMonitor()
     
     @State private var cameraPosition: MapCameraPosition = .automatic
     @State var showInfo = false
-    @State private var showSearchView = false
     @State var selectedHouse: ConvertedHouse?
     
     let houses: [ConvertedHouse]
@@ -25,9 +25,7 @@ struct MapView: View {
     }
     
     var body: some View {
-        if (showSearchView) {
-            SearchView(showSearchView: $showSearchView)
-        } else {
+        ZStack {
             NavigationStack {
                 ZStack {
                     Map(position: $cameraPosition, interactionModes: [.zoom, .pan]) {
@@ -69,7 +67,15 @@ struct MapView: View {
                     .padding()
                 }
             }
+            
+            if (!monitor.isConnected) {
+                NoConnectionView()
+                    .padding()
+                    .padding()
+                    .offset(y: 200)
+            }
         }
+            
         
     }
 }
