@@ -14,9 +14,9 @@ struct SearchSectionModifier: ViewModifier {
         content
             .padding()
             .frame(width: 360)
-            .background(.white)
+            .background(Color(.systemGray6))
             .clipShape(RoundedRectangle(cornerRadius: 10))
-            .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+            .shadow(color: Color(.systemGray6), radius: 5)
     }
 }
 
@@ -42,31 +42,5 @@ struct CapsuleModifier: ViewModifier {
                     .foregroundStyle(.gray)
                     .shadow(color: .black.opacity(0.4), radius: 2)
             }
-    }
-}
-
-struct SwipeToDismissModifier: ViewModifier {
-    var onDismiss: () -> Void
-    @State private var offset: CGSize = .zero
-
-    func body(content: Content) -> some View {
-        content
-            .offset(y: offset.height)
-            .animation(.interactiveSpring(), value: offset)
-            .simultaneousGesture(
-                DragGesture()
-                    .onChanged { gesture in
-                        if gesture.translation.width < 50 {
-                            offset = gesture.translation
-                        }
-                    }
-                    .onEnded { _ in
-                        if offset.height < -50 {
-                            onDismiss()
-                        } else {
-                            offset = .zero
-                        }
-                    }
-            )
     }
 }

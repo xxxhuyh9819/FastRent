@@ -43,7 +43,12 @@ struct HouseInfoView: View {
                     
                     VStack(alignment: .leading) {
                         HStack {
-                            Text("\(house.city), \(house.state)")
+                            VStack(alignment: .leading) {
+                                Text("\(house.name)")
+                                    .fontWeight(.semibold)
+                                Text("\(house.city), \(house.state)")
+                                    .font(.footnote)
+                            }
                             Spacer()
                             
                             FavoriteButton(house: house, imageName: fast_rentApp.db.contains(house, viewModel.savedItems) ? "heart.fill" : "heart", size: 20)
@@ -76,7 +81,7 @@ struct HouseInfoView: View {
                         }
                     }
                     .padding(.vertical)
-                    .foregroundStyle(.black)
+                    .foregroundStyle(.font)
                     
                     Spacer()
                 }
@@ -84,7 +89,7 @@ struct HouseInfoView: View {
         }
         .frame(height: 100)
         .font(.subheadline)
-        .background(.white)
+        .background(.appBackground)
         .clipShape(RoundedRectangle(cornerRadius: 10))
         .padding()
         .padding(.bottom, 20)

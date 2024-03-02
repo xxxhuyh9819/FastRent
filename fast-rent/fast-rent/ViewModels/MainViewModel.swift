@@ -35,7 +35,6 @@ class MainViewModel: ObservableObject {
         }
         
         result = filterByPrice(listToFilter: &result)
-//        result = filterByRooms(listToFilter: &result, numOfBeds: Int(numBedrooms) ?? 0, numOfBaths: Int(numBathrooms) ?? 0)
         result = filterByRooms(listToFilter: &result, numOfBeds: numBedrooms, numOfBaths: numBathrooms)
         return result.isEmpty ? houses : result
     }

@@ -215,7 +215,7 @@ struct DetailView: View {
                 }
             }
             .padding(.horizontal)
-            .background(Color("background-color"))
+            .background(.appBackground)
         }
         .padding(.bottom)
     }

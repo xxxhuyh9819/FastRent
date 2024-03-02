@@ -48,8 +48,6 @@ struct MapView: View {
                         if (showInfo) {
                             withAnimation(.spring) {
                                 HouseInfoView(house: house, showInfo: $showInfo)
-                                    .modifier(SwipeToDismissModifier(onDismiss: {showInfo.toggle()}))
-                               
                             }
                         }
                     }

@@ -111,7 +111,6 @@ struct SearchView: View {
                     } label: {
                         Text("Cancel")
                             .fontWeight(.semibold)
-                            .foregroundStyle(.black)
                     }
                     // show an alert after clicking the x button
                     .alert("Leave the searching page?", isPresented: $isLeaving) {
@@ -140,10 +139,9 @@ struct SearchView: View {
                     } label: {
                         Text("Done")
                             .fontWeight(.semibold)
-                            .foregroundStyle(.black)
                     }
                     .disabled(viewModel.location.isEmpty)
-                    .opacity(viewModel.location.isEmpty ? 0.4 : 1)
+                    .opacity(viewModel.location.isEmpty ? 0.7 : 1)
                 }
             }
         }

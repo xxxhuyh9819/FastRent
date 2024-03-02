@@ -59,7 +59,7 @@ struct ExploreView: View {
                         }
                         .frame(width: 84, height: 30)
                         .foregroundStyle(.white)
-                        .padding(.vertical, 12)
+                        .padding(.vertical, 8)
                         .padding(.horizontal)
                         .background(.gray)
                         .clipShape(Capsule())
