@@ -12,6 +12,7 @@ struct HouseInfoView: View {
     let house: ConvertedHouse    
     @Binding var showInfo: Bool
     @EnvironmentObject var viewModel: MainViewModel
+    @State var isDeleting = false
     
     var body: some View {
         
@@ -21,23 +22,49 @@ struct HouseInfoView: View {
                     .navigationBarBackButtonHidden()
             } label: {
                 HStack(alignment: .top) {
-                    Image(house.imageUrls[0])
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 80, height: 120)
-                        .padding(.trailing, 20)
-                    
-                    Spacer()
-                    Spacer()
+                    Rectangle()
+                    .fill(.clear)
+                        .frame(width: 100)
+                        .overlay {
+                            Image(house.imageUrls[0])
+                                .resizable()
+                        }
+                        .overlay {
+                            RoundButton(imageName: "xmark", size: 24)
+                                .onTapGesture {
+                                    withAnimation(.spring) {
+                                        showInfo.toggle()
+                                    }
+                                }
+                                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                                .padding()
+
+                        }
                     
                     VStack(alignment: .leading) {
                         HStack {
                             Text("\(house.city), \(house.state)")
                             Spacer()
                             
-                            FavoriteButton(house: house, imageName: fast_rentApp.db.contains(house, viewModel.savedItems) ? "heart.fill" : "heart", size: 18)
+                            FavoriteButton(house: house, imageName: fast_rentApp.db.contains(house, viewModel.savedItems) ? "heart.fill" : "heart", size: 20)
                                 .onTapGesture {
-                                    fast_rentApp.db.toggleFav(convertedHouse: house, savedHouses: &viewModel.savedItems)
+                                    if (fast_rentApp.db.contains(house, viewModel.savedItems)) {
+                                        isDeleting = true
+                                    } else {
+                                        fast_rentApp.db.toggleFav(convertedHouse: house, savedHouses: &viewModel.savedItems)
+                                    }
+                                }
+                            // show an alert after clicking the wishlist icon
+                                .alert("Remove from wishlist?", isPresented: $isDeleting) {
+                                    Button("Remove", role: .destructive) {
+                                        fast_rentApp.db.toggleFav(convertedHouse: house, savedHouses: &viewModel.savedItems)
+                                        isDeleting = false
+                                    }
+                                    Button("Cancel", role: .cancel) {
+                                        isDeleting = false
+                                    }
+                                } message: {
+                                    Text("\"\(house.title)\" will be permanently deleted.")
                                 }
                         }
                         
@@ -48,23 +75,23 @@ struct HouseInfoView: View {
                                 .fontWeight(.semibold)
                         }
                     }
+                    .padding(.vertical)
                     .foregroundStyle(.black)
-                    .padding()
-                    .padding(.leading, 8)
+                    
+                    Spacer()
                 }
             }
         }
         .overlay {
-            RoundButton(imageName: "xmark", size: 20)
-                .onTapGesture {
-                    withAnimation(.spring) {
-                        showInfo.toggle()
-                    }
-                }
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-                .padding([.top, .leading])
+//            RoundButton(imageName: "xmark", size: 24)
+//                .onTapGesture {
+//                    withAnimation(.spring) {
+//                        showInfo.toggle()
+//                    }
+//                }
+//                .padding([.top, .leading])
         }
-        .frame(height: 120)
+        .frame(height: 100)
         .font(.subheadline)
         .background(.white)
         .clipShape(RoundedRectangle(cornerRadius: 10))

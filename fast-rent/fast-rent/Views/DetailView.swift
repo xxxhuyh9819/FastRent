@@ -12,7 +12,7 @@ struct DetailView: View {
     
     @Environment(\.dismiss) var dismiss
     @State private var cameraPosition: MapCameraPosition
-    @State var showMap: Bool = false
+    @State var isDeleting: Bool = false
     @StateObject var viewModel: DetailViewModel
     @EnvironmentObject var rootViewModel: MainViewModel
     
@@ -26,7 +26,7 @@ struct DetailView: View {
     }
     
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             // picture
             ImageCarousel(house: house)
                 .frame(height: 320)
@@ -43,7 +43,23 @@ struct DetailView: View {
                         
                         FavoriteButton(house: house, imageName: fast_rentApp.db.contains(house, rootViewModel.savedItems) ? "heart.fill" : "heart", size: 24)
                             .onTapGesture {
-                                fast_rentApp.db.toggleFav(convertedHouse: house, savedHouses: &rootViewModel.savedItems)
+                                if (fast_rentApp.db.contains(house, rootViewModel.savedItems)) {
+                                    isDeleting = true
+                                } else {
+                                    fast_rentApp.db.toggleFav(convertedHouse: house, savedHouses: &rootViewModel.savedItems)
+                                }
+                            }
+                        // show an alert after clicking the wishlist icon
+                            .alert("Remove from wishlist?", isPresented: $isDeleting) {
+                                Button("Remove", role: .destructive) {
+                                    fast_rentApp.db.toggleFav(convertedHouse: house, savedHouses: &rootViewModel.savedItems)
+                                    isDeleting = false
+                                }
+                                Button("Cancel", role: .cancel) {
+                                    isDeleting = false
+                                }
+                            } message: {
+                                Text("\"\(house.title)\" will be permanently deleted.")
                             }
                     }
                     .padding(.top, 48)
@@ -141,19 +157,17 @@ struct DetailView: View {
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                 
                 Map(position: $cameraPosition) {
-                    Annotation("$\(house.price)", coordinate: CLLocationCoordinate2D(latitude: house.latitude, longitude: house.longitude)) {
-                        ApartmentButton(house: house)
-                            .disabled(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
-                    }
+                    Marker(house.name, coordinate: CLLocationCoordinate2D(latitude: house.latitude, longitude: house.longitude))
                 }
+                .disabled(true)
                 .frame(height: 200)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
-                .onTapGesture {
-                    showMap.toggle()
-                }
-                .sheet(isPresented: $showMap, content: {
-                    MapView(houses: [house])
-                })
+//                .onTapGesture {
+//                    showMap.toggle()
+//                }
+//                .sheet(isPresented: $showMap, content: {
+//                    MapView(houses: [house])
+//                })
             }
             .padding()
             .padding(.bottom, 64)

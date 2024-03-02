@@ -24,7 +24,7 @@ struct SearchView: View {
     var body: some View {
         
         NavigationStack {
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 VStack(alignment: .leading, spacing: 8) {
                     
                     Text("Location")

@@ -21,7 +21,7 @@ struct RoundButton: View {
     
     var body: some View {
         Circle()
-            .fill(Color("round-button-color").opacity(0.5))
+            .fill(Color("round-button-color").opacity(0.6))
             .frame(width: size, height: size)
             .overlay(
                 Image(systemName: imageName)

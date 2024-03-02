@@ -34,7 +34,7 @@ struct WishlistView: View {
                                 .frame(width: 160, height: 200)
                         }
                         .overlay {
-                            FavoriteButton(house: house, imageName: fast_rentApp.db.contains(house, viewModel.savedItems) ? "heart.fill" : "heart", size: 20)
+                            FavoriteButton(house: house, imageName: fast_rentApp.db.contains(house, viewModel.savedItems) ? "heart.fill" : "heart", size: 24)
                                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
                                 .padding([.top, .trailing], 16)
                                 .onTapGesture {

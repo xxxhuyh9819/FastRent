@@ -34,24 +34,26 @@ struct ExploreView: View {
                             }
                         }
                     
-                    ForEach(viewModel.filteredHouses, id: \.id) {house in
-                        NavigationLink {
-                            DetailView(house: ConvertedHouse(house: house))
-                                .navigationBarBackButtonHidden()
-                        } label: {
-                            ListItemView(house: ConvertedHouse(house: house))
-                                .tint(Color("font-color"))
+                    LazyVStack {
+                        ForEach(viewModel.filteredHouses, id: \.id) { house in
+                            NavigationLink {
+                                DetailView(house: ConvertedHouse(house: house))
+                                    .navigationBarBackButtonHidden()
+                            } label: {
+                                ListItemView(house: ConvertedHouse(house: house))
+                                    .tint(Color("font-color"))
+                            }
+                            .overlay {
+                                FavoriteButton(house: ConvertedHouse(house: house), imageName: fast_rentApp.db.contains(ConvertedHouse(house: house), viewModel.savedItems) ? "heart.fill" : "heart", size: 24)
+                                    .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity, maxHeight: .infinity/*@END_MENU_TOKEN@*/,  alignment: .topTrailing)
+                                    .padding([.top, .trailing], 32)
+                                    .onTapGesture {
+                                        fast_rentApp.db.toggleFav(convertedHouse: ConvertedHouse(house: house), savedHouses: &viewModel.savedItems)
+                                    }
+                            }
+                            
+                            Divider()
                         }
-                        .overlay {
-                            FavoriteButton(house: ConvertedHouse(house: house), imageName: fast_rentApp.db.contains(ConvertedHouse(house: house), viewModel.savedItems) ? "heart.fill" : "heart", size: 24)
-                                .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity, maxHeight: .infinity/*@END_MENU_TOKEN@*/,  alignment: .topTrailing)
-                                .padding([.top, .trailing], 32)
-                                .onTapGesture {
-                                    fast_rentApp.db.toggleFav(convertedHouse: ConvertedHouse(house: house), savedHouses: &viewModel.savedItems)
-                                }
-                        }
-                        
-                        Divider()
                     }
                 }
                 .overlay(alignment: .bottom) {

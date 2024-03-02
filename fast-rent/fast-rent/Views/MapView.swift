@@ -35,7 +35,6 @@ struct MapView: View {
                                     .onTapGesture {
                                         selectedHouse = house
                                         showInfo = true
-                                        print("\(selectedHouse?.title ?? "xxx")")
                                     }
                             }
                         }
