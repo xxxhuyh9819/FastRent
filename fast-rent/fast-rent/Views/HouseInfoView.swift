@@ -11,7 +11,7 @@ struct HouseInfoView: View {
     
     let house: ConvertedHouse    
     @Binding var showInfo: Bool
-    @EnvironmentObject var viewModel: MainViewModel
+    @EnvironmentObject var rootViewModel: MainViewModel
     @State var isDeleting = false
     
     var body: some View {
@@ -51,18 +51,18 @@ struct HouseInfoView: View {
                             }
                             Spacer()
                             
-                            FavoriteButton(house: house, imageName: fast_rentApp.db.contains(house, viewModel.savedItems) ? "heart.fill" : "heart", size: 20)
+                            FavoriteButton(house: house, imageName: rootViewModel.contains(house) ? "heart.fill" : "heart", size: 20)
                                 .onTapGesture {
-                                    if (fast_rentApp.db.contains(house, viewModel.savedItems)) {
+                                    if (rootViewModel.contains(house)) {
                                         isDeleting = true
                                     } else {
-                                        fast_rentApp.db.toggleFavorite(convertedHouse: house, savedHouses: &viewModel.savedItems)
+                                        rootViewModel.toggleFavorite(convertedHouse: house)
                                     }
                                 }
                             // show an alert after clicking the wishlist icon
                                 .alert("Remove from wishlist?", isPresented: $isDeleting) {
                                     Button("Remove", role: .destructive) {
-                                        fast_rentApp.db.toggleFavorite(convertedHouse: house, savedHouses: &viewModel.savedItems)
+                                        rootViewModel.toggleFavorite(convertedHouse: house)
                                         isDeleting = false
                                     }
                                     Button("Cancel", role: .cancel) {

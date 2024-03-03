@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import OSLog
 
 /// The main ViewModel that is used in many views as an environmental object
 class MainViewModel: ObservableObject {
@@ -147,5 +148,26 @@ class MainViewModel: ObservableObject {
         maxPrice = ""
         numBedrooms = 0
         numBathrooms = 0
+    }
+    
+    /// Check if an item is in UserDefaults
+    func contains(_ house: ConvertedHouse) -> Bool {
+        return savedItems.contains(house)
+    }
+    
+    // src: https://stackoverflow.com/questions/24451959/mutate-function-parameters-in-swift
+    /// A function to insert/remove an item to UserDefaults
+    /// use inout keyword to make savedHouses mutable
+    func toggleFavorite(convertedHouse: ConvertedHouse) {
+        if contains(convertedHouse) {
+            // the item is in the set already, need to remove it.
+            Logger.localStorage.debug("Start Removing \(convertedHouse.name) from userdefaults...")
+            savedItems.remove(convertedHouse)
+        } else {
+            // the item is not in the set, need to insert it.
+            savedItems.insert(convertedHouse)
+        }
+        // Save the update to UserDefaults
+        fast_rentApp.db.save(items: savedItems)
     }
 }

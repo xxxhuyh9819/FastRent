@@ -22,13 +22,14 @@ struct ListItemView: View {
                 
                 HStack {
                     VStack(alignment: .leading) {
-                        Text("\(house.address), \(house.city)")
+                        Text("\(house.name)")
                             .font(.subheadline)
-                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                        Text("\(house.address), \(house.city)")
+                            
                         Text("\(house.numBedrooms) bedroom - \(house.numBathrooms) bathroom")
-                            .font(.footnote)
-                            .fontWeight(.semibold)
                     }
+                    .font(.footnote)
+                    .fontWeight(.semibold)
                     
                     Spacer()
                     

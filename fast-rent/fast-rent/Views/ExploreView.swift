@@ -10,23 +10,23 @@ import SwiftUI
 struct ExploreView: View {
     
     @State var showMap: Bool = false
-    @EnvironmentObject var viewModel: MainViewModel
+    @EnvironmentObject var rootViewModel: MainViewModel
     
     var body: some View {
         NavigationStack {
-            if viewModel.showSearchView {
-                SearchView(showSearchView: $viewModel.showSearchView)
+            if rootViewModel.showSearchView {
+                SearchView(showSearchView: $rootViewModel.showSearchView)
             } else {
                 ScrollView {
-                    SearchBar(location: $viewModel.location)
+                    SearchBar(location: $rootViewModel.location)
                         .onTapGesture {
                             withAnimation(.spring) {
-                                viewModel.showSearchView.toggle()
+                                rootViewModel.showSearchView.toggle()
                             }
                         }
                     
                     LazyVStack {
-                        ForEach(viewModel.convertedHouses) { house in
+                        ForEach(rootViewModel.convertedHouses) { house in
                             NavigationLink {
                                 DetailView(house: house)
                                     .navigationBarBackButtonHidden()
@@ -35,11 +35,11 @@ struct ExploreView: View {
                                     .tint(Color("font-color"))
                             }
                             .overlay {
-                                FavoriteButton(house: house, imageName: fast_rentApp.db.contains(house, viewModel.savedItems) ? "heart.fill" : "heart", size: 24)
+                                FavoriteButton(house: house, imageName: rootViewModel.contains(house) ? "heart.fill" : "heart", size: 24)
                                     .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity, maxHeight: .infinity/*@END_MENU_TOKEN@*/,  alignment: .topTrailing)
                                     .padding([.top, .trailing], 32)
                                     .onTapGesture {
-                                        fast_rentApp.db.toggleFavorite(convertedHouse: house, savedHouses: &viewModel.savedItems)
+                                        rootViewModel.toggleFavorite(convertedHouse: house)
                                     }
                             }
                             
@@ -67,7 +67,7 @@ struct ExploreView: View {
                     
                 }
                 .fullScreenCover(isPresented: $showMap) {
-                    MapView(houses: viewModel.convertedHouses)
+                    MapView(houses: rootViewModel.convertedHouses)
                 }
             }
             

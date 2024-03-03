@@ -26,24 +26,4 @@ final class Database {
         }
         return Set<ConvertedHouse>()
     }
-    
-    /// Check if an item is in UserDefaults
-    func contains(_ house: ConvertedHouse, _ items: Set<ConvertedHouse>) -> Bool {
-        return items.contains(house)
-    }
-    
-    // src: https://stackoverflow.com/questions/24451959/mutate-function-parameters-in-swift
-    /// A function to insert/remove an item to UserDefaults
-    /// use inout keyword to make savedHouses mutable
-    func toggleFavorite(convertedHouse: ConvertedHouse, savedHouses: inout Set<ConvertedHouse>) {
-        if contains(convertedHouse, savedHouses) {
-            // the item is in the set already, need to remove it.
-            savedHouses.remove(convertedHouse)
-        } else {
-            // the item is not in the set, need to insert it.
-            savedHouses.insert(convertedHouse)
-        }
-        // Save the update to UserDefaults
-        save(items: savedHouses)
-    }
 }
