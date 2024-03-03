@@ -155,17 +155,17 @@ class MainViewModel: ObservableObject {
         return savedItems.contains(house)
     }
     
-    // src: https://stackoverflow.com/questions/24451959/mutate-function-parameters-in-swift
     /// A function to insert/remove an item to UserDefaults
     /// use inout keyword to make savedHouses mutable
-    func toggleFavorite(convertedHouse: ConvertedHouse) {
-        if contains(convertedHouse) {
+    func toggleFavorite(house: ConvertedHouse) {
+        if contains(house) {
             // the item is in the set already, need to remove it.
-            Logger.localStorage.debug("Start Removing \(convertedHouse.name) from userdefaults...")
-            savedItems.remove(convertedHouse)
+            Logger.localStorage.debug("In \(MainViewModel.self) Start removing \(house.name) from userdefaults...")
+            savedItems.remove(house)
         } else {
             // the item is not in the set, need to insert it.
-            savedItems.insert(convertedHouse)
+            Logger.localStorage.debug("In \(MainViewModel.self) Start inserting \(house.name) to userdefaults...")
+            savedItems.insert(house)
         }
         // Save the update to UserDefaults
         fast_rentApp.db.save(items: savedItems)

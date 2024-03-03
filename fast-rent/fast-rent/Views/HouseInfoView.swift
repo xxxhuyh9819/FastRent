@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import OSLog
 
 struct HouseInfoView: View {
     
@@ -54,22 +55,25 @@ struct HouseInfoView: View {
                             FavoriteButton(house: house, imageName: rootViewModel.contains(house) ? "heart.fill" : "heart", size: 20)
                                 .onTapGesture {
                                     if (rootViewModel.contains(house)) {
+                                        Logger.localStorage.info("In \(HouseInfoView.self): Planning to delete \(house.name) from wishlist...")
                                         isDeleting = true
                                     } else {
-                                        rootViewModel.toggleFavorite(convertedHouse: house)
+                                        Logger.localStorage.info("In \(HouseInfoView.self): Adding \(house.name) to wishlist...")
+                                        rootViewModel.toggleFavorite(house: house)
                                     }
                                 }
                             // show an alert after clicking the wishlist icon
                                 .alert("Remove from wishlist?", isPresented: $isDeleting) {
                                     Button("Remove", role: .destructive) {
-                                        rootViewModel.toggleFavorite(convertedHouse: house)
+                                        Logger.localStorage.info("In \(HouseInfoView.self): Starting to delete \(house.name) from wishlist...")
+                                        rootViewModel.toggleFavorite(house: house)
                                         isDeleting = false
                                     }
                                     Button("Cancel", role: .cancel) {
                                         isDeleting = false
                                     }
                                 } message: {
-                                    Text("\"\(house.title)\" will be permanently deleted.")
+                                    Text("\"\(house.name)\" will be permanently deleted.")
                                 }
                         }
                         

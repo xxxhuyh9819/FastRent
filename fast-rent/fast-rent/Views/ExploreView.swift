@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import OSLog
 
 struct ExploreView: View {
     
@@ -39,7 +40,8 @@ struct ExploreView: View {
                                     .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity, maxHeight: .infinity/*@END_MENU_TOKEN@*/,  alignment: .topTrailing)
                                     .padding([.top, .trailing], 32)
                                     .onTapGesture {
-                                        rootViewModel.toggleFavorite(convertedHouse: house)
+                                        Logger.localStorage.info("In \(ExploreView.self): Starting to add \(house.name) to wishlist...")
+                                        rootViewModel.toggleFavorite(house: house)
                                     }
                             }
                             

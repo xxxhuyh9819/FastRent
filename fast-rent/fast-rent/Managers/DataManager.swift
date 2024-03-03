@@ -28,7 +28,7 @@ public class DataManager {
         do {
             let snapshot = try await Firestore.firestore().collection("Apartment").getDocuments()
             let apartments = snapshot.documents.compactMap({ try? $0.data(as: House.self) })
-            Logger.fetchingFromFirebase.info("Fetched \(apartments.count) houses from Firebase!")
+            Logger.fetchingFromFirebase.info("In \(DataManager.self): Fetched \(apartments.count) houses from Firebase!")
             return apartments
         } catch {
             Logger.fetchingFromFirebase.error("\(error)")
@@ -41,7 +41,7 @@ public class DataManager {
         do {
             let snapshot = try await Firestore.firestore().collection("Landlord").document(id).getDocument()
             let landlord = try snapshot.data(as: Landlord.self)
-            Logger.fetchingFromFirebase.info("Fetched \(landlord.name) from Firebase!")
+            Logger.fetchingFromFirebase.info("In \(DataManager.self): Fetched \(landlord.name) from Firebase!")
             return landlord
         } catch {
             Logger.fetchingFromFirebase.error("\(error)")
@@ -58,7 +58,7 @@ public class DataManager {
                 let amenity = try snapshot.data(as: Amenity.self)
                 amenities.append(amenity)
             }
-            Logger.fetchingFromFirebase.info("Fetched \(amenities.count) amenities from Firebase!")
+            Logger.fetchingFromFirebase.info("In \(DataManager.self): Fetched \(amenities.count) amenities from Firebase!")
             return amenities
         } catch {
             Logger.fetchingFromFirebase.error("\(error)")

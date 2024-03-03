@@ -27,8 +27,8 @@ struct WishlistView: View {
                                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
                                 .padding([.top, .trailing], 16)
                                 .onTapGesture {
-                                    Logger.localStorage.debug("In \(WishlistView.self): Starting to delete \(house.name) from userdefaults...")
-                                    rootViewModel.toggleFavorite(convertedHouse: house)
+                                    Logger.localStorage.info("In \(WishlistView.self): Planning to delete \(house.name) from wishlist...")
+                                    rootViewModel.toggleFavorite(house: house)
                                     isDeleting = true
                                 }
                         }
@@ -40,13 +40,6 @@ struct WishlistView: View {
             .navigationTitle("Wishlist")
             .navigationBarTitleDisplayMode(.inline)
         }
-        // refresh the saved items upon entering and leaving the page
-//        .onAppear() {
-//            rootViewModel.savedItems = fast_rentApp.db.load()
-//        }
-//        .onDisappear {
-//            rootViewModel.savedItems = fast_rentApp.db.load()
-//        }
     }
 }
 
