@@ -20,9 +20,7 @@ struct WishlistItemView: View {
                         .navigationBarBackButtonHidden()
                 } label: {
                     VStack(alignment: .leading) {
-                        Image(convertedHouse.imageUrls[0])
-                            .resizable()
-                            .scaledToFill()
+                        ImageCarousel(house: convertedHouse)
                         
                         VStack(alignment: .leading) {
                             Text(convertedHouse.title)

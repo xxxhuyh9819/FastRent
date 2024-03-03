@@ -12,21 +12,22 @@ struct ImageCarousel: View {
     
     let house: ConvertedHouse
     
+    // if there is no image for the house, return an array with the prepared placeholder.
+    // if there is image for the house, return the imageUrls itself
+    var urls: [String] {
+        return house.imageUrls.isEmpty ? ["NoImagePlaceHolder"] : house.imageUrls
+    }
+    
     var body: some View {
-        // if there is no image for the house, show the prepared placeholder.
-        // if there is image for the house, show the carousel.
-        if (house.imageUrls.isEmpty) {
-            Image(systemName: "photo")
-        } else {
-            TabView {
-                ForEach(house.imageUrls, id: \.self) { url in
-                    Image(url)
-                        .resizable()
-                        .scaledToFill()
-                }
+        TabView {
+            ForEach(urls, id: \.self) { url in
+                Image(url)
+                    .resizable()
+                    .scaledToFill()
             }
-            .tabViewStyle(.page)
         }
+        .tabViewStyle(.page)
+    
         
     }
 }
