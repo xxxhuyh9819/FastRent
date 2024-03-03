@@ -38,7 +38,6 @@ struct ListItemView: View {
                     
                     Spacer()
                     
-
                     Text("$\(house.price)")
                         .fontWeight(.bold)
                     
@@ -51,18 +50,26 @@ struct ListItemView: View {
                 .padding([.top, .trailing], 32)
                 .onTapGesture {
                     if (rootViewModel.contains(house)) {
-                        Logger.localStorage.info("In \(ListItemView.self): Planning to delete \(house.name) from wishlist...")
-                        isDeleting = true
+                        withAnimation(.spring) {
+                            withAnimation(.spring) {
+                                Logger.localStorage.info("In \(ListItemView.self): Planning to delete \(house.name) from wishlist...")
+                                isDeleting = true
+                            }
+                        }
                     } else {
-                        rootViewModel.toggleFavorite(house: house)
+                        withAnimation(.spring) {
+                            rootViewModel.toggleFavorite(house: house)
+                        }
                     }
                 }
                 // alert only appears when the house is in the wishlist already
                 .alert("Remove from wishlist?", isPresented: $isDeleting) {
                     Button("Remove", role: .destructive) {
-                        Logger.localStorage.info("In \(ListItemView.self): Starting to delete \(house.name) from wishlist...")
-                        rootViewModel.toggleFavorite(house: house)
-                        isDeleting = false
+                        withAnimation(.spring) {
+                            Logger.localStorage.info("In \(ListItemView.self): Starting to delete \(house.name) from wishlist...")
+                            rootViewModel.toggleFavorite(house: house)
+                            isDeleting = false
+                        }
                     }
                     Button("Cancel", role: .cancel) {
                         isDeleting = false

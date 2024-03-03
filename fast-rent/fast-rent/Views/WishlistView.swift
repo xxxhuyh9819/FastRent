@@ -14,24 +14,37 @@ struct WishlistView: View {
     
     var body: some View {
         
-        NavigationStack {
-            ScrollView {
-                LazyVStack() {
-                    ForEach(rootViewModel.savedItems.sorted {$0.price < $1.price} ) { house in
-                        NavigationLink {
-                            DetailView(house: house)
-                                .navigationBarBackButtonHidden()
-                        } label: {
-                            WishlistItemView(house: house)
-                                .tint(Color("font-color"))
+        
+            NavigationStack {
+                VStack {
+                    if (rootViewModel.savedItems.isEmpty) {
+                        withAnimation(.spring) {
+                            EmptyWishlistView()
                         }
+                    } else {
+                        ScrollView {
+                            LazyVStack() {
+                                ForEach(rootViewModel.savedItems.sorted {$0.price < $1.price} ) { house in
+                                    NavigationLink {
+                                        DetailView(house: house)
+                                            .navigationBarBackButtonHidden()
+                                    } label: {
+                                        WishlistItemView(house: house)
+                                            .tint(Color("font-color"))
+                                    }
+                                }
+                            }
+                            .padding(.top)
+                        }
+                        
                     }
                 }
-                .padding(.top)
+                .navigationTitle("Wishlist")
+                .navigationBarTitleDisplayMode(.inline)
+                
             }
-            .navigationTitle("Wishlist")
-            .navigationBarTitleDisplayMode(.inline)
-        }
+            
+        
     }
 }
 

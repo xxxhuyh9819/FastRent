@@ -45,18 +45,25 @@ struct DetailView: View {
                         FavoriteButton(house: house, imageName: rootViewModel.contains(house) ? "heart.fill" : "heart", size: 24)
                             .onTapGesture {
                                 if (rootViewModel.contains(house)) {
-                                    Logger.localStorage.info("In \(DetailView.self): Planning to delete \(house.name) from wishlist...")
-                                    isDeleting = true
+                                    withAnimation(.spring) {
+                                        Logger.localStorage.info("In \(DetailView.self): Planning to delete \(house.name) from wishlist...")
+                                        isDeleting = true
+                                    }
                                 } else {
-                                    rootViewModel.toggleFavorite(house: house)
+                                    withAnimation(.spring) {
+                                        Logger.localStorage.info("In \(DetailView.self): Adding \(house.name) to wishlist...")
+                                        rootViewModel.toggleFavorite(house: house)
+                                    }
                                 }
                             }
                         // show an alert after clicking the wishlist icon
                             .alert("Remove from wishlist?", isPresented: $isDeleting) {
                                 Button("Remove", role: .destructive) {
-                                    Logger.localStorage.info("In \(DetailView.self): Starting to delete \(house.name) from wishlist...")
-                                    rootViewModel.toggleFavorite(house: house)
-                                    isDeleting = false
+                                    withAnimation(.spring) {
+                                        Logger.localStorage.info("In \(DetailView.self): Starting to delete \(house.name) from wishlist...")
+                                        rootViewModel.toggleFavorite(house: house)
+                                        isDeleting = false
+                                    }
                                 }
                                 Button("Cancel", role: .cancel) {
                                     isDeleting = false

@@ -55,18 +55,24 @@ struct WishlistItemView: View {
                         .padding([.top, .trailing], 16)
                         .onTapGesture {
                             if (rootViewModel.contains(house)) {
-                                Logger.localStorage.info("In \(WishlistItemView.self): Planning to delete \(house.name) from wishlist...")
-                                isDeleting = true
+                                withAnimation(.spring) {
+                                    Logger.localStorage.info("In \(WishlistItemView.self): Planning to delete \(house.name) from wishlist...")
+                                    isDeleting = true
+                                }
                             } else {
-                                rootViewModel.toggleFavorite(house: house)
+                                withAnimation(.spring) {
+                                    rootViewModel.toggleFavorite(house: house)
+                                }
                             }
                         }
                     // show an alert after clicking the wishlist icon
                         .alert("Remove from wishlist?", isPresented: $isDeleting) {
                             Button("Remove", role: .destructive) {
-                                Logger.localStorage.info("In \(WishlistItemView.self): Starting to delete \(house.name) from wishlist...")
-                                rootViewModel.toggleFavorite(house: house)
-                                isDeleting = false
+                                withAnimation(.spring) {
+                                    Logger.localStorage.info("In \(WishlistItemView.self): Starting to delete \(house.name) from wishlist...")
+                                    rootViewModel.toggleFavorite(house: house)
+                                    isDeleting = false
+                                }
                             }
                             Button("Cancel", role: .cancel) {
                                 isDeleting = false
