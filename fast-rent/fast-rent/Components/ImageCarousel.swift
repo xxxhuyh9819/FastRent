@@ -18,9 +18,16 @@ struct ImageCarousel: View {
         return house.imageUrls.isEmpty ? ["NoImagePlaceHolder"] : house.imageUrls
     }
     
+    var isForWishlist: Bool
+    
+    init(house: ConvertedHouse, isForWishlist: Bool = false) {
+        self.house = house
+        self.isForWishlist = isForWishlist
+    }
+    
     var body: some View {
         TabView {
-            ForEach(urls, id: \.self) { url in
+            ForEach(isForWishlist ? [urls[0]] : urls, id: \.self) { url in
                 Image(url)
                     .resizable()
                     .scaledToFill()

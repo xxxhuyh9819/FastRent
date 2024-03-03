@@ -18,7 +18,7 @@ struct SearchSectionModifier: ViewModifier {
             .frame(width: 360)
             .background(Color(.systemGray6))
             .clipShape(RoundedRectangle(cornerRadius: 10))
-            .shadow(color: Color(.systemGray6), radius: 5)
+            .shadow(color: .shadow, radius: 5)
     }
 }
 
@@ -31,7 +31,7 @@ struct CapsuleModifier: ViewModifier {
                 Capsule()
                     .stroke(lineWidth: 0.5)
                     .foregroundStyle(.gray)
-                    .shadow(color: .black.opacity(0.4), radius: 2)
+                    .shadow(color: .shadow.opacity(0.4), radius: 2)
             }
     }
 }

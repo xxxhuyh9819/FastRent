@@ -18,7 +18,13 @@ struct WishlistView: View {
             ScrollView {
                 LazyVStack() {
                     ForEach(rootViewModel.savedItems.sorted {$0.price < $1.price} ) { house in
-                        WishlistItemView(house: house)
+                        NavigationLink {
+                            DetailView(house: house)
+                                .navigationBarBackButtonHidden()
+                        } label: {
+                            WishlistItemView(house: house)
+                                .tint(Color("font-color"))
+                        }
                     }
                 }
                 .padding(.top)

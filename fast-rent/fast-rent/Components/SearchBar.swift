@@ -35,7 +35,7 @@ struct SearchBar: View {
             Capsule()
                 .stroke(lineWidth: 0.5)
                 .foregroundStyle(.gray)
-                .shadow(color: .black.opacity(0.4), radius: 2)
+                .shadow(color: .shadow.opacity(0.4), radius: 2)
         }
         .padding()
     }
