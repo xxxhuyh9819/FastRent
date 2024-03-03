@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// A view shown when the wish list is empty
 struct EmptyWishlistView: View {
     var body: some View {
         VStack {
@@ -20,8 +21,9 @@ struct EmptyWishlistView: View {
                 .padding(.bottom)
             
             Text("Click the heart icon to save homes for quicker compare.")
-                .fontWeight(.semibold)
+                
         }
+        .fontWeight(.semibold)
     }
 }
 

@@ -13,8 +13,6 @@ struct WishlistView: View {
     @EnvironmentObject var rootViewModel: MainViewModel
     
     var body: some View {
-        
-        
             NavigationStack {
                 VStack {
                     if (rootViewModel.savedItems.isEmpty) {
@@ -41,10 +39,7 @@ struct WishlistView: View {
                 }
                 .navigationTitle("Wishlist")
                 .navigationBarTitleDisplayMode(.inline)
-                
             }
-            
-        
     }
 }
 
