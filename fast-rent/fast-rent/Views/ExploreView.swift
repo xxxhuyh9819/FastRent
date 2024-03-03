@@ -35,16 +35,6 @@ struct ExploreView: View {
                                 ListItemView(house: house)
                                     .tint(Color("font-color"))
                             }
-                            .overlay {
-                                FavoriteButton(house: house, imageName: rootViewModel.contains(house) ? "heart.fill" : "heart", size: 24)
-                                    .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity, maxHeight: .infinity/*@END_MENU_TOKEN@*/,  alignment: .topTrailing)
-                                    .padding([.top, .trailing], 32)
-                                    .onTapGesture {
-                                        Logger.localStorage.info("In \(ExploreView.self): Starting to add \(house.name) to wishlist...")
-                                        rootViewModel.toggleFavorite(house: house)
-                                    }
-                            }
-                            
                             Divider()
                         }
                     }

@@ -29,6 +29,7 @@
 		503450182B938AED00549F9D /* NoConnectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503450172B938AED00549F9D /* NoConnectionView.swift */; };
 		5092F5312B94706E00B5ECFB /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5092F5302B94706E00B5ECFB /* Settings.bundle */; };
 		5095F5A42B950A03008FFEF5 /* LogExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5095F5A32B950A03008FFEF5 /* LogExtension.swift */; };
+		5095F5A62B951A44008FFEF5 /* WarningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5095F5A52B951A44008FFEF5 /* WarningView.swift */; };
 		50C5C4E42B7F3BC20028489B /* fast_rentApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C4E32B7F3BC20028489B /* fast_rentApp.swift */; };
 		50C5C4E82B7F3BC40028489B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50C5C4E72B7F3BC40028489B /* Assets.xcassets */; };
 		50C5C4EB2B7F3BC40028489B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50C5C4EA2B7F3BC40028489B /* Preview Assets.xcassets */; };
@@ -69,6 +70,7 @@
 		503450172B938AED00549F9D /* NoConnectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoConnectionView.swift; sourceTree = "<group>"; };
 		5092F5302B94706E00B5ECFB /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		5095F5A32B950A03008FFEF5 /* LogExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogExtension.swift; sourceTree = "<group>"; };
+		5095F5A52B951A44008FFEF5 /* WarningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningView.swift; sourceTree = "<group>"; };
 		50C5C4E02B7F3BC20028489B /* fast-rent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "fast-rent.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50C5C4E32B7F3BC20028489B /* fast_rentApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fast_rentApp.swift; sourceTree = "<group>"; };
 		50C5C4E72B7F3BC40028489B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				50344FFB2B91579B00549F9D /* SearchView.swift */,
 				503450052B92402900549F9D /* HouseInfoView.swift */,
 				503450132B92D84300549F9D /* SplashScreen.swift */,
+				5095F5A52B951A44008FFEF5 /* WarningView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				50344FFA2B91558900549F9D /* SearchBar.swift in Sources */,
 				503450082B92755300549F9D /* CustomStepper.swift in Sources */,
 				50344FCD2B8FF59900549F9D /* Amenity.swift in Sources */,
+				5095F5A62B951A44008FFEF5 /* WarningView.swift in Sources */,
 				50C5C4FC2B7F3CF90028489B /* MainTabView.swift in Sources */,
 				50C5C4E42B7F3BC20028489B /* fast_rentApp.swift in Sources */,
 				503450182B938AED00549F9D /* NoConnectionView.swift in Sources */,
