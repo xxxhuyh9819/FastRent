@@ -12,26 +12,21 @@ struct WishlistView: View {
     @EnvironmentObject var viewModel: MainViewModel
     @State var isDeleting = false
     
-    var favoriteHouses: [ConvertedHouse] {
-        return Array(viewModel.savedItems)
-    }
+//    var favoriteHouses: [ConvertedHouse] {
+//        return Array(viewModel.savedItems)
+//    }
 
     
     var body: some View {
         
         // 2 items per row
-        let columns: [GridItem] = [
-                GridItem(),
-                GridItem()
-            ]
         
         NavigationStack {
             ScrollView {
-                LazyVGrid(columns: columns, spacing: 30) {
-                    ForEach(favoriteHouses, id: \.self) { house in
+                LazyVStack() {
+                    ForEach(viewModel.savedItems.sorted {$0.price < $1.price} ) { house in
                         HStack {
-                            WishlistItemView(convertedHouse: house)
-                                .frame(width: 160, height: 200)
+                            WishlistItemView(house: house)
                         }
                         .overlay {
                             FavoriteButton(house: house, imageName: fast_rentApp.db.contains(house, viewModel.savedItems) ? "heart.fill" : "heart", size: 24)

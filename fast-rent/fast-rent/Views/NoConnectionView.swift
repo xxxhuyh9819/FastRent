@@ -12,7 +12,7 @@ struct NoConnectionView: View {
     var body: some View {
         VStack {
             RoundedRectangle(cornerRadius: 10)
-                .fill(.white)
+                .fill(.appBackground)
                 .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
                 .frame(height: 100)
                 .overlay {

@@ -38,15 +38,12 @@ final class Database {
     func toggleFavorite(convertedHouse: ConvertedHouse, savedHouses: inout Set<ConvertedHouse>) {
         if contains(convertedHouse, savedHouses) {
             // the item is in the set already, need to remove it.
-            print("ToggleFavorite: Removing \(convertedHouse.name) from the set!")
             savedHouses.remove(convertedHouse)
         } else {
             // the item is not in the set, need to insert it.
-            print("ToggleFavorite: Inserting \(convertedHouse.name) into the set!")
             savedHouses.insert(convertedHouse)
         }
         // Save the update to UserDefaults
         save(items: savedHouses)
-        print("ToggleFavorite: The set has \(savedHouses.count) items!")
     }
 }

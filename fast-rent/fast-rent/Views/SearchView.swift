@@ -141,7 +141,6 @@ struct SearchView: View {
                         // exit SearchView
                         withAnimation(.spring) {
                             viewModel.didFilter = true
-                            print("Finished Searching!")
                             showSearchView.toggle()
                         }
                     } label: {

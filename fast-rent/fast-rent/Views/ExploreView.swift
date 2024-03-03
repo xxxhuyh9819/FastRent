@@ -39,7 +39,6 @@ struct ExploreView: View {
                                     .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity, maxHeight: .infinity/*@END_MENU_TOKEN@*/,  alignment: .topTrailing)
                                     .padding([.top, .trailing], 32)
                                     .onTapGesture {
-                                        print("Ex")
                                         fast_rentApp.db.toggleFavorite(convertedHouse: house, savedHouses: &viewModel.savedItems)
                                     }
                             }
@@ -72,13 +71,6 @@ struct ExploreView: View {
                 }
             }
             
-        }
-        // refresh the saved items upon entering and leaving the page
-        .onAppear() {
-            viewModel.savedItems = fast_rentApp.db.load()
-        }
-        .onDisappear {
-            viewModel.savedItems = fast_rentApp.db.load()
         }
     }
 }

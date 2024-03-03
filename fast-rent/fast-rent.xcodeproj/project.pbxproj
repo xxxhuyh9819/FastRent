@@ -28,6 +28,7 @@
 		503450162B937E3700549F9D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503450152B937E3700549F9D /* NetworkManager.swift */; };
 		503450182B938AED00549F9D /* NoConnectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503450172B938AED00549F9D /* NoConnectionView.swift */; };
 		5092F5312B94706E00B5ECFB /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5092F5302B94706E00B5ECFB /* Settings.bundle */; };
+		5095F5A42B950A03008FFEF5 /* LogExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5095F5A32B950A03008FFEF5 /* LogExtension.swift */; };
 		50C5C4E42B7F3BC20028489B /* fast_rentApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C4E32B7F3BC20028489B /* fast_rentApp.swift */; };
 		50C5C4E82B7F3BC40028489B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50C5C4E72B7F3BC40028489B /* Assets.xcassets */; };
 		50C5C4EB2B7F3BC40028489B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50C5C4EA2B7F3BC40028489B /* Preview Assets.xcassets */; };
@@ -67,6 +68,7 @@
 		503450152B937E3700549F9D /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		503450172B938AED00549F9D /* NoConnectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoConnectionView.swift; sourceTree = "<group>"; };
 		5092F5302B94706E00B5ECFB /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		5095F5A32B950A03008FFEF5 /* LogExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogExtension.swift; sourceTree = "<group>"; };
 		50C5C4E02B7F3BC20028489B /* fast-rent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "fast-rent.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50C5C4E32B7F3BC20028489B /* fast_rentApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fast_rentApp.swift; sourceTree = "<group>"; };
 		50C5C4E72B7F3BC40028489B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -126,6 +128,14 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		5095F5A02B95088C008FFEF5 /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				5095F5A32B950A03008FFEF5 /* LogExtension.swift */,
+			);
+			path = Logger;
+			sourceTree = "<group>";
+		};
 		50C5C4D72B7F3BC20028489B = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +156,7 @@
 		50C5C4E22B7F3BC20028489B /* fast-rent */ = {
 			isa = PBXGroup;
 			children = (
+				5095F5A02B95088C008FFEF5 /* Logger */,
 				5034501B2B9392B200549F9D /* Managers */,
 				5034500E2B92D39000549F9D /* Info.plist */,
 				50344FC12B8FAC6B00549F9D /* ViewModels */,
@@ -313,6 +324,7 @@
 				50C5C4FC2B7F3CF90028489B /* MainTabView.swift in Sources */,
 				50C5C4E42B7F3BC20028489B /* fast_rentApp.swift in Sources */,
 				503450182B938AED00549F9D /* NoConnectionView.swift in Sources */,
+				5095F5A42B950A03008FFEF5 /* LogExtension.swift in Sources */,
 				50C5C5032B7F43500028489B /* DetailView.swift in Sources */,
 				50C5C4F82B7F3CB50028489B /* ExploreView.swift in Sources */,
 				50C5C5252B807AFE0028489B /* RoundButton.swift in Sources */,
