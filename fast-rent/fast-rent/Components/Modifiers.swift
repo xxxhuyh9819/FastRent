@@ -35,3 +35,15 @@ struct CapsuleModifier: ViewModifier {
             }
     }
 }
+
+struct SquareButtonModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .foregroundStyle(.white)
+            .font(.subheadline)
+            .fontWeight(.semibold)
+            .frame(width: 40, height: 40)
+            .background(.red)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+    }
+}

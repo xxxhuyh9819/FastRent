@@ -197,12 +197,7 @@ struct DetailView: View {
                         if let tel = viewModel.landlord?.tel {
                             Link(destination: URL(string: "tel:\(tel)")!) {
                                 Image(systemName: "phone.fill")
-                                    .foregroundStyle(.white)
-                                    .font(.subheadline)
-                                    .fontWeight(.semibold)
-                                    .frame(width: 40, height: 40)
-                                    .background(.red)
-                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                                    .modifier(SquareButtonModifier())
                             }
                             .padding(.horizontal, 10)
                         }
@@ -211,12 +206,7 @@ struct DetailView: View {
                         if let email = viewModel.landlord?.email {
                             Link(destination: URL(string: "mailto:\(email)")!) {
                                 Image(systemName: "envelope.fill")
-                                    .foregroundStyle(.white)
-                                    .font(.subheadline)
-                                    .fontWeight(.semibold)
-                                    .frame(width: 40, height: 40)
-                                    .background(.red)
-                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                                    .modifier(SquareButtonModifier())
                             }
                             .padding(.horizontal, 10)
                         }
